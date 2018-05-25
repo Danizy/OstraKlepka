@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OstraKlepka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Initialized="Window_Initialized">
+    
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem x:Name="Menu_Turniej" Header="Turniej">
+                    <MenuItem x:Name="Menu_utworz" Header="Utwórz"/>
+                    <MenuItem x:Name="Menu_wczytaj" Header="Wczytaj"/>
+                    <MenuItem x:Name="Menu_zapisz" Header="Zapisz"/>
+                    <MenuItem Header="Wyjdź"/>
+                </MenuItem>
+                <MenuItem x:Name="Menu_zarzadzaj" Header="Zarządzaj">
+                    <MenuItem x:Name="Menu_sedziowie" Header="Sędziowie" Click="Menu_sedziowie_Click"/>
+                    <MenuItem x:Name="Menu_druzyny" Header="Drużyny"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+
     </Grid>
 </Window>
