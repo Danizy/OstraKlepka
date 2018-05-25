@@ -22,12 +22,12 @@
         </Grid.RowDefinitions>
 
 
-        <ListView Name="lstPersons" Grid.Column="1" Grid.Row="2">
+        <ListView x:Name="listaDruzyny" Grid.Column="1" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="Nazwa"
-                            DisplayMemberBinding="{Binding PersonId}" />
+                            DisplayMemberBinding="{Binding nazwa}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
@@ -48,7 +48,7 @@
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Dodaj" Content="Dodaj" Click="Slij_Click"/>
+            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Dodaj" Content="Dodaj" Click="Druzyna_Dodaj_Click"/>
             <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Usun" Content="Usuń"/>
             <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Edytuj" Content="Edytuj"/>
         </Grid>

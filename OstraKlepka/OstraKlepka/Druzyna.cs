@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
-    class Druzyna
+    public class Druzyna
     {
         private List<Zawodnik> listaZawodnikow;
         private int punkty;
-        private string nazwa;
+        public string nazwa { get; set; }
         private int setyPrzegrane;
         private int setyWygrane;
 

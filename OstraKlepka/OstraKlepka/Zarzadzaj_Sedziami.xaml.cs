@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,27 +20,38 @@ namespace OstraKlepka
     /// </summary>
     public partial class Zarzadzaj_Sedziami : Window
     {
-        public string opa;
+        public List<Druzyna> listaDruzyn;
+        private ObservableCollection<Druzyna> listaDruzyn2;
 
 
-        public Zarzadzaj_Sedziami()
+        public Zarzadzaj_Sedziami(List<Druzyna> _listaDruzyn)
         {
            
             InitializeComponent();
 
+            listaDruzyn = _listaDruzyn;
+            initBind();
+
             
         }
 
-        private void Slij_Click(object sender, RoutedEventArgs e)
+        private void initBind()
         {
-            this.opa = "blin";
-            this.DialogResult = true;
-            this.Close();
+            listaDruzyny.ItemsSource = listaDruzyn;
         }
 
-        public void SetData(List<Druzyna> _listaDruzyn)
+        private void Druzyna_Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            Dodaj_Druzyne dodajDruzyne = new Dodaj_Druzyne();
+            dodajDruzyne.ShowDialog();
 
+            if (dodajDruzyne.DialogResult.HasValue && dodajDruzyne.DialogResult.Value)
+            {
+                listaDruzyn.Add(new Druzyna(dodajDruzyne.nazwa));
+                listaDruzyny.Items.Refresh();
+                
+            }
+            dodajDruzyne = null;
         }
     }
 }

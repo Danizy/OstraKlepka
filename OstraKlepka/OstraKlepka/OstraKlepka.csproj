@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dodaj_Druzyne.xaml.cs">
+      <DependentUpon>Dodaj_Druzyne.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Druzyna.cs" />
     <Compile Include="Sedzia.cs" />
     <Compile Include="Sedzia_Pomocniczy.cs" />
@@ -61,6 +66,10 @@
       <DependentUpon>Zarzadzaj_Sedziami.xaml</DependentUpon>
     </Compile>
     <Compile Include="Zawodnik.cs" />
+    <Page Include="Dodaj_Druzyne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

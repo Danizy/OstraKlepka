@@ -20,30 +20,29 @@ namespace OstraKlepka
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Druzyna> listaDruzyn;
+        public List<Druzyna> listaDruzyn = new List<Druzyna>();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            listaDruzyn.Add(new Druzyna("opa"));
+            listaDruzyn.Add(new Druzyna("klepka"));
+            listaDruzyn.Add(new Druzyna("ostra"));
+  
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)
         {
-            Zarzadzaj_Sedziami oknoSedziowie = new Zarzadzaj_Sedziami();
+            Zarzadzaj_Sedziami oknoSedziowie = new Zarzadzaj_Sedziami(listaDruzyn);
+            oknoSedziowie.listaDruzyn = listaDruzyn;
             oknoSedziowie.ShowDialog();
 
             if (oknoSedziowie.DialogResult.HasValue && oknoSedziowie.DialogResult.Value)
             {
-                string opa = oknoSedziowie.opa;
+                listaDruzyn = oknoSedziowie.listaDruzyn;
             }
             oknoSedziowie = null;
-        }
-
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            listaDruzyn.Add(new Druzyna("opa"));
-            listaDruzyn.Add(new Druzyna("klepka"));
-            listaDruzyn.Add(new Druzyna("ostra"));
         }
     }
 }

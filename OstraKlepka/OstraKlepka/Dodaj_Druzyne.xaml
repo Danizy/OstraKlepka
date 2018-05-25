@@ -1,0 +1,26 @@
+﻿<Window x:Class="OstraKlepka.Dodaj_Druzyne"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OstraKlepka"
+        mc:Ignorable="d"
+        Title="Dodaj_Druzyne" Height="124.488" Width="202.459">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Podaj nazwę drużyny</TextBlock>
+        <TextBox x:Name="nazwaTextBox" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="159"></TextBox>
+        <Button x:Name="Dodaj" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Dodaj_Click">
+            <TextBlock>Dodaj</TextBlock>
+        </Button>
+    </Grid>
+</Window>
