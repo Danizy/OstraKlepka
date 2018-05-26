@@ -20,16 +20,16 @@ namespace OstraKlepka
     /// </summary>
     public partial class Zarzadzaj_Sedziami : Window
     {
-        public List<Druzyna> listaDruzyn;
-        private ObservableCollection<Druzyna> listaDruzyn2;
+        public List<Sedzia> listaSedziow;
+        public List<Sedzia_Pomocniczy> listaPomocniczych;
 
 
-        public Zarzadzaj_Sedziami(List<Druzyna> _listaDruzyn)
+        public Zarzadzaj_Sedziami(List<Sedzia> _listaSedziow)
         {
            
             InitializeComponent();
 
-            listaDruzyn = _listaDruzyn;
+            listaSedziow = _listaSedziow;
             initBind();
 
             
@@ -37,21 +37,62 @@ namespace OstraKlepka
 
         private void initBind()
         {
-            listaDruzyny.ItemsSource = listaDruzyn;
+            listaSedziowie.ItemsSource = listaSedziow;
         }
 
         private void Druzyna_Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            Dodaj_Druzyne dodajDruzyne = new Dodaj_Druzyne();
-            dodajDruzyne.ShowDialog();
+            DodajSedziego dodajSedziego = new DodajSedziego();
+            dodajSedziego.ShowDialog();
 
-            if (dodajDruzyne.DialogResult.HasValue && dodajDruzyne.DialogResult.Value)
+            if (dodajSedziego.DialogResult.HasValue && dodajSedziego.DialogResult.Value)
             {
-                listaDruzyn.Add(new Druzyna(dodajDruzyne.nazwa));
-                listaDruzyny.Items.Refresh();
+                if (dodajSedziego.isPomocniczy)
+                {
+
+                }
+                else
+                {
+                    listaSedziow.Add(new Sedzia(dodajSedziego.sedzia));
+                }
+                listaSedziowie.Items.Refresh();
                 
             }
-            dodajDruzyne = null;
+            dodajSedziego = null;
+        }
+
+        private void Sedzia_Usun_Click(object sender, RoutedEventArgs e)
+        {
+            listaSedziow.RemoveAt(listaSedziowie.SelectedIndex);
+            listaSedziowie.Items.Refresh();
+        }
+
+        private void Sedzia_Edytuj_Click(object sender, RoutedEventArgs e)
+        {
+            DodajSedziego dodajSedziego = new DodajSedziego();
+            dodajSedziego.imieTextBox.Text = listaSedziow[listaSedziowie.SelectedIndex].imie;
+            dodajSedziego.nazwiskoTextBox.Text = listaSedziow[listaSedziowie.SelectedIndex].nazwisko;
+            dodajSedziego.idTextBox.Text = listaSedziow[listaSedziowie.SelectedIndex].id;
+            dodajSedziego.btnText.Text = "Zapisz";
+            dodajSedziego.Title = "Edytuj sędziego";
+            dodajSedziego.ShowDialog();
+
+            if (dodajSedziego.DialogResult.HasValue && dodajSedziego.DialogResult.Value)
+            {
+                if (dodajSedziego.isPomocniczy)
+                {
+
+                }
+                else
+                {
+                    listaSedziow[listaSedziowie.SelectedIndex].imie = dodajSedziego.sedzia.imie;
+                    listaSedziow[listaSedziowie.SelectedIndex].nazwisko = dodajSedziego.sedzia.nazwisko;
+                    listaSedziow[listaSedziowie.SelectedIndex].id = dodajSedziego.sedzia.id;
+                }
+                listaSedziowie.Items.Refresh();
+
+            }
+            dodajSedziego = null;
         }
     }
 }

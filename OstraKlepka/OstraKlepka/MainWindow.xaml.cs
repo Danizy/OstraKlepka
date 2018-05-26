@@ -21,6 +21,7 @@ namespace OstraKlepka
     public partial class MainWindow : Window
     {
         public List<Druzyna> listaDruzyn = new List<Druzyna>();
+        public List<Sedzia> listaSedziow = new List<Sedzia>();
 
         public MainWindow()
         {
@@ -29,18 +30,21 @@ namespace OstraKlepka
             listaDruzyn.Add(new Druzyna("opa"));
             listaDruzyn.Add(new Druzyna("klepka"));
             listaDruzyn.Add(new Druzyna("ostra"));
-  
+
+            listaSedziow.Add(new Sedzia("Ahmed", "Abdul", "104012"));
+            listaSedziow.Add(new Sedzia("Mietek", "Zul", "101232"));
+
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)
         {
-            Zarzadzaj_Sedziami oknoSedziowie = new Zarzadzaj_Sedziami(listaDruzyn);
-            oknoSedziowie.listaDruzyn = listaDruzyn;
+            Zarzadzaj_Sedziami oknoSedziowie = new Zarzadzaj_Sedziami(listaSedziow);
+            oknoSedziowie.listaSedziow = listaSedziow;
             oknoSedziowie.ShowDialog();
 
             if (oknoSedziowie.DialogResult.HasValue && oknoSedziowie.DialogResult.Value)
             {
-                listaDruzyn = oknoSedziowie.listaDruzyn;
+                listaSedziow = oknoSedziowie.listaSedziow;
             }
             oknoSedziowie = null;
         }

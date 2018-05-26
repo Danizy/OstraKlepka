@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
-    abstract class Osoba
+    public abstract class Osoba
     {
-        private string imie;
-        private string nazwisko;
+        public string imie { get; set; }
+        public string nazwisko { get; set; }
 
         protected Osoba(string imie, string nazwisko)
         {
