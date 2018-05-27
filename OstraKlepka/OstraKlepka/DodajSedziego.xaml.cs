@@ -32,7 +32,11 @@ namespace OstraKlepka
         {
             sedzia = new Sedzia(imieTextBox.Text, nazwiskoTextBox.Text, idTextBox.Text);
             if (pomocniczy.IsChecked.Value)
+            {
                 isPomocniczy = true;
+                sedzia = new Sedzia_Pomocniczy(imieTextBox.Text, nazwiskoTextBox.Text, idTextBox.Text);
+            }
+                
 
             this.DialogResult = true;
             this.Close();

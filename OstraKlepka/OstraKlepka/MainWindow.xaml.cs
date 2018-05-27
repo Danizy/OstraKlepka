@@ -22,6 +22,7 @@ namespace OstraKlepka
     {
         public List<Druzyna> listaDruzyn = new List<Druzyna>();
         public List<Sedzia> listaSedziow = new List<Sedzia>();
+        public List<Sedzia_Pomocniczy> listaPomocniczych = new List<Sedzia_Pomocniczy>();
 
         public MainWindow()
         {
@@ -34,12 +35,16 @@ namespace OstraKlepka
             listaSedziow.Add(new Sedzia("Ahmed", "Abdul", "104012"));
             listaSedziow.Add(new Sedzia("Mietek", "Zul", "101232"));
 
+            listaPomocniczych.Add(new Sedzia_Pomocniczy("Ahmed", "Abdul", "104012"));
+
+
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)
         {
-            Zarzadzaj_Sedziami oknoSedziowie = new Zarzadzaj_Sedziami(listaSedziow);
+            Zarzadzaj_Sedziami oknoSedziowie = new Zarzadzaj_Sedziami(listaSedziow, listaPomocniczych);
             oknoSedziowie.listaSedziow = listaSedziow;
+            oknoSedziowie.Owner = this;
             oknoSedziowie.ShowDialog();
 
             if (oknoSedziowie.DialogResult.HasValue && oknoSedziowie.DialogResult.Value)

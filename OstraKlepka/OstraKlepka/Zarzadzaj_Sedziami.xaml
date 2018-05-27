@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OstraKlepka"
         mc:Ignorable="d"
-        Title="Zarzadzaj_Sedziami" Height="450" Width="800">
+        Title="Zarzadzaj_Sedziami" Height="450" Width="800" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -14,11 +14,13 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="1" Grid.Row="0" Header="Sedziowie" >
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Sedziowie" Margin="0,0,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -71,7 +73,7 @@
         </GroupBox>
 
 
-        <GroupBox Grid.Column="2" Grid.Row="0" Header="Sedziowie" >
+        <GroupBox Grid.Column="2" Grid.Row="1" Header="Sedziowie Pomocniczy" Margin="10,0,0,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -114,7 +116,7 @@
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Dodaj" Content="Dodaj"/>
+                    <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Dodaj" Content="Dodaj" Click="SedziaPom_Dodaj_Click"/>
                     <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Usun" Content="Usuń"/>
                     <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Edytuj" Content="Edytuj"/>
                 </Grid>

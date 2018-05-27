@@ -13,5 +13,11 @@ namespace OstraKlepka
         {
 
         }
+
+        public Sedzia_Pomocniczy(Sedzia_Pomocniczy _sedzia)
+           : base(_sedzia.imie, _sedzia.nazwisko, _sedzia.id)
+        {
+
+        }
     }
 }

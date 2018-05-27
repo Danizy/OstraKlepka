@@ -24,12 +24,13 @@ namespace OstraKlepka
         public List<Sedzia_Pomocniczy> listaPomocniczych;
 
 
-        public Zarzadzaj_Sedziami(List<Sedzia> _listaSedziow)
+        public Zarzadzaj_Sedziami(List<Sedzia> _listaSedziow, List<Sedzia_Pomocniczy> _listaPomocniczych)
         {
            
             InitializeComponent();
 
             listaSedziow = _listaSedziow;
+            listaPomocniczych = _listaPomocniczych;
             initBind();
 
             
@@ -38,24 +39,28 @@ namespace OstraKlepka
         private void initBind()
         {
             listaSedziowie.ItemsSource = listaSedziow;
+            listaSedziowiePom.ItemsSource = listaPomocniczych;
         }
 
         private void Sedzia_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             DodajSedziego dodajSedziego = new DodajSedziego();
+            dodajSedziego.Owner = this;
             dodajSedziego.ShowDialog();
 
             if (dodajSedziego.DialogResult.HasValue && dodajSedziego.DialogResult.Value)
             {
                 if (dodajSedziego.isPomocniczy)
                 {
-
+                    listaPomocniczych.Add(new Sedzia_Pomocniczy((Sedzia_Pomocniczy)dodajSedziego.sedzia));
+                    listaSedziowiePom.Items.Refresh();
                 }
                 else
                 {
                     listaSedziow.Add(new Sedzia(dodajSedziego.sedzia));
+                    listaSedziowie.Items.Refresh();
                 }
-                listaSedziowie.Items.Refresh();
+                
                 
             }
             dodajSedziego = null;
@@ -75,6 +80,7 @@ namespace OstraKlepka
             dodajSedziego.idTextBox.Text = listaSedziow[listaSedziowie.SelectedIndex].id;
             dodajSedziego.btnText.Text = "Zapisz";
             dodajSedziego.Title = "Edytuj sędziego";
+            dodajSedziego.Owner = this;
             dodajSedziego.ShowDialog();
 
             if (dodajSedziego.DialogResult.HasValue && dodajSedziego.DialogResult.Value)
@@ -90,6 +96,31 @@ namespace OstraKlepka
                     listaSedziow[listaSedziowie.SelectedIndex].id = dodajSedziego.sedzia.id;
                 }
                 listaSedziowie.Items.Refresh();
+
+            }
+            dodajSedziego = null;
+        }
+
+        private void SedziaPom_Dodaj_Click(object sender, RoutedEventArgs e)
+        {
+            DodajSedziego dodajSedziego = new DodajSedziego();
+            dodajSedziego.Owner = this;
+            dodajSedziego.pomocniczy.IsChecked = true;
+            dodajSedziego.ShowDialog();
+
+            if (dodajSedziego.DialogResult.HasValue && dodajSedziego.DialogResult.Value)
+            {
+                if (dodajSedziego.isPomocniczy)
+                {
+                    listaPomocniczych.Add(new Sedzia_Pomocniczy((Sedzia_Pomocniczy)dodajSedziego.sedzia));
+                    listaSedziowiePom.Items.Refresh();
+                }
+                else
+                {
+                    listaSedziow.Add(new Sedzia(dodajSedziego.sedzia));
+                    listaSedziowie.Items.Refresh();
+                }
+                
 
             }
             dodajSedziego = null;
