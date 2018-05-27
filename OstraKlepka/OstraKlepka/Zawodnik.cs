@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
-    class Zawodnik : Osoba
+    public class Zawodnik : Osoba
     {
         private string numer;
-
 
         public Zawodnik(string _imie, string _nazwisko, string _numer)
             : base(_imie, _nazwisko)

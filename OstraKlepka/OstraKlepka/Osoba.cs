@@ -11,10 +11,10 @@ namespace OstraKlepka
         public string imie { get; set; }
         public string nazwisko { get; set; }
 
-        protected Osoba(string imie, string nazwisko)
+        protected Osoba(string _imie, string _nazwisko)
         {
-            this.imie = imie;
-            this.nazwisko = nazwisko;
+            imie = _imie;
+            nazwisko = _nazwisko;
         }
 
         public void SetImie(string _imie) { imie = _imie; }
