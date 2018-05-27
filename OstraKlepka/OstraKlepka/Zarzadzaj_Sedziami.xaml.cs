@@ -42,7 +42,7 @@ namespace OstraKlepka
             listaSedziowiePom.ItemsSource = listaPomocniczych;
         }
 
-        private void Druzyna_Dodaj_Click(object sender, RoutedEventArgs e)
+        private void Sedzia_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             DodajSedziego dodajSedziego = new DodajSedziego();
             dodajSedziego.Owner = this;
