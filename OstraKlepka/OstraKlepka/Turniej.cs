@@ -48,7 +48,7 @@ namespace OstraKlepka
 
         public void addZwyciezceGrup(Druzyna _druzyna)
         {
-            //hihi naklepane hihi
+            //Komentarz
         }
     }
 }
