@@ -78,8 +78,12 @@
       <DependentUpon>Dodaj_Druzyne.xaml</DependentUpon>
     </Compile>
     <Compile Include="Druzyna.cs" />
+    <Compile Include="Dwa_Ognie.cs" />
+    <Compile Include="Mecz.cs" />
+    <Compile Include="Przeciaganie_Liny.cs" />
     <Compile Include="Sedzia.cs" />
     <Compile Include="Sedzia_Pomocniczy.cs" />
+    <Compile Include="Siatkowka.cs" />
     <Compile Include="Turniej.cs" />
     <Compile Include="Zarzadzaj_Sedziami.xaml.cs">
       <DependentUpon>Zarzadzaj_Sedziami.xaml</DependentUpon>

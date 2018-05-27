@@ -48,7 +48,58 @@ namespace OstraKlepka
 
         public void addZwyciezceGrup(Druzyna _druzyna)
         {
-            //Komentarz
+            zwyciezcyGrup.Add(_druzyna);
         }
+
+        public void addZwyciezcePolFinal(Druzyna _druzyna)
+        {
+            zwyciezcyPolFinal.Add(_druzyna);
+        }
+
+        public void addZwyciezceFinal(Druzyna _druzyna)
+        {
+            zwyciezcyFinal.Add(_druzyna);
+        }
+
+        public List<Druzyna> getZwyciezcyGrup()
+        {
+            return zwyciezcyGrup;
+        }
+
+        public List<Druzyna> getZwyciezcyPolFinal()
+        {
+            return zwyciezcyPolFinal;
+        }
+
+        public List<Druzyna> getZwyciezcyFinal()
+        {
+            return zwyciezcyFinal;
+        }
+
+        public void wyswietlTabliceWynikow()
+        {
+            // do zrobienia
+        }
+
+        public bool zapiszDoPliku()
+        {
+            return true;
+        }
+
+        public void generujMeczeGrupowe()
+        {
+            // do zrobienia
+        }
+
+        public void generujMeczePolFinal()
+        {
+            // do zrobienia
+        }
+
+        public void generujMeczeFinal()
+        {
+            // do zrobienia
+        }
+
     }
 }
