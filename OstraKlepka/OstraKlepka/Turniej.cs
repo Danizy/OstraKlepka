@@ -48,7 +48,7 @@ namespace OstraKlepka
 
         public void addZwyciezceGrup(Druzyna _druzyna)
         {
-            //Daniel to chujek
+            //Kornel to chujek
         }
     }
 }
