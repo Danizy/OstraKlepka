@@ -40,7 +40,7 @@ namespace OstraKlepka
             listaSedziowie.ItemsSource = listaSedziow;
         }
 
-        private void Druzyna_Dodaj_Click(object sender, RoutedEventArgs e)
+        private void Sedzia_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             DodajSedziego dodajSedziego = new DodajSedziego();
             dodajSedziego.ShowDialog();

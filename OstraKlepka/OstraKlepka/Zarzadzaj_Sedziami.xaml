@@ -14,49 +14,119 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <GroupBox Grid.Column="1" Grid.Row="0" Header="Sedziowie" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
 
-        <ListView x:Name="listaSedziowie" Grid.Column="1" Grid.Row="2">
-            <ListView.View>
-                <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Header="Id"
+
+
+                <ListView x:Name="listaSedziowie" Grid.Column="1" Grid.Row="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Id"
                             DisplayMemberBinding="{Binding id}"/>
-                        <GridViewColumn Header="Imie"
+                                <GridViewColumn Header="Imie"
                             DisplayMemberBinding="{Binding imie}" />
-                        <GridViewColumn Header="Nazwisko"
+                                <GridViewColumn Header="Nazwisko"
                             DisplayMemberBinding="{Binding nazwisko}"/>
-                    </GridView.Columns>
-                </GridView>
-            </ListView.View>
-        </ListView>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
-        <Grid Grid.Column="1" Grid.Row="1">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10"/>
-            </Grid.RowDefinitions>
+                <Grid Grid.Column="1" Grid.Row="0">
 
-            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Dodaj" Content="Dodaj" Click="Druzyna_Dodaj_Click"/>
-            <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Sedzia_Usun" Content="Usuń" Click="Sedzia_Usun_Click"/>
-            <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Sedzia_Edytuj" Content="Edytuj" Click="Sedzia_Edytuj_Click"/>
-        </Grid>
-        
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Sedzia_Dodaj" Content="Dodaj" Click="Sedzia_Dodaj_Click"/>
+                    <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Sedzia_Usun" Content="Usuń" Click="Sedzia_Usun_Click"/>
+                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Sedzia_Edytuj" Content="Edytuj" Click="Sedzia_Edytuj_Click"/>
+                </Grid>
+            </Grid>
+
+
+        </GroupBox>
+
+
+        <GroupBox Grid.Column="2" Grid.Row="0" Header="Sedziowie" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <ListView x:Name="listaSedziowiePom" Grid.Column="1" Grid.Row="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Id"
+                            DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Imie"
+                            DisplayMemberBinding="{Binding imie}" />
+                                <GridViewColumn Header="Nazwisko"
+                            DisplayMemberBinding="{Binding nazwisko}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+
+                <Grid Grid.Column="1" Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Dodaj" Content="Dodaj"/>
+                    <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Usun" Content="Usuń"/>
+                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Edytuj" Content="Edytuj"/>
+                </Grid>
+            </Grid>
+
+
+        </GroupBox>
+
+
+
+
+
 
     </Grid>
 </Window>
