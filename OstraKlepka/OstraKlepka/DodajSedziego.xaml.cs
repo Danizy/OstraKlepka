@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,6 +31,23 @@ namespace OstraKlepka
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            Regex regex = new Regex(@"^([A-Za-z])*$");
+
+            if (!regex.Match(imieTextBox.Text).Success || !regex.Match(nazwiskoTextBox.Text).Success || imieTextBox.Text == "" || nazwiskoTextBox.Text == "")
+            {
+                MessageBox.Show("Imie lub nazwisko zawiera niedozwolone znaki", "Blad", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            regex = new Regex(@"^[0-9]*$");
+
+            if (!regex.Match(idTextBox.Text).Success || idTextBox.Text == "")
+            {
+                MessageBox.Show("Id moze zawierac tylko cyfry", "Blad", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+                
+
             sedzia = new Sedzia(imieTextBox.Text, nazwiskoTextBox.Text, idTextBox.Text);
             if (pomocniczy.IsChecked.Value)
             {

@@ -117,8 +117,8 @@
                     </Grid.RowDefinitions>
 
                     <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Dodaj" Content="Dodaj" Click="SedziaPom_Dodaj_Click"/>
-                    <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Usun" Content="Usuń"/>
-                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Edytuj" Content="Edytuj"/>
+                    <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Usun" Content="Usuń" Click="SedziaPom_Usun_Click"/>
+                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="SedziaPom_Edytuj" Content="Edytuj" Click="SedziaPom_Edytuj_Click"/>
                 </Grid>
             </Grid>
 
