@@ -31,7 +31,7 @@ namespace OstraKlepka
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex(@"^([A-Za-z])*$");
+            Regex regex = new Regex(@"^([A-Za-ząćęółźżń])*$");
 
             if (!regex.Match(imieTextBox.Text).Success || !regex.Match(nazwiskoTextBox.Text).Success || imieTextBox.Text == "" || nazwiskoTextBox.Text == "")
             {
