@@ -23,7 +23,5 @@
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
-
-
     </Grid>
 </Window>

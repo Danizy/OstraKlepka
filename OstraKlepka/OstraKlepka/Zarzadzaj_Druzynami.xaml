@@ -20,7 +20,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="1" Grid.Row="1" Header="Druzyny" Margin="0,0,10,0">
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Drużyny" Margin="0,0,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
