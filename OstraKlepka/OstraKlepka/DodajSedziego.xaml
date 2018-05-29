@@ -21,7 +21,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Imie"/></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Imi"/><Run Text="ę"/></TextBlock>
         <TextBox x:Name="imieTextBox" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="159"></TextBox>
 
         <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Nazwisko"/></TextBlock>

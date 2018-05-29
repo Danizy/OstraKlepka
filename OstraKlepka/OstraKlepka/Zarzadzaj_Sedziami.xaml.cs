@@ -177,5 +177,10 @@ namespace OstraKlepka
             }
             dodajSedziego = null;
         }
+
+        private void listaSedziowiePom_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
