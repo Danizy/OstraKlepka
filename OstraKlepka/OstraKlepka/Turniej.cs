@@ -11,24 +11,25 @@ namespace OstraKlepka
         private List<Druzyna> listaDruzyn;
         private List<Sedzia> listaSedziow;
         private List<Sedzia_Pomocniczy> listaSedziowPom;
-        // dodać listę meczy
+        private List<Mecz> listaMeczow;
         private List<Druzyna> zwyciezcyGrup;
         private List<Druzyna> zwyciezcyPolFinal;
         private List<Druzyna> zwyciezcyFinal;
+        private string rodzajTurnieju;
 
         public void SetDruzyny(List<Druzyna> _listaDruzyn)
         {
-            listaDruzyn = _listaDruzyn;
+            listaDruzyn = new List<Druzyna>(_listaDruzyn);
         }
 
         public void SetSedziowie(List<Sedzia> _listaSedziow)
         {
-            listaSedziow = _listaSedziow;
+            listaSedziow = new List<Sedzia>(_listaSedziow);
         }
 
         public void SetSedziowiePom(List<Sedzia_Pomocniczy> _listaSedziowPom)
         {
-            listaSedziowPom = _listaSedziowPom;
+            listaSedziowPom = new List<Sedzia_Pomocniczy>(_listaSedziowPom);
         }
 
         public List<Druzyna> GetDruzyny()
@@ -48,17 +49,17 @@ namespace OstraKlepka
 
         public void addZwyciezceGrup(Druzyna _druzyna)
         {
-            zwyciezcyGrup.Add(_druzyna);
+            zwyciezcyGrup.Add(new Druzyna(_druzyna));
         }
 
-        public void addZwyciezcePolFinal(Druzyna _druzyna)
+    public void addZwyciezcePolFinal(Druzyna _druzyna)
         {
-            zwyciezcyPolFinal.Add(_druzyna);
+            zwyciezcyPolFinal.Add(new Druzyna(_druzyna));
         }
 
         public void addZwyciezceFinal(Druzyna _druzyna)
         {
-            zwyciezcyFinal.Add(_druzyna);
+            zwyciezcyFinal.Add(new Druzyna(_druzyna));
         }
 
         public List<Druzyna> getZwyciezcyGrup()
@@ -89,11 +90,13 @@ namespace OstraKlepka
         public void generujMeczeGrupowe()
         {
             // do zrobienia
+            // dodanie do listy meczów na podstawie listy drużyn, każdy z każdym
         }
 
         public void generujMeczePolFinal()
         {
             // do zrobienia
+            // dodanie do listy meczów na podstawie listy zwycięzów w fazie grupowej
         }
 
         public void generujMeczeFinal()
