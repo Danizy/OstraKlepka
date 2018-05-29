@@ -20,7 +20,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="1" Grid.Row="1" Header="Sedziowie" Margin="0,0,10,0">
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Sędziowie" Margin="0,0,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -38,7 +38,7 @@
                             <GridView.Columns>
                                 <GridViewColumn Header="Id"
                             DisplayMemberBinding="{Binding id}"/>
-                                <GridViewColumn Header="Imie"
+                                <GridViewColumn Header="Imię"
                             DisplayMemberBinding="{Binding imie}" />
                                 <GridViewColumn Header="Nazwisko"
                             DisplayMemberBinding="{Binding nazwisko}"/>
@@ -73,7 +73,7 @@
         </GroupBox>
 
 
-        <GroupBox Grid.Column="2" Grid.Row="1" Header="Sedziowie Pomocniczy" Margin="10,0,0,0">
+        <GroupBox Grid.Column="2" Grid.Row="1" Header="Sędziowie Pomocniczy" Margin="10,0,0,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -85,13 +85,13 @@
 
 
 
-                <ListView x:Name="listaSedziowiePom" Grid.Column="1" Grid.Row="1">
+                <ListView x:Name="listaSedziowiePom" Grid.Column="1" Grid.Row="1" SelectionChanged="listaSedziowiePom_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
                                 <GridViewColumn Header="Id"
                             DisplayMemberBinding="{Binding id}"/>
-                                <GridViewColumn Header="Imie"
+                                <GridViewColumn Header="Imię"
                             DisplayMemberBinding="{Binding imie}" />
                                 <GridViewColumn Header="Nazwisko"
                             DisplayMemberBinding="{Binding nazwisko}"/>
