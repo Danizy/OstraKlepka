@@ -52,7 +52,7 @@ namespace OstraKlepka
             zwyciezcyGrup.Add(new Druzyna(_druzyna));
         }
 
-    public void addZwyciezcePolFinal(Druzyna _druzyna)
+        public void addZwyciezcePolFinal(Druzyna _druzyna)
         {
             zwyciezcyPolFinal.Add(new Druzyna(_druzyna));
         }
@@ -77,7 +77,7 @@ namespace OstraKlepka
             return zwyciezcyFinal;
         }
 
-        public void wyswietlTabliceWynikow()
+        public void generujlTabliceWynikow()
         {
             // do zrobienia
         }

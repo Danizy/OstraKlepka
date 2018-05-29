@@ -24,10 +24,10 @@ namespace OstraKlepka
 
         public Druzyna(Druzyna _druzyna)
         {
-            _druzyna.nazwa = nazwa;
-            _druzyna.punkty = punkty;
-            _druzyna.setyPrzegrane = setyPrzegrane;
-            _druzyna.setyWygrane = setyWygrane;
+            nazwa = _druzyna.nazwa;
+            punkty = _druzyna.punkty;
+            setyPrzegrane = _druzyna.setyPrzegrane;
+            setyWygrane = _druzyna.setyWygrane;
         }
 
         public void setNazwa(string _nazwa) { nazwa = _nazwa; }
