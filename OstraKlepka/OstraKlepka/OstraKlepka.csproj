@@ -85,6 +85,9 @@
     <Compile Include="Sedzia_Pomocniczy.cs" />
     <Compile Include="Siatkowka.cs" />
     <Compile Include="Turniej.cs" />
+    <Compile Include="Zarzadzaj_Druzynami.xaml.cs">
+      <DependentUpon>Zarzadzaj_Druzynami.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Zarzadzaj_Sedziami.xaml.cs">
       <DependentUpon>Zarzadzaj_Sedziami.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Zarzadzaj_Druzynami.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Zarzadzaj_Sedziami.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
