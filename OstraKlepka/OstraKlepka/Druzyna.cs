@@ -22,6 +22,14 @@ namespace OstraKlepka
             setyWygrane = 0;
         }
 
+        public Druzyna(Druzyna _druzyna)
+        {
+            _druzyna.nazwa = nazwa;
+            _druzyna.punkty = punkty;
+            _druzyna.setyPrzegrane = setyPrzegrane;
+            _druzyna.setyWygrane = setyWygrane;
+        }
+
         public void setNazwa(string _nazwa) { nazwa = _nazwa; }
 
         public string getNazwa() { return nazwa; }
