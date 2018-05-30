@@ -61,7 +61,7 @@
 
                     <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Dodaj" Content="Dodaj" Click="Druzyna_Dodaj_Click"/>
                     <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Usun" Content="Usuń" Click="Druzyna_Usun_Click"/>
-                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Edytuj" Content="Edytuj"/>
+                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Druzyna_Edytuj" Content="Edytuj" Click="Druzyna_Edytuj_Click"/>
                 </Grid>
             </Grid>
 
@@ -112,8 +112,8 @@
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Dodaj" Content="Dodaj"/>
-                    <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Usun" Content="Usuń"/>
+                    <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Dodaj" Content="Dodaj" Click="Zawodnik_Dodaj_Click"/>
+                    <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Usun" Content="Usuń" Click="Zawodnik_Usun_Click"/>
                     <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Edytuj" Content="Edytuj"/>
                 </Grid>
             </Grid>

@@ -32,6 +32,12 @@ namespace OstraKlepka
 
         private void lv_druzyny_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (lv_druzyny.SelectedIndex == -1)
+            {
+                lv_zawodnicy.ItemsSource = null;
+                return;
+            }
+
             lv_zawodnicy.ItemsSource = listaDruzyn[lv_druzyny.SelectedIndex].GetZawodnicy();
             lv_zawodnicy.Items.Refresh();
         }
@@ -58,6 +64,52 @@ namespace OstraKlepka
 
             listaDruzyn.RemoveAt(lv_druzyny.SelectedIndex);
             lv_druzyny.Items.Refresh();
+        }
+
+        private void Druzyna_Edytuj_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_druzyny.SelectedIndex == -1)
+                return;
+
+            Dodaj_Druzyne dodajDruzyne = new Dodaj_Druzyne();
+            dodajDruzyne.Owner = this;
+            dodajDruzyne.TextBlk.Text = "Edytuj nazwe druzyny";
+            dodajDruzyne.nazwaTextBox.Text = listaDruzyn[lv_druzyny.SelectedIndex].nazwa;
+            dodajDruzyne.ShowDialog();
+
+            if (dodajDruzyne.DialogResult.HasValue && dodajDruzyne.DialogResult.Value)
+            {
+                listaDruzyn[lv_druzyny.SelectedIndex].nazwa = dodajDruzyne.nazwaTextBox.Text;
+            }
+
+            dodajDruzyne = null;
+            lv_druzyny.Items.Refresh();
+        }
+
+        private void Zawodnik_Dodaj_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_druzyny.SelectedIndex == -1)
+                return;
+
+            Dodaj_Zawodnika dodajZawodnika = new Dodaj_Zawodnika();
+            dodajZawodnika.Owner = this;
+            dodajZawodnika.ShowDialog();
+
+            if (dodajZawodnika.DialogResult.HasValue && dodajZawodnika.DialogResult.Value)
+            {
+                listaDruzyn[lv_druzyny.SelectedIndex].DodajZawodnika(dodajZawodnika.zawodnik);
+            }
+
+            dodajZawodnika = null;
+            lv_zawodnicy.Items.Refresh();
+        }
+
+        private void Zawodnik_Usun_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_druzyny.SelectedIndex == -1 || lv_zawodnicy.SelectedIndex == -1)
+                return;
+
+            listaZawodnikow[lv_druzyny.SelectedIndex].
         }
     }
 }

@@ -77,6 +77,9 @@
     <Compile Include="Dodaj_Druzyne.xaml.cs">
       <DependentUpon>Dodaj_Druzyne.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dodaj_Zawodnika.xaml.cs">
+      <DependentUpon>Dodaj_Zawodnika.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Druzyna.cs" />
     <Compile Include="Dwa_Ognie.cs" />
     <Compile Include="Mecz.cs" />
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dodaj_Druzyne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dodaj_Zawodnika.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

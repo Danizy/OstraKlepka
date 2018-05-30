@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Podaj nazwę drużyny</TextBlock>
+        <TextBlock x:Name="TextBlk" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Podaj nazwę drużyny</TextBlock>
         <TextBox x:Name="nazwaTextBox" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="159"></TextBox>
         <Button x:Name="Dodaj" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Dodaj_Click">
             <TextBlock>Dodaj</TextBlock>
