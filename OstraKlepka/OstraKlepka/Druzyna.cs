@@ -13,7 +13,7 @@ namespace OstraKlepka
         public string nazwa { get; set; }
         private int setyPrzegrane;
         private int setyWygrane;
-
+ 
         public Druzyna(string _nazwa)
         {
             nazwa = _nazwa;
