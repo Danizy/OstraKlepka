@@ -88,6 +88,9 @@
     <Compile Include="Sedzia_Pomocniczy.cs" />
     <Compile Include="Siatkowka.cs" />
     <Compile Include="Turniej.cs" />
+    <Compile Include="Turniej_DwaOgnie.cs" />
+    <Compile Include="Turniej_Lina.cs" />
+    <Compile Include="Turniej_Siatkowka.cs" />
     <Compile Include="Zarzadzaj_Druzynami.xaml.cs">
       <DependentUpon>Zarzadzaj_Druzynami.xaml</DependentUpon>
     </Compile>

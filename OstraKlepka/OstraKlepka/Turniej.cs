@@ -15,9 +15,9 @@ namespace OstraKlepka
         private List<Druzyna> zwyciezcyGrup;
         private List<Druzyna> zwyciezcyPolFinal;
         private List<Druzyna> zwyciezcyFinal;
-        private string rodzajTurnieju;
+      
 
-        public Turniej(List<Druzyna> _listaDruzyn,List<Sedzia> _listaSedziow,List<Sedzia_Pomocniczy> _listaSedziowPom,List<Mecz> _listaMeczow, List<Druzyna> _zwyciezcyGrup, List<Druzyna> _zwyciezcyPolFinal, List<Druzyna> _zwyciezcyFinal, string _rodzajTurnieju)
+        public Turniej(List<Druzyna> _listaDruzyn,List<Sedzia> _listaSedziow,List<Sedzia_Pomocniczy> _listaSedziowPom,List<Mecz> _listaMeczow, List<Druzyna> _zwyciezcyGrup, List<Druzyna> _zwyciezcyPolFinal, List<Druzyna> _zwyciezcyFinal)
         {
             listaDruzyn = new List<Druzyna>(_listaDruzyn);
             listaSedziow = new List<Sedzia>(_listaSedziow);
@@ -26,7 +26,7 @@ namespace OstraKlepka
             zwyciezcyGrup = new List<Druzyna>(_zwyciezcyGrup);
             zwyciezcyPolFinal = new List<Druzyna>(_zwyciezcyPolFinal);
             zwyciezcyFinal = new List<Druzyna>(_zwyciezcyFinal);
-            rodzajTurnieju=_rodzajTurnieju;
+     
         }
         public void SetDruzyny(List<Druzyna> _listaDruzyn)
         {
