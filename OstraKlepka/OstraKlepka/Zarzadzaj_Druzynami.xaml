@@ -114,7 +114,7 @@
 
                     <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Dodaj" Content="Dodaj" Click="Zawodnik_Dodaj_Click"/>
                     <Button Grid.Column="2" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Usun" Content="Usuń" Click="Zawodnik_Usun_Click"/>
-                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Edytuj" Content="Edytuj"/>
+                    <Button Grid.Column="3" Margin="10,0,10,0" Grid.Row="1" x:Name="Zawodnik_Edytuj" Content="Edytuj" Click="Zawodnik_Edytuj_Click"/>
                 </Grid>
             </Grid>
 

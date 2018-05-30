@@ -44,6 +44,11 @@ namespace OstraKlepka
             listaZawodnikow.RemoveAt(id);
         }
 
+        public void EdytujZawodnika(int _id, Zawodnik _zawodnik)
+        {
+            //TODO edytowanie zawodnika, funkcja dostaje id zawodnika i gotowego edytowanego zawodnika
+        }
+
         public List<Zawodnik> GetZawodnicy()
         {
             return listaZawodnikow;

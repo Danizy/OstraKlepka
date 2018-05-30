@@ -109,7 +109,33 @@ namespace OstraKlepka
             if (lv_druzyny.SelectedIndex == -1 || lv_zawodnicy.SelectedIndex == -1)
                 return;
 
+            listaDruzyn[lv_druzyny.SelectedIndex].UsunZawodnika(lv_zawodnicy.SelectedIndex);
+            lv_zawodnicy.Items.Refresh();
+
            
+        }
+
+        private void Zawodnik_Edytuj_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_druzyny.SelectedIndex == -1 || lv_zawodnicy.SelectedIndex == -1)
+                return;
+
+            Dodaj_Zawodnika dodajZawodnika = new Dodaj_Zawodnika();
+            dodajZawodnika.Owner = this;
+            dodajZawodnika.imieTextBox.Text = listaDruzyn[lv_druzyny.SelectedIndex].GetZawodnicy()[lv_zawodnicy.SelectedIndex].imie;
+            dodajZawodnika.nazwiskoTextBox.Text = listaDruzyn[lv_druzyny.SelectedIndex].GetZawodnicy()[lv_zawodnicy.SelectedIndex].nazwisko;
+            dodajZawodnika.numerTextBox.Text = listaDruzyn[lv_druzyny.SelectedIndex].GetZawodnicy()[lv_zawodnicy.SelectedIndex].numer;
+            dodajZawodnika.ShowDialog();
+
+            if (dodajZawodnika.DialogResult.HasValue && dodajZawodnika.DialogResult.Value)
+            {
+                listaDruzyn[lv_druzyny.SelectedIndex].EdytujZawodnika(lv_zawodnicy.SelectedIndex, dodajZawodnika.zawodnik);
+            }
+
+            dodajZawodnika = null;
+            lv_zawodnicy.Items.Refresh();
+
+            
         }
     }
 }
