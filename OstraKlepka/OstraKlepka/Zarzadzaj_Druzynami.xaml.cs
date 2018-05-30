@@ -109,7 +109,7 @@ namespace OstraKlepka
             if (lv_druzyny.SelectedIndex == -1 || lv_zawodnicy.SelectedIndex == -1)
                 return;
 
-            listaZawodnikow[lv_druzyny.SelectedIndex].
+           
         }
     }
 }
