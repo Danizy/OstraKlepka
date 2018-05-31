@@ -87,6 +87,7 @@
     <Compile Include="Sedzia.cs" />
     <Compile Include="Sedzia_Pomocniczy.cs" />
     <Compile Include="Siatkowka.cs" />
+    <Compile Include="String_Int_Converter.cs" />
     <Compile Include="Turniej.cs" />
     <Compile Include="Turniej_DwaOgnie.cs" />
     <Compile Include="Turniej_Lina.cs" />

@@ -5,13 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OstraKlepka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    
-    <Grid>
-        <DockPanel>
+        Title="MainWindow" Height="270" Width="590" WindowStartupLocation="CenterScreen">
+
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4">
             <Menu DockPanel.Dock="Top">
                 <MenuItem x:Name="Menu_Turniej" Header="Turniej">
-                    <MenuItem x:Name="Menu_utworz" Header="Utwórz"/>
+                    <MenuItem x:Name="Menu_utworz" Header="Utwórz" Click="Menu_utworz_Click"/>
                     <MenuItem x:Name="Menu_wczytaj" Header="Wczytaj"/>
                     <MenuItem x:Name="Menu_zapisz" Header="Zapisz"/>
                     <MenuItem Header="Wyjdź"/>
@@ -23,5 +34,9 @@
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
+
+
+
+
     </Grid>
 </Window>
