@@ -9,7 +9,7 @@ namespace OstraKlepka
     public class Druzyna
     {
         private List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
-        private int punkty; 
+        public int punkty { get; set; } 
         public string nazwa { get; set; }
         private int setyPrzegrane;
         private int setyWygrane;

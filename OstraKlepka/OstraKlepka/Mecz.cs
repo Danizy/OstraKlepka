@@ -10,7 +10,9 @@ namespace OstraKlepka
     {
         private Druzyna[] druzyna = new Druzyna[2];
         private Sedzia sedzia;
-        private int[] wynik = new int[2];
+ //       private int[] wynik = new int[2];
+        public int wynik1 { get; set; }
+        public int wynik2 { get; set; }
         private string rodzajMeczu;
 
         protected Mecz(Druzyna druzyna1, Druzyna druzyna2, Sedzia _sedzia, string _rodzajMeczu)
@@ -31,12 +33,12 @@ namespace OstraKlepka
         {
             sedzia = _sedzia;
         }
-
+        /*
         public void setWynik(int wynik1, int wynik2)
         {
             wynik[0] = wynik1;
             wynik[1] = wynik2;
-        } 
+        } */
 
         public void setRodzajMeczu(string _rodzajMeczu)
         {
@@ -52,17 +54,17 @@ namespace OstraKlepka
         {
             return sedzia;
         }
-
+/*
         public int[] getWynik()
         {
             return wynik;
         }
-
+        */
         public string getRodzajMeczu()
         {
             return rodzajMeczu;
         }
-
+        /*
         public Druzyna getZwyciezca()
         {
             if(wynik[0] > wynik[1])
@@ -77,6 +79,6 @@ namespace OstraKlepka
             {
                 return null;
             }
-        }
+        }*/
     }
 }
