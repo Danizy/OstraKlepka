@@ -27,7 +27,7 @@ namespace OstraKlepka
             return listaSedziowPom;
         }
 
-        public List<Siatkowka> GenerujMeczeGrupowe()
+        public override List<Mecz> GenerujMeczeGrupowe()
         {
             for (int i = 0; i < listaDruzyn.Count - 1 ; i++)
             {
@@ -36,8 +36,7 @@ namespace OstraKlepka
                                                        "grupowy"));
             }
 
-
-            return listaMeczowSiatkowki;
+            return lista;
             //do zrobienia
             
         }
