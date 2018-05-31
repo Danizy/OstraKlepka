@@ -5,8 +5,8 @@ Na plaży Kopakabana oprócz plażowania toczą się też rozgrywki w 3 grach ze
 
 Minimalny zakres funkcjonalności
 
-- [ ] 1. zarządzanie sędziami (dodawanie, usuwanie, przegląd)
-- [ ] 2. zarządzanie drużynami (zgłaszanie, wycofywanie, przegląd)
+- [x] 1. zarządzanie sędziami (dodawanie, usuwanie, przegląd)
+- [x] 2. zarządzanie drużynami (zgłaszanie, wycofywanie, przegląd)
 - [ ] 3. organizacja rozgrywek w każdej dyscyplinie: tworzenie meczów (spotkań), wpisywanie wyników, automatyczne generowanie półfinałów i finałów
 - [ ] 4. wyświetlanie tabeli wyników
 - [ ] 5. zapis i odczyt stanu systemu na dysk
