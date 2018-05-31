@@ -8,25 +8,24 @@ namespace OstraKlepka
 {
     public abstract class Turniej
     {
-        private List<Druzyna> listaDruzyn;
-        private List<Sedzia> listaSedziow;
-        private List<Sedzia_Pomocniczy> listaSedziowPom;
-        private List<Mecz> listaMeczow;
-        private List<Druzyna> zwyciezcyGrup;
-        private List<Druzyna> zwyciezcyPolFinal;
-        private List<Druzyna> zwyciezcyFinal;
+        protected List<Druzyna> listaDruzyn;
+        protected List<Sedzia> listaSedziow;
+        protected List<Mecz> listaMeczow;
+        protected List<Druzyna> zwyciezcyGrup;
+        protected List<Druzyna> zwyciezcyPolFinal;
+        protected List<Druzyna> zwyciezcyFinal;
+        protected Random random;
       
 
-        public Turniej(List<Druzyna> _listaDruzyn,List<Sedzia> _listaSedziow,List<Sedzia_Pomocniczy> _listaSedziowPom,List<Mecz> _listaMeczow, List<Druzyna> _zwyciezcyGrup, List<Druzyna> _zwyciezcyPolFinal, List<Druzyna> _zwyciezcyFinal)
+        public Turniej(List<Druzyna> _listaDruzyn,List<Sedzia> _listaSedziow,List<Mecz> _listaMeczow, List<Druzyna> _zwyciezcyGrup, 
+                       List<Druzyna> _zwyciezcyPolFinal, List<Druzyna> _zwyciezcyFinal)
         {
             listaDruzyn = new List<Druzyna>(_listaDruzyn);
             listaSedziow = new List<Sedzia>(_listaSedziow);
-            listaSedziowPom = new List<Sedzia_Pomocniczy>(_listaSedziowPom);
             listaMeczow = new List<Mecz>(_listaMeczow);
             zwyciezcyGrup = new List<Druzyna>(_zwyciezcyGrup);
             zwyciezcyPolFinal = new List<Druzyna>(_zwyciezcyPolFinal);
             zwyciezcyFinal = new List<Druzyna>(_zwyciezcyFinal);
-     
         }
         public void SetDruzyny(List<Druzyna> _listaDruzyn)
         {
@@ -36,11 +35,6 @@ namespace OstraKlepka
         public void SetSedziowie(List<Sedzia> _listaSedziow)
         {
             listaSedziow = new List<Sedzia>(_listaSedziow);
-        }
-
-        public void SetSedziowiePom(List<Sedzia_Pomocniczy> _listaSedziowPom)
-        {
-            listaSedziowPom = new List<Sedzia_Pomocniczy>(_listaSedziowPom);
         }
 
         public List<Druzyna> GetDruzyny()
@@ -53,42 +47,37 @@ namespace OstraKlepka
             return listaSedziow;
         }
 
-        public List<Sedzia_Pomocniczy> GetSedziowiePom()
-        {
-            return listaSedziowPom;
-        }
-
-        public void addZwyciezceGrup(Druzyna _druzyna)
+        public void AddZwyciezceGrup(Druzyna _druzyna)
         {
             zwyciezcyGrup.Add(new Druzyna(_druzyna));
         }
 
-        public void addZwyciezcePolFinal(Druzyna _druzyna)
+        public void AddZwyciezcePolFinal(Druzyna _druzyna)
         {
             zwyciezcyPolFinal.Add(new Druzyna(_druzyna));
         }
 
-        public void addZwyciezceFinal(Druzyna _druzyna)
+        public void AddZwyciezceFinal(Druzyna _druzyna)
         {
             zwyciezcyFinal.Add(new Druzyna(_druzyna));
         }
 
-        public List<Druzyna> getZwyciezcyGrup()
+        public List<Druzyna> GetZwyciezcyGrup()
         {
             return zwyciezcyGrup;
         }
 
-        public List<Druzyna> getZwyciezcyPolFinal()
+        public List<Druzyna> GetZwyciezcyPolFinal()
         {
             return zwyciezcyPolFinal;
         }
 
-        public List<Druzyna> getZwyciezcyFinal()
+        public List<Druzyna> GetZwyciezcyFinal()
         {
             return zwyciezcyFinal;
         }
 
-        public void generujlTabliceWynikow()
+        public void GenerujlTabliceWynikow()
         {
             // do zrobienia
         }
@@ -97,26 +86,22 @@ namespace OstraKlepka
         {
             return true;
         }
+        
+        public abstract List<Mecz> GenerujMeczeGrupowe();
 
-        public virtual List<Mecz> generujMeczeGrupowe()
-        {
-            // do zrobienia jebniete tak zeby bledu nie wywalalo
-            // dodanie do listy meczów na podstawie listy drużyn, każdy z każdym
-            return listaMeczow;
-        }
+        // do zrobienia jebniete tak zeby bledu nie wywalalo
+        // dodanie do listy meczów na podstawie listy drużyn, każdy z każdym
 
-        public virtual List<Mecz> generujMeczePolFinal()
-        {
-            // do zrobienia jebniete tak zeby bledu nie wywalalo
-            // dodanie do listy meczów na podstawie listy zwycięzów w fazie grupowej
-            return listaMeczow;
-        }
+            /*
+        public abstract List<> GenerujMeczePolFinal();
 
-        public virtual List<Mecz> generujMeczeFinal()
-        {
+        // do zrobienia jebniete tak zeby bledu nie wywalalo
+        // dodanie do listy meczów na podstawie listy zwycięzów w fazie grupowej
+
+        public abstract List<> GenerujMeczeFinal();
+        */
             //do zrobienia jebniete tak zeby bledu nie wywalalo
-            return listaMeczow;
-        }
-
+        
     }
+        
 }
