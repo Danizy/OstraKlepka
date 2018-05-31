@@ -15,7 +15,10 @@ namespace OstraKlepka
 
         }
 
-
+        public override List<Mecz> GenerujMeczeGrupowe()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
