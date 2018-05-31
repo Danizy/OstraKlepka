@@ -36,6 +36,7 @@ namespace OstraKlepka
             tmp = "asda";
 
             //dupka pieska w słoiku 
+            //dupka daniela w sloiku
 
             listaDruzyn.Add(new Druzyna("opa"));
             listaDruzyn.Add(new Druzyna("klepka"));
