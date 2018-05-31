@@ -10,10 +10,7 @@ namespace OstraKlepka
     {
         private List<Siatkowka> listaMeczowSiatkowki;
         private List<Sedzia_Pomocniczy> listaSedziowPom;
-        public Turniej_Siatkowka (List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow, List<Sedzia_Pomocniczy> _listaSedziowPom, 
-                                  List<Mecz> _listaMeczow, List<Druzyna> _zwyciezcyGrup, List<Druzyna> _zwyciezcyPolFinal, 
-                                  List<Druzyna> _zwyciezcyFinal):base(_listaDruzyn, _listaSedziow, _listaMeczow, _zwyciezcyGrup, 
-                                  _zwyciezcyPolFinal, _zwyciezcyFinal)
+        public Turniej_Siatkowka (List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow, List<Sedzia_Pomocniczy> _listaSedziowPom):base(_listaDruzyn, _listaSedziow)
         {
             listaSedziowPom = new List<Sedzia_Pomocniczy>(_listaSedziowPom);
         }
@@ -27,30 +24,28 @@ namespace OstraKlepka
             return listaSedziowPom;
         }
 
-        public override List<Mecz> GenerujMeczeGrupowe()
+        public override void GenerujMeczeGrupowe()
         {
             for (int i = 0; i < listaDruzyn.Count - 1 ; i++)
             {
-                listaMeczow.Add(new Siatkowka(listaDruzyn[i], listaDruzyn[i + 1], listaSedziow[random.Next(listaSedziow.Count)],
+                listaMeczowSiatkowki.Add(new Siatkowka(listaDruzyn[i], listaDruzyn[i + 1], listaSedziow[random.Next(listaSedziow.Count)],
                                                        listaSedziowPom[random.Next(listaSedziowPom.Count)], listaSedziowPom[random.Next(listaSedziowPom.Count)],
                                                        "grupowy"));
             }
 
-            return lista;
             //do zrobienia
             
         }
-       /* override public List<Siatkowka> GenerujMeczePolFinal()
+        override public void GenerujMeczePolFinal()
         {
             //do zrobienia
-            return listaMeczowSiatkowki;
         }
-        override public List<Siatkowka> GenerujMeczeFinal()
+        override public void GenerujMeczeFinal()
         {
             //do zrobienia
             
         }
-        */
+        
        
     }
 }
