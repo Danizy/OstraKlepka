@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
-    class Turniej_DwaOgnie:Turniej
+    class Turniej_DwaOgnie : Turniej
     {
        public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow, 
            List<Mecz> _listaMeczow, List<Druzyna> _zwyciezcyGrup, List<Druzyna> _zwyciezcyPolFinal, List<Druzyna> _zwyciezcyFinal):base 
