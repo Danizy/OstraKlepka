@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OstraKlepka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="270" Width="590" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="424" Width="695.5" WindowStartupLocation="CenterScreen">
 
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
             <StackPanel></StackPanel>
         </DockPanel>
 
-
+        <Image Source="logo.png" Grid.Row="1" Grid.Column="1"/>
 
 
     </Grid>

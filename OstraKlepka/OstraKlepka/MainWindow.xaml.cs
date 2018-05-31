@@ -59,7 +59,7 @@ namespace OstraKlepka
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[5], listaDruzyn[3], listaSedziow[0], "opa"));
             listaMeczyTMP[0].wynik1 = 3;
 
-            UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
+            //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
 
 
         }
