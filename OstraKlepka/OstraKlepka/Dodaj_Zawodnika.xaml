@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OstraKlepka"
         mc:Ignorable="d"
-        Title="Dodaj_Zawodnika" Height="184.034" Width="356.303" WindowStartupLocation="CenterOwner">
+        Title="Dodaj_Zawodnika" Height="184.034" Width="356.303" WindowStartupLocation="CenterOwner" Icon="ikona.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
