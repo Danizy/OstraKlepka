@@ -31,6 +31,7 @@ namespace OstraKlepka
                 listaMeczowSiatkowki.Add(new Siatkowka(listaDruzyn[i], listaDruzyn[i + 1], listaSedziow[random.Next(listaSedziow.Count)],
                                                        listaSedziowPom[random.Next(listaSedziowPom.Count)], listaSedziowPom[random.Next(listaSedziowPom.Count)],
                                                        "grupowy"));
+
             }
 
             //do zrobienia

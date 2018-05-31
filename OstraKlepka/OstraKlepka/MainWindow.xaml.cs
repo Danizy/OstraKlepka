@@ -35,6 +35,8 @@ namespace OstraKlepka
             InitializeComponent();
             tmp = "asda";
 
+            //dupka pieska w słoiku 
+
             listaDruzyn.Add(new Druzyna("opa"));
             listaDruzyn.Add(new Druzyna("klepka"));
             listaDruzyn.Add(new Druzyna("ostra"));
