@@ -46,7 +46,7 @@ namespace OstraKlepka
                 MessageBox.Show("Id moze zawierac tylko cyfry", "Blad", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-                
+
 
             sedzia = new Sedzia(imieTextBox.Text, nazwiskoTextBox.Text, idTextBox.Text);
             if (pomocniczy.IsChecked.Value)
@@ -54,7 +54,7 @@ namespace OstraKlepka
                 isPomocniczy = true;
                 sedzia = new Sedzia_Pomocniczy(imieTextBox.Text, nazwiskoTextBox.Text, idTextBox.Text);
             }
-                
+
 
             this.DialogResult = true;
             this.Close();
