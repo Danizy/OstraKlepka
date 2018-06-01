@@ -8,7 +8,7 @@ namespace OstraKlepka
 {   [Serializable]
     class Turniej_DwaOgnie : Turniej
     {
-        private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
+       private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
        public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow):base(_listaDruzyn,  _listaSedziow)
         {
 
