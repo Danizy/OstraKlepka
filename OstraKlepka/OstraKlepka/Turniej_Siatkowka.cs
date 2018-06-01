@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
+
+// DOPISAC KONSTRUKTORY BEZPARAMETROWE - RUDINI
 namespace OstraKlepka
 {   [Serializable]
     public class Turniej_Siatkowka : Turniej
