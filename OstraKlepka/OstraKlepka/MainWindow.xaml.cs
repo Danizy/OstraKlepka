@@ -25,18 +25,17 @@ namespace OstraKlepka
         public List<Sedzia_Pomocniczy> listaPomocniczych = new List<Sedzia_Pomocniczy>();
         public List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
         public List<Dwa_Ognie> listaMeczyTMP = new List<Dwa_Ognie>();
+        public Turniej_Siatkowka turniejTest;
+        public List<Siatkowka> listaTest;
 
         public string tmp {get; set;}
 
-       
+        
 
         public MainWindow()
         {
             InitializeComponent();
             tmp = "asda";
-
-            //dupka pieska w słoiku 
-            //dupka daniela w sloiku
 
             listaDruzyn.Add(new Druzyna("opa"));
             listaDruzyn.Add(new Druzyna("klepka"));
@@ -61,8 +60,12 @@ namespace OstraKlepka
             listaSedziow.Add(new Sedzia("Mietek", "Zul", "101232"));
 
             listaPomocniczych.Add(new Sedzia_Pomocniczy("Ahmed", "Abdul", "104012"));
+            listaPomocniczych.Add(new Sedzia_Pomocniczy("Paweł", "Łaskarzewski", "100111"));
+            listaPomocniczych.Add(new Sedzia_Pomocniczy("Maciek", "Parfieńczyk", "102999"));
+            listaPomocniczych.Add(new Sedzia_Pomocniczy("Bartosz", "Podraszka", "101123"));
 
-            listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[0], listaDruzyn[1], listaSedziow[0], "opa"));
+
+        listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[0], listaDruzyn[1], listaSedziow[0], "opa"));
             listaMeczyTMP[0].wynik1 = 3;
 
             UtworzTabele();

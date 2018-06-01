@@ -13,7 +13,7 @@ namespace OstraKlepka
         protected List<Druzyna> zwyciezcyGrup;
         protected List<Druzyna> zwyciezcyPolFinal;
         protected List<Druzyna> zwyciezcyFinal;
-        protected Random random;
+        protected Random random = new Random();
       
 
         public Turniej(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow)

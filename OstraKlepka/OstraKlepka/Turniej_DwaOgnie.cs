@@ -8,6 +8,7 @@ namespace OstraKlepka
 {
     class Turniej_DwaOgnie : Turniej
     {
+        private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
        public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow):base(_listaDruzyn,  _listaSedziow)
         {
 
@@ -15,20 +16,28 @@ namespace OstraKlepka
 
         public override void GenerujMeczeGrupowe()
         {
-   
+            for (int i = 0; i < listaDruzyn.Count - 1; i++)
+            {
+                for (int j = i + 1; j < listaDruzyn.Count; j++)
+                {
+                    listaDwaOgnie.Add(new Dwa_Ognie(listaDruzyn[i], listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "grupowy"));
+                }
+            }
         }
 
         override public void GenerujMeczePolFinal()
         {
-            //do zrobienia
+            for (int i = 0; i < listaDruzyn.Count - 1; i++)
+            {
+                for (int j = i + 1; j < listaDruzyn.Count; j++)
+                {
+                    listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyGrup[i], zwyciezcyGrup[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
+                }
+            }
         }
         override public void GenerujMeczeFinal()
         {
-            //do zrobienia
-
+            listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyGrup[0], zwyciezcyGrup[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
-
-
     }
-
 }
