@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OstraKlepka
-{
+{[Serializable]
     public class Siatkowka : Mecz
     {
         private Sedzia_Pomocniczy[] sedziaPom = new Sedzia_Pomocniczy[2];

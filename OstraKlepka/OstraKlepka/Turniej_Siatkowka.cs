@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace OstraKlepka
-{
+{   [Serializable]
     public class Turniej_Siatkowka : Turniej
     {
         public List<Siatkowka> listaMeczowSiatkowki = new List<Siatkowka>();
@@ -72,7 +73,37 @@ namespace OstraKlepka
         {
             return listaMeczowSiatkowki;
         }
-        
-       
+        public void ZapiszDoPliku<Turniej_Siatkowka>(string sciezka, Turniej_Siatkowka ObiektDoZapisania)
+        {
+            string nazwaTurnieju;
+            nazwaTurnieju = Console.ReadLine();
+
+            using (Stream stream = File.Open(sciezka + nazwaTurnieju + ".sia", FileMode.Create))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binaryFormatter.Serialize(stream, ObiektDoZapisania);
+            }
+        }
+        public Turniej_Siatkowka OdczytajZPliku<Turniej_Siatkowka>(string sciezka)
+
+            {
+
+            using (Stream stream = File.Open(sciezka, FileMode.Open))
+            {
+
+                var binaryFormatter =  new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                return (Turniej_Siatkowka)binaryFormatter.Deserialize(stream);
+
+            }
+
+            }
+
+    
+        }
+
+
+
+
     }
-}
+
