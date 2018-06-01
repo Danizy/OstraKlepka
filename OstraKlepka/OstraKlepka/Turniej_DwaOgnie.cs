@@ -27,9 +27,9 @@ namespace OstraKlepka
 
         override public void GenerujMeczePolFinal()
         {
-            for (int i = 0; i < listaDruzyn.Count - 1; i++)
+            for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
             {
-                for (int j = i + 1; j < listaDruzyn.Count; j++)
+                for (int j = i + 1; j < zwyciezcyGrup.Count; j++)
                 {
                     listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyGrup[i], zwyciezcyGrup[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
                 }
@@ -37,7 +37,7 @@ namespace OstraKlepka
         }
         override public void GenerujMeczeFinal()
         {
-            listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyGrup[0], zwyciezcyGrup[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
+            listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
     }
 }
