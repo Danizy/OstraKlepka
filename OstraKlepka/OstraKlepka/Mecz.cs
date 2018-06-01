@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
+    [Serializable]
     public abstract class Mecz
     {
         private Druzyna[] druzyna = new Druzyna[2];

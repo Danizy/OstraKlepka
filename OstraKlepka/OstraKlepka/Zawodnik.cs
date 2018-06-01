@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OstraKlepka
-{
+{[Serializable]
     public class Zawodnik : Osoba
     {
         public string numer { get; set; }

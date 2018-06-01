@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace OstraKlepka
-{
+{  
+    [Serializable]
     public abstract class Turniej
     {
+        
         protected List<Druzyna> listaDruzyn;
         protected List<Sedzia> listaSedziow;
         protected List<Druzyna> zwyciezcyGrup;
         protected List<Druzyna> zwyciezcyPolFinal;
         protected List<Druzyna> zwyciezcyFinal;
         protected Random random = new Random();
-        
+      
+        public Turniej()
+        {
+
+        }
         public Turniej(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow)
         {
             listaDruzyn = new List<Druzyna>(_listaDruzyn);
@@ -81,6 +87,8 @@ namespace OstraKlepka
         public abstract void GenerujMeczePolFinal();
 
         public abstract void GenerujMeczeFinal();
+            //do zrobienia jebniete tak zeby bledu nie wywalalo
+        
     }
         
 }

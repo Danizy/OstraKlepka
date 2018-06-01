@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
+    [Serializable]
     public class Sedzia : Osoba
     {
         public string id { get; set; }

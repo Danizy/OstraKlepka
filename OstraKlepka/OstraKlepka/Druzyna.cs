@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
+    [Serializable]
     public class Druzyna
     {
         private List<Zawodnik> listaZawodnikow = new List<Zawodnik>();

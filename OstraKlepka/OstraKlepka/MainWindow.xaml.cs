@@ -60,8 +60,14 @@ namespace OstraKlepka
             listaMeczyTMP[0].wynik1 = 3;
 
             //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
-
-
+             Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
+            
+            turniej.ZapiszDoPliku("turniej",turniej);
+            string sciezkaa = "turniej.lin";
+           
+            Turniej_Lina turniejj = new Turniej_Lina();
+            turniejj.OdczytajZPliku<Turniej_Lina>(sciezkaa);
+            Console.WriteLine(turniejj.ToString());
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)

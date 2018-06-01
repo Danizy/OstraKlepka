@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OstraKlepka
 {
+    [Serializable]
     public class Sedzia_Pomocniczy : Sedzia
     {
         public Sedzia_Pomocniczy(string _imie, string _nazwisko, string _id)
