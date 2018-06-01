@@ -19,15 +19,32 @@ namespace OstraKlepka
     /// </summary>
     public partial class Utworz_Turniej : Window
     {
-        public Utworz_Turniej(List<Zawodnik> listaZawodnikow)
+        public Utworz_Turniej(List<Druzyna> listaZawodnikow, List<Sedzia> listaSedziow, List<Sedzia_Pomocniczy> listaSedziowPomocniczych)
         {
             InitializeComponent();
+            lv_druzyny.ItemsSource = listaZawodnikow;
+            lv_sedziowie.ItemsSource = listaSedziow;
+            lv_sedziowie_pom.ItemsSource = listaSedziowPomocniczych;
+
         }
 
         private class CheckItem
         {
             public bool isChecked { get; set; }
-            public Zawodnik zawodnik;
+            public Druzyna druzyna;
+        }
+
+        private void Combo_Rodzaj_Turnieju_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Group_Sedziowie_Pom == null)
+                return;
+
+            if (Combo_Rodzaj_Turnieju.SelectedIndex != 0)
+                Group_Sedziowie_Pom.IsEnabled = false;
+            else
+                Group_Sedziowie_Pom.IsEnabled = true;
+
+          
         }
     }
 }

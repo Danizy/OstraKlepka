@@ -23,6 +23,16 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Margin="0,0,5,0">Rodzaj turnieju:</TextBlock>
+            <ComboBox x:Name="Combo_Rodzaj_Turnieju" SelectionChanged="Combo_Rodzaj_Turnieju_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Siatkówka</ComboBoxItem>
+                <ComboBoxItem>2 ognie</ComboBoxItem>
+                <ComboBoxItem>Przeciąganie liny</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        
+        
 
         <GroupBox Grid.Column="1" Grid.Row="2" Header="Drużyny" Margin="0,0,10,0" Padding="5,5,5,5">
             <Grid>
@@ -66,7 +76,7 @@
                         <GridView>
                             <GridView.Columns>
                                 <GridViewColumn Header="Nazwa"
-                            DisplayMemberBinding="{Binding nazwa}"/>
+                            DisplayMemberBinding="{Binding imie}"/>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
@@ -76,7 +86,7 @@
 
         </GroupBox>
 
-        <GroupBox Grid.Column="3" Grid.Row="2" Header="Sedziowie Pomocniczy" Margin="0,0,10,0" Padding="5,5,5,5">
+        <GroupBox x:Name="Group_Sedziowie_Pom" Grid.Column="3" Grid.Row="2" Header="Sedziowie Pomocniczy" Margin="0,0,10,0" Padding="5,5,5,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -92,7 +102,7 @@
                         <GridView>
                             <GridView.Columns>
                                 <GridViewColumn Header="Nazwa"
-                            DisplayMemberBinding="{Binding nazwa}"/>
+                            DisplayMemberBinding="{Binding imie}"/>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
