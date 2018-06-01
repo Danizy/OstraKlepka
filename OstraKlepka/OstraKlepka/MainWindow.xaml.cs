@@ -25,6 +25,7 @@ namespace OstraKlepka
         public List<Sedzia_Pomocniczy> listaPomocniczych = new List<Sedzia_Pomocniczy>();
         public List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
         public List<Dwa_Ognie> listaMeczyTMP = new List<Dwa_Ognie>();
+        public Turniej_Lina turniejWczytany = new Turniej_Lina();
 
         public MainWindow()
         {
@@ -62,12 +63,11 @@ namespace OstraKlepka
             //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
              Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
             
-            turniej.ZapiszDoPliku("turniej",turniej);
+            turniej.ZapiszDoPliku("turniej");
             string sciezkaa = "turniej.lin";
            
-            Turniej_Lina turniejj = new Turniej_Lina();
-            turniejj.OdczytajZPliku<Turniej_Lina>(sciezkaa);
-            Console.WriteLine(turniejj.ToString());
+            
+            turniejWczytany.OdczytajZPliku(sciezkaa);
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)

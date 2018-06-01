@@ -7,7 +7,7 @@ using System.IO;
 namespace OstraKlepka
 {
     [Serializable]
-    class Turniej_Lina : Turniej
+    public class Turniej_Lina : Turniej
     {
         public List<Przeciaganie_Liny> listaPrzeciaganieLiny = new List<Przeciaganie_Liny>();
         public  Turniej_Lina(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow):base(_listaDruzyn, _listaSedziow)
@@ -45,28 +45,36 @@ namespace OstraKlepka
         }
 
 
-        public void ZapiszDoPliku<Turniej_Lina>(string sciezka, Turniej_Lina ObiektDoZapisania)
+        public void ZapiszDoPliku(string sciezka)
         {
-            string nazwaTurnieju;
-            nazwaTurnieju = Console.ReadLine();
 
-            using (Stream stream = File.Open(sciezka + nazwaTurnieju + ".lin", FileMode.Create))
+            using (Stream stream = File.Open(sciezka + ".lin", FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                binaryFormatter.Serialize(stream, ObiektDoZapisania);
+                binaryFormatter.Serialize(stream, this);
             }
         }
-        public Turniej_Lina OdczytajZPliku<Turniej_Lina>(string sciezka)
+        public void OdczytajZPliku(string sciezka)
 
         {
 
             using (Stream stream = File.Open(sciezka, FileMode.Open))
             {
-
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                Turniej_Lina turniej = (Turniej_Lina)binaryFormatter.Deserialize(stream);
 
-                return (Turniej_Lina)binaryFormatter.Deserialize(stream);
-
+                if(turniej.listaDruzyn != null)
+                    this.listaDruzyn = new List<Druzyna>(turniej.listaDruzyn);
+                if (turniej.listaSedziow != null)
+                    this.listaSedziow = new List<Sedzia>(turniej.listaSedziow);
+                if (turniej.listaPrzeciaganieLiny != null)
+                    this.listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(turniej.listaPrzeciaganieLiny);
+                if (turniej.zwyciezcyFinal != null)
+                    this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
+                if (turniej.zwyciezcyGrup != null)
+                    this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
+                if (turniej.zwyciezcyPolFinal != null)
+                    this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
             }
 
         }
