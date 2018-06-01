@@ -80,7 +80,7 @@ namespace OstraKlepka
             return true;
         }
 
-        public abstract void GenerujlTabliceWynikow();
+       // public abstract void GenerujlTabliceWynikow();
         
         public abstract void GenerujMeczeGrupowe();
 
