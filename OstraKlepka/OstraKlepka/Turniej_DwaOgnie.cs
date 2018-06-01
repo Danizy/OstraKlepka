@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 namespace OstraKlepka
 {   [Serializable]
+//KONSTRUKTOR BEZPARAMETROWY NA PRZYSZLOSC
     class Turniej_DwaOgnie : Turniej
     {
        private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
