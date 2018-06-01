@@ -14,8 +14,7 @@ namespace OstraKlepka
         protected List<Druzyna> zwyciezcyPolFinal;
         protected List<Druzyna> zwyciezcyFinal;
         protected Random random = new Random();
-      
-
+        
         public Turniej(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow)
         {
             listaDruzyn = new List<Druzyna>(_listaDruzyn);
@@ -70,31 +69,18 @@ namespace OstraKlepka
         {
             return zwyciezcyFinal;
         }
-
-        public void GenerujlTabliceWynikow()
-        {
-            // do zrobienia
-        }
-
         public bool zapiszDoPliku()
         {
             return true;
         }
+
+        public abstract void GenerujlTabliceWynikow();
         
         public abstract void GenerujMeczeGrupowe();
 
-        // do zrobienia jebniete tak zeby bledu nie wywalalo
-        // dodanie do listy meczów na podstawie listy drużyn, każdy z każdym
-
-            
         public abstract void GenerujMeczePolFinal();
 
-        // do zrobienia jebniete tak zeby bledu nie wywalalo
-        // dodanie do listy meczów na podstawie listy zwycięzów w fazie grupowej
-
         public abstract void GenerujMeczeFinal();
-            //do zrobienia jebniete tak zeby bledu nie wywalalo
-        
     }
         
 }
