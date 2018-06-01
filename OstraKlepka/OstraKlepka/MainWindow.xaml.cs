@@ -29,6 +29,7 @@ namespace OstraKlepka
         public MainWindow()
         {
             InitializeComponent();
+            tmp = "asda";
 
             listaDruzyn.Add(new Druzyna("opa"));
             listaDruzyn.Add(new Druzyna("klepka"));
@@ -59,7 +60,7 @@ namespace OstraKlepka
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[5], listaDruzyn[3], listaSedziow[0], "opa"));
             listaMeczyTMP[0].wynik1 = 3;
 
-            //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
+            UtworzTabele();
 
 
         }
@@ -80,25 +81,22 @@ namespace OstraKlepka
             oknoDruzyny = null;
         }
 
-        private void UtworzTabele(List<Druzyna> listaDruzyn, List<Mecz> listaMeczy)
+        private void UtworzTabele()
         {
             Grid tableGrid = new Grid();
             Grid.SetColumn(tableGrid, 1);
             Grid.SetRow(tableGrid, 1);
             MainGrid.Children.Add(tableGrid);
 
-            //Tworzenie kolumn i wierszy
             foreach(Druzyna d in listaDruzyn)
             {
                 tableGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 tableGrid.RowDefinitions.Add(new RowDefinition());
             }
 
-            //Dopasowanie rozmiarow okna
             this.Height = 36 * listaDruzyn.Count;
             this.Width = 74 * listaDruzyn.Count;
             
-            //Wypelnienie nazw druzyn
             for(int i = 0; i < listaDruzyn.Count; i++)
             {
                 if(i > 0)
@@ -125,59 +123,50 @@ namespace OstraKlepka
                 
             }
 
-            //Tworzenie komorek poszczegolnych meczy
-            foreach(Mecz mecz in listaMeczyTMP)
+            for(int x = 1; x < listaDruzyn.Count; x++)
             {
-                int idDruzyny1 = listaDruzyn.IndexOf(mecz.getDruzyny()[0]);
-                int idDruzyny2 = listaDruzyn.IndexOf(mecz.getDruzyny()[1]);
-
-                StackPanel sp = new StackPanel();
-                sp.Orientation = Orientation.Horizontal;
-                sp.HorizontalAlignment = HorizontalAlignment.Center;
-                sp.VerticalAlignment = VerticalAlignment.Center;
-
-                TextBox team1 = new TextBox();
-                team1.MinWidth = 20;
-                team1.MaxHeight = 18;
-                Binding b = new Binding("wynik1");
-                b.Source = mecz;
-                b.Mode = BindingMode.TwoWay;
-                b.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-                b.Converter = new String_Int_Converter();
-                team1.SetBinding(TextBox.TextProperty, b);
-                sp.Children.Add(team1);
-
-                TextBlock a = new TextBlock();
-                a.Text = ":";
-                a.FontSize = 20;
-                a.Margin = new Thickness(2, 0, 2, 5);
-                sp.Children.Add(a);
-
-
-                TextBox team2 = new TextBox();
-                team2.MinWidth = 20;
-                team2.MaxHeight = 18;
-                Binding c = new Binding("wynik2");
-                c.Source = mecz;
-                c.Mode = BindingMode.TwoWay;
-                c.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-                c.Converter = new String_Int_Converter();
-                team2.SetBinding(TextBox.TextProperty, c);
-                sp.Children.Add(team2);
-
-                if(idDruzyny1 > idDruzyny2)
+                for(int y = -1 + x; y < listaDruzyn.Count - 1; y++)
                 {
-                    Grid.SetColumn(sp, idDruzyny2 + 1);
-                    Grid.SetRow(sp, idDruzyny1 - 1);
+                    StackPanel sp = new StackPanel();
+                    sp.Orientation = Orientation.Horizontal;
+                    sp.HorizontalAlignment = HorizontalAlignment.Center;
+                    sp.VerticalAlignment = VerticalAlignment.Center;
+
+                    TextBox team1 = new TextBox();
+                    team1.MinWidth = 20;
+                    team1.MaxHeight = 18;
+                    Binding b = new Binding("wynik1");
+                    b.Source = listaMeczyTMP[0];
+                    b.Mode = BindingMode.TwoWay;
+                    b.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                    b.Converter = new String_Int_Converter();
+                    team1.SetBinding(TextBox.TextProperty, b);
+                    sp.Children.Add(team1);
+
+                    TextBlock a = new TextBlock();
+                    a.Text = ":";
+                    a.FontSize = 20;
+                    a.Margin = new Thickness(2, 0, 2, 5);
+                    sp.Children.Add(a);
+
+
+                    TextBox team2 = new TextBox();
+                    team2.MinWidth = 20;
+                    team2.MaxHeight = 18;
+                    Binding c = new Binding("wynik2");
+                    c.Source = listaMeczyTMP[0];
+                    c.Mode = BindingMode.TwoWay;
+                    c.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                    c.Converter = new String_Int_Converter();
+                    team2.SetBinding(TextBox.TextProperty, c);
+                    sp.Children.Add(team2);
+
+                    Grid.SetColumn(sp, x);
+                    Grid.SetRow(sp, y);
+                    tableGrid.Children.Add(sp);
                 }
-                else
-                {
-                    Grid.SetColumn(sp, idDruzyny1 + 1);
-                    Grid.SetRow(sp, idDruzyny2 - 1);
-                }
-                
-                tableGrid.Children.Add(sp);
             }
+           
 
         }
 
