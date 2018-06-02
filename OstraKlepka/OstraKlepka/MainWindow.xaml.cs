@@ -40,9 +40,6 @@ namespace OstraKlepka
             listaDruzyn.Add(new Druzyna("ostr123a"));
             listaDruzyn.Add(new Druzyna("ostraeeee"));
             listaDruzyn.Add(new Druzyna("ostdasdasra"));
-            listaDruzyn.Add(new Druzyna("ostr123a"));
-            listaDruzyn.Add(new Druzyna("ostraeeee"));
-            listaDruzyn.Add(new Druzyna("ostdasdasra"));
 
             listaDruzyn[0].DodajZawodnika(new Zawodnik("Ahmed", "Abdul", "11"));
             listaDruzyn[0].DodajZawodnika(new Zawodnik("Nuetek", "Abdul", "34"));
@@ -138,8 +135,8 @@ namespace OstraKlepka
             //Tworzenie komorek poszczegolnych meczy
             foreach (Mecz mecz in listaMeczy)
             {
-                int idDruzyny1 = listaDruzyn.IndexOf(mecz.getDruzyny()[0]);
-                int idDruzyny2 = listaDruzyn.IndexOf(mecz.getDruzyny()[1]);
+                int idDruzyny1 = listaDruzyn.IndexOf(mecz.GetDruzyny()[0]);
+                int idDruzyny2 = listaDruzyn.IndexOf(mecz.GetDruzyny()[1]);
 
                 StackPanel sp = new StackPanel();
                 sp.Orientation = Orientation.Horizontal;

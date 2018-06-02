@@ -7,12 +7,27 @@ using System.IO;
 namespace OstraKlepka
 {   [Serializable]
 //KONSTRUKTOR BEZPARAMETROWY NA PRZYSZLOSC
-    class Turniej_DwaOgnie : Turniej
+    public class Turniej_DwaOgnie : Turniej
     {
        private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
        public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow):base(_listaDruzyn,  _listaSedziow)
         {
 
+        }
+
+        public void MetodaTest()
+        {
+            listaDwaOgnie[0].wynik1 = 1;
+            listaDwaOgnie[0].wynik2 = 3;
+            listaDwaOgnie[1].wynik1 = 4;
+            listaDwaOgnie[1].wynik2 = 3;
+            listaDwaOgnie[2].wynik1 = 0;
+            listaDwaOgnie[2].wynik2 = 1;
+        }
+
+        public List<Dwa_Ognie> GetlistaDwaOgnie()
+        {
+            return listaDwaOgnie;
         }
 
         public override void GenerujMeczeGrupowe()
@@ -39,6 +54,67 @@ namespace OstraKlepka
         override public void GenerujMeczeFinal()
         {
             listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
+        }
+
+        public List<Druzyna> GenerujTabliceWynikow(List<Dwa_Ognie> _listaDwaOgnie)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
+                                                                                    // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
+        {
+            List<Druzyna> _listaDruzyn = new List<Druzyna>();   // Zwracana lista
+            Druzyna[] _druzyna = new Druzyna[2];    // Pomocnicza tablica do wyciągania drużyn z meczów
+
+            for (int i = 0; i < _listaDwaOgnie.Count; i++)
+            {
+                _druzyna = _listaDwaOgnie[i].GetDruzyny();
+                _listaDruzyn.Add(_druzyna[0]);
+                _listaDruzyn.Add(_druzyna[1]);
+            }
+
+            _listaDruzyn = _listaDruzyn.Distinct().ToList();
+
+            for (int i = 0; i < _listaDwaOgnie.Count; i++)
+            {
+                _druzyna = _listaDwaOgnie[i].GetDruzyny();
+
+                if (_listaDwaOgnie[i].wynik1 > _listaDwaOgnie[i].wynik2)
+                {
+                    for(int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 3;
+                        }
+                    }
+                }
+
+                else if(_listaDwaOgnie[i].wynik1 < _listaDwaOgnie[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 3;
+                        }
+                    }
+                }
+
+                else if(_listaDwaOgnie[i].wynik1 == _listaDwaOgnie[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 1;
+                        }
+                        else if(_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 1;
+                        }
+                    }
+                }
+            }
+            _listaDruzyn = _listaDruzyn.OrderBy(x => x.punkty).ToList();
+
+            return _listaDruzyn;
         }
 
         public void ZapiszDoPliku<Turniej_DwaOgnie>(string sciezka, Turniej_DwaOgnie ObiektDoZapisania)

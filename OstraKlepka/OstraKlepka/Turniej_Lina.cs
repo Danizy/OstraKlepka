@@ -10,6 +10,7 @@ namespace OstraKlepka
     public class Turniej_Lina : Turniej
     {
         public List<Przeciaganie_Liny> listaPrzeciaganieLiny = new List<Przeciaganie_Liny>();
+
         public Turniej_Lina(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow) : base(_listaDruzyn, _listaSedziow)
         {
 
@@ -28,7 +29,6 @@ namespace OstraKlepka
                 }
             }
         }
-
         override public void GenerujMeczePolFinal()
         {
             for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
@@ -44,6 +44,66 @@ namespace OstraKlepka
             listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
 
+        public List<Druzyna> GenerujTabliceWynikow(List<Przeciaganie_Liny> _listaPrzeciaganieLiny)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
+                                                                                                    // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
+        {
+            List<Druzyna> _listaDruzyn = new List<Druzyna>();   // Zwracana lista
+            Druzyna[] _druzyna = new Druzyna[2];    // Pomocnicza tablica do wyciągania drużyn z meczów
+
+            for (int i = 0; i < _listaPrzeciaganieLiny.Count; i++)
+            {
+                _druzyna = _listaPrzeciaganieLiny[i].GetDruzyny();
+                _listaDruzyn.Add(_druzyna[0]);
+                _listaDruzyn.Add(_druzyna[1]);
+            }
+
+            _listaDruzyn = _listaDruzyn.Distinct().ToList();
+
+            for (int i = 0; i < _listaPrzeciaganieLiny.Count; i++)
+            {
+                _druzyna = _listaPrzeciaganieLiny[i].GetDruzyny();
+
+                if (_listaPrzeciaganieLiny[i].wynik1 > _listaPrzeciaganieLiny[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 3;
+                        }
+                    }
+                }
+
+                else if (_listaPrzeciaganieLiny[i].wynik1 < _listaPrzeciaganieLiny[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 3;
+                        }
+                    }
+                }
+
+                else if (_listaPrzeciaganieLiny[i].wynik1 == _listaPrzeciaganieLiny[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 1;
+                        }
+                        else if (_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 1;
+                        }
+                    }
+                }
+            }
+            _listaDruzyn = _listaDruzyn.OrderBy(x => x.punkty).ToList();
+
+            return _listaDruzyn;
+        }
             public void ZapiszDoPliku(string sciezka)
             {
 

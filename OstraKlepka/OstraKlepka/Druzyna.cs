@@ -10,7 +10,7 @@ namespace OstraKlepka
     public class Druzyna
     {
         private List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
-        public int punkty { get; set; } 
+        public int punkty { get; set; }
         public string nazwa { get; set; }
         private int setyPrzegrane;
         private int setyWygrane;
@@ -31,9 +31,9 @@ namespace OstraKlepka
             setyWygrane = _druzyna.setyWygrane;
         }
 
-        public void setNazwa(string _nazwa) { nazwa = _nazwa; }
+        public void SetNazwa(string _nazwa) { nazwa = _nazwa; }
 
-        public string getNazwa() { return nazwa; }
+        public string GetNazwa() { return nazwa; }
 
         public void DodajZawodnika(Zawodnik _zawodnik)
         {

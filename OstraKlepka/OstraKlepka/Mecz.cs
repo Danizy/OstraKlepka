@@ -24,13 +24,13 @@ namespace OstraKlepka
             rodzajMeczu = _rodzajMeczu;
         }
 
-        public void setDruzyny(Druzyna druzyna1, Druzyna druzyna2)
+        public void SetDruzyny(Druzyna druzyna1, Druzyna druzyna2)
         {
             druzyna[0] = druzyna1;
             druzyna[1] = druzyna2;
         }
 
-        public void setSedzia(Sedzia _sedzia)
+        public void SetSedzia(Sedzia _sedzia)
         {
             sedzia = _sedzia;
         }
@@ -41,17 +41,17 @@ namespace OstraKlepka
             wynik[1] = wynik2;
         } */
 
-        public void setRodzajMeczu(string _rodzajMeczu)
+        public void SetRodzajMeczu(string _rodzajMeczu)
         {
             rodzajMeczu = _rodzajMeczu;
         }
 
-        public Druzyna[] getDruzyny()
+        public Druzyna[] GetDruzyny()
         {
             return druzyna;
         }
 
-        public Sedzia getSedzia()
+        public Sedzia GetSedzia()
         {
             return sedzia;
         }
@@ -61,7 +61,7 @@ namespace OstraKlepka
             return wynik;
         }
         */
-        public string getRodzajMeczu()
+        public string GetRodzajMeczu()
         {
             return rodzajMeczu;
         }

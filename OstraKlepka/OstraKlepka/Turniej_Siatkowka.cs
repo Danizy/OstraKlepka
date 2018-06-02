@@ -72,6 +72,67 @@ namespace OstraKlepka
                                                    listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "finałowy"));
         }
 
+        public List<Druzyna> GenerujTabliceWynikow(List<Siatkowka> _listaMeczowSiatkowki)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
+                                                                                    // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
+        {
+            List<Druzyna> _listaDruzyn = new List<Druzyna>();   // Zwracana lista
+            Druzyna[] _druzyna = new Druzyna[2];    // Pomocnicza tablica do wyciągania drużyn z meczów
+
+            for (int i = 0; i < _listaMeczowSiatkowki.Count; i++)
+            {
+                _druzyna = _listaMeczowSiatkowki[i].GetDruzyny();
+                _listaDruzyn.Add(_druzyna[0]);
+                _listaDruzyn.Add(_druzyna[1]);
+            }
+
+            _listaDruzyn = _listaDruzyn.Distinct().ToList();
+
+            for (int i = 0; i < _listaMeczowSiatkowki.Count; i++)
+            {
+                _druzyna = _listaMeczowSiatkowki[i].GetDruzyny();
+
+                if (_listaMeczowSiatkowki[i].wynik1 > _listaMeczowSiatkowki[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 3;
+                        }
+                    }
+                }
+
+                else if (_listaMeczowSiatkowki[i].wynik1 < _listaMeczowSiatkowki[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 3;
+                        }
+                    }
+                }
+
+                else if (_listaMeczowSiatkowki[i].wynik1 == _listaMeczowSiatkowki[i].wynik2)
+                {
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    {
+                        if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 1;
+                        }
+                        else if (_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        {
+                            _listaDruzyn[j].punkty += 1;
+                        }
+                    }
+                }
+            }
+            _listaDruzyn = _listaDruzyn.OrderBy(x => x.punkty).ToList();
+
+            return _listaDruzyn;
+        }
+
         public List<Siatkowka> GetListaMeczowSiatkowki()
         {
             return listaMeczowSiatkowki;
@@ -89,7 +150,7 @@ namespace OstraKlepka
         }
         public Turniej_Siatkowka OdczytajZPliku<Turniej_Siatkowka>(string sciezka)
 
-            {
+        {
 
             using (Stream stream = File.Open(sciezka, FileMode.Open))
             {
@@ -99,14 +160,7 @@ namespace OstraKlepka
                 return (Turniej_Siatkowka)binaryFormatter.Deserialize(stream);
 
             }
-
-            }
-
-    
-        }
-
-
-
-
+        }  
     }
+}
 
