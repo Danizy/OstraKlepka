@@ -15,6 +15,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="7*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -23,7 +24,7 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem x:Name="Menu_Turniej" Header="Turniej">
                     <MenuItem x:Name="Menu_utworz" Header="Utwórz" Click="Menu_utworz_Click"/>
-                    <MenuItem x:Name="Menu_wczytaj" Header="Wczytaj"/>
+                    <MenuItem x:Name="Menu_wczytaj" Header="Wczytaj" Click="Menu_wczytaj_Click"/>
                     <MenuItem x:Name="Menu_zapisz" Header="Zapisz"/>
                     <MenuItem Header="Wyjdź"/>
                 </MenuItem>
@@ -35,7 +36,13 @@
             <StackPanel></StackPanel>
         </DockPanel>
 
-        <Image Source="logo.png" Grid.Row="1" Grid.Column="1"/>
+        <Image x:Name="ImgLogo" Source="logo.png" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button x:Name="Btn_Wyswietl_Wyniki" Content="Wyświetl tablice wyników" Margin="0,0,5,0" Visibility="Collapsed"/>
+            <Button x:Name="Btn_Generuj"  Content="Generuj Półfinały" Visibility="Collapsed"/>
+        </StackPanel>
+        
 
 
     </Grid>
