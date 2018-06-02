@@ -45,10 +45,17 @@
 
 
 
-                <ListView x:Name="lv_druzyny" Grid.Column="1" Grid.Row="1">
+                <ListView x:Name="lv_druzyny" Grid.Column="1" Grid.Row="1" SelectionChanged="lv_druzyny_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Header="Nazwa"
                             DisplayMemberBinding="{Binding nazwa}"/>
                             </GridView.Columns>
@@ -71,12 +78,23 @@
 
 
 
-                <ListView x:Name="lv_sedziowie" Grid.Column="1" Grid.Row="1">
+                <ListView x:Name="lv_sedziowie" Grid.Column="1" Grid.Row="1" SelectionChanged="lv_druzyny_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
-                                <GridViewColumn Header="Nazwa"
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="id"
+                            DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Imie"
                             DisplayMemberBinding="{Binding imie}"/>
+                                <GridViewColumn Header="nazwisko"
+                            DisplayMemberBinding="{Binding nazwisko}"/>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
@@ -97,12 +115,23 @@
 
 
 
-                <ListView x:Name="lv_sedziowie_pom" Grid.Column="1" Grid.Row="1">
+                <ListView x:Name="lv_sedziowie_pom" Grid.Column="1" Grid.Row="1" SelectionChanged="lv_druzyny_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
-                                <GridViewColumn Header="Nazwa"
+                                <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="id"
+                            DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Imie"
                             DisplayMemberBinding="{Binding imie}"/>
+                                <GridViewColumn Header="nazwisko"
+                            DisplayMemberBinding="{Binding nazwisko}"/>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
@@ -111,6 +140,12 @@
 
 
         </GroupBox>
+
+        <Button x:Name="Btn_Utworz" Grid.Column="3" Grid.Row="3" Content="Utwórz" HorizontalAlignment="Right" VerticalAlignment="Center"
+                MinHeight="30" MinWidth="50" IsEnabled="False" Click="Btn_Utworz_Click"/>
+
+        <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center"
+                   Text="Aby utworzyć turniej należy wybrać przynajmniej 5 druzyn i 1 sędziego. W przypadku turnieju siatkówki należy wybrać dodatkowo 2 sędziów pomocniczych."/>
 
     </Grid>
 </Window>

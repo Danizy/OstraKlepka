@@ -26,6 +26,7 @@ namespace OstraKlepka
         public List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
         public List<Dwa_Ognie> listaMeczyTMP = new List<Dwa_Ognie>();
         public Turniej_Lina turniejWczytany = new Turniej_Lina();
+        public Turniej turniej;
 
         public MainWindow()
         {
@@ -54,6 +55,7 @@ namespace OstraKlepka
             listaSedziow.Add(new Sedzia("Mietek", "Zul", "101232"));
 
             listaPomocniczych.Add(new Sedzia_Pomocniczy("Ahmed", "Abdul", "104012"));
+            listaPomocniczych.Add(new Sedzia_Pomocniczy("Ahmeeeed", "Abdsul", "12312"));
 
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[0], listaDruzyn[1], listaSedziow[0], "opa"));
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[4], listaDruzyn[6], listaSedziow[0], "opa"));
@@ -192,6 +194,20 @@ namespace OstraKlepka
             Utworz_Turniej utworzTurniej = new Utworz_Turniej(listaDruzyn, listaSedziow, listaPomocniczych);
             utworzTurniej.Owner = this;
             utworzTurniej.ShowDialog();
+
+            if (utworzTurniej.DialogResult.HasValue && utworzTurniej.DialogResult.Value)
+            {
+                if (utworzTurniej.typTurnieju == 0)
+                    turniej = new Turniej_Siatkowka(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow, utworzTurniej.listaSedziowPomocniczych);
+                else if (utworzTurniej.typTurnieju == 1)
+                    turniej = new Turniej_DwaOgnie(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
+                else
+                    turniej = new Turniej_Lina(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
+
+
+
+            }
+            utworzTurniej = null;
         }
     }
 }
