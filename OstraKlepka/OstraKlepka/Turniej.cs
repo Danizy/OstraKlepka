@@ -79,14 +79,13 @@ namespace OstraKlepka
             return true;
         }
 
-        public abstract void GenerujlTabliceWynikow();
+       // public abstract void GenerujlTabliceWynikow();
         
         public abstract void GenerujMeczeGrupowe();
 
         public abstract void GenerujMeczePolFinal();
 
         public abstract void GenerujMeczeFinal();
-            //do zrobienia jebniete tak zeby bledu nie wywalalo
         
     }
         
