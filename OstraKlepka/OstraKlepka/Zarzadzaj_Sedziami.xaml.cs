@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -181,6 +183,96 @@ namespace OstraKlepka
         private void listaSedziowiePom_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Menu_Zapisz_Sedziow_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Sedziowie (*.sen)|*.sen";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    using (Stream stream = File.Open(saveFileDialog.FileName, FileMode.Create))
+                    {
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        binaryFormatter.Serialize(stream, listaSedziow);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Bład zapisu", "Bład", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+        }
+
+        private void Menu_Zapisz_Sedziow_Pom_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Sedziowie Pomocniczy (*.sep)|*.sep";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    using (Stream stream = File.Open(saveFileDialog.FileName, FileMode.Create))
+                    {
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        binaryFormatter.Serialize(stream, listaPomocniczych);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Bład zapisu", "Bład", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+        }
+
+        private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Sędziowie (*.sen)|*.sen|Sędziowie pomocniczy (*.sep)|*.sep";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                
+                try
+                {
+
+                    using (Stream stream = File.Open(openFileDialog.FileName, FileMode.Open))
+                    {
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                        if(System.IO.Path.GetExtension(openFileDialog.FileName) == ".sen")
+                        {
+                            List<Sedzia> sedziowie = (List<Sedzia>)binaryFormatter.Deserialize(stream);
+                            listaSedziow.Clear();
+
+                            foreach (Sedzia sedzia in sedziowie)
+                                listaSedziow.Add(sedzia);
+
+                            listaSedziowie.Items.Refresh();
+
+                        }
+                        else
+                        {
+                            List<Sedzia_Pomocniczy> sedziowie = (List<Sedzia_Pomocniczy>)binaryFormatter.Deserialize(stream);
+                            listaPomocniczych.Clear();
+
+                            foreach (Sedzia_Pomocniczy sedzia in sedziowie)
+                                listaPomocniczych.Add(sedzia);
+
+                            listaSedziowiePom.Items.Refresh();
+                        }
+                
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Bład zapisu", "Bład", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
         }
     }
 }
