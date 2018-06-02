@@ -9,7 +9,6 @@ namespace OstraKlepka
     [Serializable]
     public abstract class Turniej
     {
-        
         protected List<Druzyna> listaDruzyn;
         protected List<Sedzia> listaSedziow;
         protected List<Druzyna> zwyciezcyGrup;
@@ -80,7 +79,7 @@ namespace OstraKlepka
             return true;
         }
 
-       // public abstract void GenerujlTabliceWynikow();
+        public abstract void GenerujlTabliceWynikow();
         
         public abstract void GenerujMeczeGrupowe();
 

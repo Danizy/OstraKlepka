@@ -44,23 +44,27 @@ namespace OstraKlepka
             listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
 
+        override public void GenerujlTabliceWynikow()
+        {
 
-        public void ZapiszDoPliku<Turniej_Lina>(string sciezka, Turniej_Lina ObiektDoZapisania)
+        }
+
+        public void ZapiszDoPliku<Turniej_Lina>(string _sciezka, Turniej_Lina ObiektDoZapisania)
         {
             string nazwaTurnieju;
             nazwaTurnieju = Console.ReadLine();
 
-            using (Stream stream = File.Open(sciezka + nazwaTurnieju + ".lin", FileMode.Create))
+            using (Stream stream = File.Open(_sciezka + nazwaTurnieju + ".lin", FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 binaryFormatter.Serialize(stream, ObiektDoZapisania);
             }
         }
-        public Turniej_Lina OdczytajZPliku<Turniej_Lina>(string sciezka)
+        public Turniej_Lina OdczytajZPliku<Turniej_Lina>(string _sciezka)
 
         {
 
-            using (Stream stream = File.Open(sciezka, FileMode.Open))
+            using (Stream stream = File.Open(_sciezka, FileMode.Open))
             {
 
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
