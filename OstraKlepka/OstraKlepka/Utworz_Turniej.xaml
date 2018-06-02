@@ -1,0 +1,151 @@
+﻿<Window x:Class="OstraKlepka.Utworz_Turniej"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OstraKlepka"
+        mc:Ignorable="d"
+        Title="Utworz_Turniej" Height="450" Width="800" WindowStartupLocation="CenterOwner" Icon="ikona.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Margin="0,0,5,0">Rodzaj turnieju:</TextBlock>
+            <ComboBox x:Name="Combo_Rodzaj_Turnieju" SelectionChanged="Combo_Rodzaj_Turnieju_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Siatkówka</ComboBoxItem>
+                <ComboBoxItem>2 ognie</ComboBoxItem>
+                <ComboBoxItem>Przeciąganie liny</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        
+        
+
+        <GroupBox Grid.Column="1" Grid.Row="2" Header="Drużyny" Margin="0,0,10,0" Padding="5,5,5,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <ListView x:Name="lv_druzyny" Grid.Column="1" Grid.Row="1" SelectionChanged="lv_druzyny_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Nazwa"
+                            DisplayMemberBinding="{Binding nazwa}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="2" Header="Sedziowie" Margin="0,0,10,0" Padding="5,5,5,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <ListView x:Name="lv_sedziowie" Grid.Column="1" Grid.Row="1" SelectionChanged="lv_druzyny_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="id"
+                            DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Imie"
+                            DisplayMemberBinding="{Binding imie}"/>
+                                <GridViewColumn Header="nazwisko"
+                            DisplayMemberBinding="{Binding nazwisko}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+
+        </GroupBox>
+
+        <GroupBox x:Name="Group_Sedziowie_Pom" Grid.Column="3" Grid.Row="2" Header="Sedziowie Pomocniczy" Margin="0,0,10,0" Padding="5,5,5,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <ListView x:Name="lv_sedziowie_pom" Grid.Column="1" Grid.Row="1" SelectionChanged="lv_druzyny_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="id"
+                            DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Imie"
+                            DisplayMemberBinding="{Binding imie}"/>
+                                <GridViewColumn Header="nazwisko"
+                            DisplayMemberBinding="{Binding nazwisko}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+
+        </GroupBox>
+
+        <Button x:Name="Btn_Utworz" Grid.Column="3" Grid.Row="3" Content="Utwórz" HorizontalAlignment="Right" VerticalAlignment="Center"
+                MinHeight="30" MinWidth="50" IsEnabled="False" Click="Btn_Utworz_Click"/>
+
+        <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center"
+                   Text="Aby utworzyć turniej należy wybrać przynajmniej 5 druzyn i 1 sędziego. W przypadku turnieju siatkówki należy wybrać dodatkowo 2 sędziów pomocniczych."/>
+
+    </Grid>
+</Window>

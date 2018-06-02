@@ -25,6 +25,8 @@ namespace OstraKlepka
         public List<Sedzia_Pomocniczy> listaPomocniczych = new List<Sedzia_Pomocniczy>();
         public List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
         public List<Dwa_Ognie> listaMeczyTMP = new List<Dwa_Ognie>();
+        public Turniej_Lina turniejWczytany = new Turniej_Lina();
+        public Turniej tmpTurniej;
 
         public MainWindow()
         {
@@ -53,6 +55,7 @@ namespace OstraKlepka
             listaSedziow.Add(new Sedzia("Mietek", "Zul", "101232"));
 
             listaPomocniczych.Add(new Sedzia_Pomocniczy("Ahmed", "Abdul", "104012"));
+            listaPomocniczych.Add(new Sedzia_Pomocniczy("Ahmeeeed", "Abdsul", "12312"));
 
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[0], listaDruzyn[1], listaSedziow[0], "opa"));
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[4], listaDruzyn[6], listaSedziow[0], "opa"));
@@ -60,13 +63,13 @@ namespace OstraKlepka
             listaMeczyTMP[0].wynik1 = 3;
 
             //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
-            Turniej_Lina turniej = new Turniej_Lina(listaDruzyn, listaSedziow);
+            // Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
             
-            turniej.ZapiszDoPliku("turniej",turniej);
-            string sciezkaa = "turniej.lin";
+            //turniej.ZapiszDoPliku("turniej");
+            //string sciezkaa = "turniej.lin";
            
-            Turniej_Lina turniejj = new Turniej_Lina();
-            turniejj.OdczytajZPliku<Turniej_Lina>(sciezkaa);
+            
+            //turniejWczytany.OdczytajZPliku(sciezkaa);
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)
@@ -95,6 +98,8 @@ namespace OstraKlepka
             //Tworzenie kolumn i wierszy
             foreach (Druzyna d in listaDruzyn)
             {
+                //RowDefinition row = new RowDefinition();
+                //row.Height = new GridLength(1, GridUnitType.Auto);
                 tableGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 tableGrid.RowDefinitions.Add(new RowDefinition());
             }
@@ -131,7 +136,7 @@ namespace OstraKlepka
             }
 
             //Tworzenie komorek poszczegolnych meczy
-            foreach (Mecz mecz in listaMeczyTMP)
+            foreach (Mecz mecz in listaMeczy)
             {
                 int idDruzyny1 = listaDruzyn.IndexOf(mecz.getDruzyny()[0]);
                 int idDruzyny2 = listaDruzyn.IndexOf(mecz.getDruzyny()[1]);
@@ -187,6 +192,60 @@ namespace OstraKlepka
         }
 
         private void Menu_utworz_Click(object sender, RoutedEventArgs e)
+        {
+            Utworz_Turniej utworzTurniej = new Utworz_Turniej(listaDruzyn, listaSedziow, listaPomocniczych);
+            utworzTurniej.Owner = this;
+            utworzTurniej.ShowDialog();
+
+            if (utworzTurniej.DialogResult.HasValue && utworzTurniej.DialogResult.Value)
+            {
+                if (utworzTurniej.typTurnieju == 0)
+                    tmpTurniej = new Turniej_Siatkowka(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow, utworzTurniej.listaSedziowPomocniczych);
+                else if (utworzTurniej.typTurnieju == 1)
+                    tmpTurniej = new Turniej_DwaOgnie(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
+                else
+                    tmpTurniej = new Turniej_Lina(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
+
+
+
+            }
+            utworzTurniej = null;
+
+            MainGrid.Children.RemoveAt(1);
+
+            if (tmpTurniej is Turniej_Siatkowka)
+            {
+                Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                turniej.GenerujMeczeGrupowe();
+                UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
+            }
+            /*                                                                  Czekaja na implementacje
+            else if (tmpTurniej is Turniej_DwaOgnie)
+            {
+                Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                turniej.GenerujMeczeGrupowe();
+                UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowDwaOgnie().Cast<Mecz>().ToList());
+            }
+            else
+            {
+                Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                turniej.GenerujMeczeGrupowe();
+                UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
+            }
+            */
+
+            Btn_Generuj.Visibility = Visibility.Visible;
+            Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
+
+
+        }
+
+        private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Generuj_Click(object sender, RoutedEventArgs e)
         {
 
         }

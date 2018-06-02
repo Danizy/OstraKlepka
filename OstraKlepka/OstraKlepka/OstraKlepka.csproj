@@ -92,6 +92,9 @@
     <Compile Include="Turniej_DwaOgnie.cs" />
     <Compile Include="Turniej_Lina.cs" />
     <Compile Include="Turniej_Siatkowka.cs" />
+    <Compile Include="Utworz_Turniej.xaml.cs">
+      <DependentUpon>Utworz_Turniej.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Zarzadzaj_Druzynami.xaml.cs">
       <DependentUpon>Zarzadzaj_Druzynami.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Utworz_Turniej.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Zarzadzaj_Druzynami.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

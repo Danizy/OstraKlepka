@@ -14,11 +14,22 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem x:Name="Menu_Sedziowie" Header="Sędziowie">
+                    <MenuItem x:Name="Menu_Zapisz_Sedziow" Header="Zapisz sędziów" Click="Menu_Zapisz_Sedziow_Click"/>
+                    <MenuItem x:Name="Menu_Zapisz_Sedziow_Pom" Header="Zapisz sędziów pomocniczych" Click="Menu_Zapisz_Sedziow_Pom_Click"/>
+                    <MenuItem x:Name="Menu_wczytaj" Header="Wczytaj" Click="Menu_wczytaj_Click"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
 
         <GroupBox Grid.Column="1" Grid.Row="1" Header="Sędziowie" Margin="0,0,10,0">
             <Grid>
@@ -82,6 +93,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
+                
+                
 
 
 
