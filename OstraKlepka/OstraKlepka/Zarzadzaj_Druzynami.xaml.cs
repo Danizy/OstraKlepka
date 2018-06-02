@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,6 +138,64 @@ namespace OstraKlepka
             lv_zawodnicy.Items.Refresh();
 
             
+        }
+
+        private void Menu_Zapisz_Click(object sender, RoutedEventArgs e)
+        {
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Druzyny (*.drz)|*.drz";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    using (Stream stream = File.Open(saveFileDialog.FileName, FileMode.Create))
+                    {
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        binaryFormatter.Serialize(stream, listaDruzyn);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Bład zapisu", "Bład", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+            }
+
+            
+        }
+
+        private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Druzyny (*.drz)|*.drz";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    using (Stream stream = File.Open(openFileDialog.FileName, FileMode.Open))
+                    {
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        List<Druzyna> druzyny = (List<Druzyna>)binaryFormatter.Deserialize(stream);
+
+                        listaDruzyn.Clear();
+
+                        foreach (Druzyna druzyna in druzyny)
+                            listaDruzyn.Add(druzyna);
+
+                        lv_druzyny.Items.Refresh();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Bład zapisu", "Bład", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+            }
+                
+
+
+           
         }
     }
 }

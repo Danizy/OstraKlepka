@@ -244,5 +244,10 @@ namespace OstraKlepka
         {
 
         }
+
+        private void Btn_Generuj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
