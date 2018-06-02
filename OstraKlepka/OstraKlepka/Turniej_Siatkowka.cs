@@ -148,17 +148,48 @@ namespace OstraKlepka
                 binaryFormatter.Serialize(stream, ObiektDoZapisania);
             }
         }
-        public Turniej_Siatkowka OdczytajZPliku<Turniej_Siatkowka>(string sciezka)
+        public void OdczytajZPliku(string sciezka)
 
         {
 
             using (Stream stream = File.Open(sciezka, FileMode.Open))
             {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                Turniej_Siatkowka turniej = (Turniej_Siatkowka)binaryFormatter.Deserialize(stream);
 
-                var binaryFormatter =  new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                if (turniej.listaDruzyn != null)
+                {
+                    this.listaDruzyn = new List<Druzyna>(turniej.listaDruzyn);
+                }
 
-                return (Turniej_Siatkowka)binaryFormatter.Deserialize(stream);
+                if (turniej.listaSedziow != null)
+                {
+                    this.listaSedziow = new List<Sedzia>(turniej.listaSedziow);
+                }
+                if (turniej.listaSedziowPom != null)
 
+                {
+                    this.listaSedziowPom = new List<Sedzia_Pomocniczy>(turniej.listaSedziowPom);
+                }
+                if (turniej.listaMeczowSiatkowki != null)
+                {
+                    this.listaMeczowSiatkowki = new List<Siatkowka>(turniej.listaMeczowSiatkowki);
+                }
+                    
+                if (turniej.zwyciezcyFinal != null)
+                {
+                    this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
+                }
+
+                if (turniej.zwyciezcyGrup != null)
+                {
+                    this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
+                }
+                   
+                if (turniej.zwyciezcyPolFinal != null)
+                {
+                    this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
+                }
             }
         }  
     }
