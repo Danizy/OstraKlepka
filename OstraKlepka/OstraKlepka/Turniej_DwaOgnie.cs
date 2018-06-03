@@ -16,17 +16,6 @@ namespace OstraKlepka
         public Turniej_DwaOgnie() : base()
         {
 
-        }
-        public void MetodaTest()
-        {
-            listaDwaOgnie[0].wynik1 = 1;
-            listaDwaOgnie[0].wynik2 = 3;
-            listaDwaOgnie[1].wynik1 = 4;
-            listaDwaOgnie[1].wynik2 = 3;
-            listaDwaOgnie[2].wynik1 = 0;
-            listaDwaOgnie[2].wynik2 = 1;
-        }
-
         public List<Dwa_Ognie> GetlistaDwaOgnie()
         {
             return listaDwaOgnie;
