@@ -16,10 +16,13 @@ namespace OstraKlepka
         public Turniej_DwaOgnie() : base()
         {
 
-        public List<Dwa_Ognie> GetlistaDwaOgnie()
-        {
-            return listaDwaOgnie;
         }
+
+        public List<Dwa_Ognie> GetlistaDwaOgnie()
+         {
+            return listaDwaOgnie;
+         }
+        
 
         public override void GenerujMeczeGrupowe()
         {
