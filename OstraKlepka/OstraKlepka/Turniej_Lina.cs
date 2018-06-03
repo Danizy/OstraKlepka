@@ -15,6 +15,7 @@ namespace OstraKlepka
         {
 
         }
+        
         public Turniej_Lina() : base()
         {
 
@@ -123,17 +124,35 @@ namespace OstraKlepka
                     Turniej_Lina turniej = (Turniej_Lina)binaryFormatter.Deserialize(stream);
 
                     if (turniej.listaDruzyn != null)
-                        this.listaDruzyn = new List<Druzyna>(turniej.listaDruzyn);
+                {
+                    this.listaDruzyn = new List<Druzyna>(turniej.listaDruzyn);
+                }
+                    
                     if (turniej.listaSedziow != null)
-                        this.listaSedziow = new List<Sedzia>(turniej.listaSedziow);
+                {
+                    this.listaSedziow = new List<Sedzia>(turniej.listaSedziow);
+                }
+                       
                     if (turniej.listaPrzeciaganieLiny != null)
-                        this.listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(turniej.listaPrzeciaganieLiny);
+                {
+                    this.listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(turniej.listaPrzeciaganieLiny);
+                }
+                       
                     if (turniej.zwyciezcyFinal != null)
-                        this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
+                {
+                    this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
+                }
+                       
                     if (turniej.zwyciezcyGrup != null)
-                        this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
+                {
+                    this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
+                }
+                     
                     if (turniej.zwyciezcyPolFinal != null)
-                        this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
+                {
+                    this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
+                }
+                      
                 }
 
             }

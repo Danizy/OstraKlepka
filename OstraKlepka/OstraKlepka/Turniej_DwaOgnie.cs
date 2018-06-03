@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using System.IO;
 namespace OstraKlepka
 {   [Serializable]
-//KONSTRUKTOR BEZPARAMETROWY NA PRZYSZLOSC
     public class Turniej_DwaOgnie : Turniej
     {
-       private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
-       public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow):base(_listaDruzyn,  _listaSedziow)
+        private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
+        public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow) : base(_listaDruzyn, _listaSedziow)
         {
 
         }
+        public Turniej_DwaOgnie() : base()
+        {
 
         public List<Dwa_Ognie> GetlistaDwaOgnie()
         {
@@ -67,7 +68,7 @@ namespace OstraKlepka
 
                 if (_listaDwaOgnie[i].wynik1 > _listaDwaOgnie[i].wynik2)
                 {
-                    for(int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
+                    for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
                     {
                         if (_listaDruzyn[j].nazwa == _druzyna[0].nazwa)
                         {
@@ -76,7 +77,7 @@ namespace OstraKlepka
                     }
                 }
 
-                else if(_listaDwaOgnie[i].wynik1 < _listaDwaOgnie[i].wynik2)
+                else if (_listaDwaOgnie[i].wynik1 < _listaDwaOgnie[i].wynik2)
                 {
                     for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
                     {
@@ -87,7 +88,7 @@ namespace OstraKlepka
                     }
                 }
 
-                else if(_listaDwaOgnie[i].wynik1 == _listaDwaOgnie[i].wynik2)
+                else if (_listaDwaOgnie[i].wynik1 == _listaDwaOgnie[i].wynik2)
                 {
                     for (int j = 0; j < _listaDruzyn.Count; j++)     // Nie wiem jak przeszukać jebaną listę gotową funkcją, pozdrawiam :)
                     {
@@ -95,7 +96,7 @@ namespace OstraKlepka
                         {
                             _listaDruzyn[j].punkty += 1;
                         }
-                        else if(_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
+                        else if (_listaDruzyn[j].nazwa == _druzyna[1].nazwa)
                         {
                             _listaDruzyn[j].punkty += 1;
                         }
@@ -118,19 +119,46 @@ namespace OstraKlepka
                 binaryFormatter.Serialize(stream, ObiektDoZapisania);
             }
         }
-        public Turniej_DwaOgnie OdczytajZPliku<Turniej_DwaOgnie>(string sciezka)
+        public void OdczytajZPliku(string sciezka)
 
         {
 
             using (Stream stream = File.Open(sciezka, FileMode.Open))
             {
-
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                Turniej_DwaOgnie turniej = (Turniej_DwaOgnie)binaryFormatter.Deserialize(stream);
 
-                return (Turniej_DwaOgnie)binaryFormatter.Deserialize(stream);
-
+                if (turniej.listaDruzyn != null)
+                {
+                    this.listaDruzyn = new List<Druzyna>(turniej.listaDruzyn);
+                }
+                  
+                if (turniej.listaSedziow != null)
+                {
+                    this.listaSedziow = new List<Sedzia>(turniej.listaSedziow);
+                }
+                   
+                if (turniej.listaDwaOgnie != null)
+                {
+                    this.listaDwaOgnie = new List<Dwa_Ognie>(turniej.listaDwaOgnie);
+                }
+                  
+                if (turniej.zwyciezcyFinal != null)
+                {
+                    this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
+                }
+                   
+                if (turniej.zwyciezcyGrup != null)
+                {
+                    this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
+                }
+                    
+                if (turniej.zwyciezcyPolFinal != null)
+                {
+                    this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
+                }
+                  
             }
-
         }
     }
 }
