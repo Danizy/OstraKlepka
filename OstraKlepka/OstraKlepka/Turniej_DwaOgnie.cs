@@ -16,6 +16,8 @@ namespace OstraKlepka
         public Turniej_DwaOgnie() : base()
         {
 
+        }
+
         public List<Dwa_Ognie> GetlistaDwaOgnie()
         {
             return listaDwaOgnie;
@@ -56,8 +58,8 @@ namespace OstraKlepka
             for (int i = 0; i < _listaDwaOgnie.Count; i++)
             {
                 _druzyna = _listaDwaOgnie[i].GetDruzyny();
-                _listaDruzyn.Add(_druzyna[0]);
-                _listaDruzyn.Add(_druzyna[1]);
+                _listaDruzyn.Add(new Druzyna(_druzyna[0]));
+                _listaDruzyn.Add(new Druzyna(_druzyna[1]));
             }
 
             _listaDruzyn = _listaDruzyn.Distinct().ToList();
@@ -104,6 +106,7 @@ namespace OstraKlepka
                 }
             }
             _listaDruzyn = _listaDruzyn.OrderBy(x => x.punkty).ToList();
+            _listaDruzyn.Reverse();
 
             return _listaDruzyn;
         }
