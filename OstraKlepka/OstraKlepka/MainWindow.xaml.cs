@@ -29,7 +29,7 @@ namespace OstraKlepka
         public List<Dwa_Ognie> listaMeczyTMP = new List<Dwa_Ognie>();
         public Turniej_Lina turniejWczytany = new Turniej_Lina();
         public Turniej tmpTurniej;
-        public List<Druzyna> _listad = new List<Druzyna>();
+        public Grid tableGrid; // Uchwyt do tabeli wynikow NIE RUSZAC
 
         public MainWindow()
         {
@@ -69,7 +69,7 @@ namespace OstraKlepka
 
             Turniej_DwaOgnie turniejTest = new Turniej_DwaOgnie();
             
-            _listad = turniejTest.GenerujTabliceWynikow(listaMeczyTMP);
+            //_listad = turniejTest.GenerujTabliceWynikow(listaMeczyTMP);
 
             //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
             // Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
@@ -99,7 +99,7 @@ namespace OstraKlepka
 
         private void UtworzTabele(List<Druzyna> listaDruzyn, List<Mecz> listaMeczy)
         {
-            Grid tableGrid = new Grid();
+            tableGrid = new Grid();
             Grid.SetColumn(tableGrid, 1);
             Grid.SetRow(tableGrid, 1);
             MainGrid.Children.Add(tableGrid);
@@ -292,7 +292,12 @@ namespace OstraKlepka
                     UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
                 }
 
-                MainGrid.Children.RemoveAt(1);
+                if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                    MainGrid.Children.Remove(ImgLogo);
+                else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                    MainGrid.Children.Remove(tableGrid);
+
+
                 Btn_Generuj.Visibility = Visibility.Visible;
                 Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
             }
