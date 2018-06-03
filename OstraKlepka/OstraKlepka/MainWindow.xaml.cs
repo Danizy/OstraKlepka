@@ -60,6 +60,8 @@ namespace OstraKlepka
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[0], listaDruzyn[1], listaSedziow[0], "opa"));
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[4], listaDruzyn[6], listaSedziow[0], "opa"));
             listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[5], listaDruzyn[3], listaSedziow[0], "opa"));
+            listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[4], listaDruzyn[3], listaSedziow[0], "opa"));
+            listaMeczyTMP.Add(new Dwa_Ognie(listaDruzyn[5], listaDruzyn[3], listaSedziow[0], "opa"));
             listaMeczyTMP[0].wynik1 = 3;
             listaMeczyTMP[1].wynik2 = 3;
             listaMeczyTMP[2].wynik1 = 3;
