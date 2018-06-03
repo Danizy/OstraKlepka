@@ -15,6 +15,12 @@ namespace OstraKlepka
         public List<Siatkowka> listaMeczowSiatkowki = new List<Siatkowka>();
         private List<Sedzia_Pomocniczy> listaSedziowPom = new List<Sedzia_Pomocniczy>();
         private int[] randomTab = new int[2];  // tablica potrzebna do losowania sędziów pomocniczych
+
+        public Turniej_Siatkowka()
+        {
+
+        }
+
         public Turniej_Siatkowka (List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow, List<Sedzia_Pomocniczy> _listaSedziowPom):base(_listaDruzyn, _listaSedziow)
         {
             listaSedziowPom = new List<Sedzia_Pomocniczy>(_listaSedziowPom);
@@ -139,10 +145,8 @@ namespace OstraKlepka
         }
         public void ZapiszDoPliku<Turniej_Siatkowka>(string sciezka, Turniej_Siatkowka ObiektDoZapisania)
         {
-            string nazwaTurnieju;
-            nazwaTurnieju = Console.ReadLine();
 
-            using (Stream stream = File.Open(sciezka + nazwaTurnieju + ".sia", FileMode.Create))
+            using (Stream stream = File.Open(sciezka, FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 binaryFormatter.Serialize(stream, ObiektDoZapisania);

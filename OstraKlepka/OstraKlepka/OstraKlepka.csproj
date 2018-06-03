@@ -88,6 +88,9 @@
     <Compile Include="Sedzia_Pomocniczy.cs" />
     <Compile Include="Siatkowka.cs" />
     <Compile Include="String_Int_Converter.cs" />
+    <Compile Include="TabelaWynikow.xaml.cs">
+      <DependentUpon>TabelaWynikow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Turniej.cs" />
     <Compile Include="Turniej_DwaOgnie.cs" />
     <Compile Include="Turniej_Lina.cs" />
@@ -126,6 +129,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TabelaWynikow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Utworz_Turniej.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

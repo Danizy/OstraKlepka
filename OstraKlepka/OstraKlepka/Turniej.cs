@@ -74,10 +74,6 @@ namespace OstraKlepka
         {
             return zwyciezcyFinal;
         }
-        public bool zapiszDoPliku()
-        {
-            return true;
-        }
         
         public abstract void GenerujMeczeGrupowe();
 

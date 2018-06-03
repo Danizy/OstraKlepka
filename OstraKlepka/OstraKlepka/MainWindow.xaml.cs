@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,7 +64,7 @@ namespace OstraKlepka
             //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
             // Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
             
-            //turniej.ZapiszDoPliku("turniej");
+           
             //string sciezkaa = "turniej.lin";
            
             
@@ -91,6 +93,7 @@ namespace OstraKlepka
             Grid.SetColumn(tableGrid, 1);
             Grid.SetRow(tableGrid, 1);
             MainGrid.Children.Add(tableGrid);
+            string[] kolumnaNazwDruzyn = new string[listaDruzyn.Count];
 
             //Tworzenie kolumn i wierszy
             foreach (Druzyna d in listaDruzyn)
@@ -117,6 +120,7 @@ namespace OstraKlepka
                     Grid.SetColumn(nazwa, 0);
                     Grid.SetRow(nazwa, i - 1);
                     tableGrid.Children.Add(nazwa);
+                    kolumnaNazwDruzyn[i - 1] = listaDruzyn[i].nazwa;
                 }
 
                 if (i < listaDruzyn.Count - 1)
@@ -152,13 +156,11 @@ namespace OstraKlepka
                 b.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                 b.Converter = new String_Int_Converter();
                 team1.SetBinding(TextBox.TextProperty, b);
-                sp.Children.Add(team1);
 
                 TextBlock a = new TextBlock();
                 a.Text = ":";
                 a.FontSize = 20;
                 a.Margin = new Thickness(2, 0, 2, 5);
-                sp.Children.Add(a);
 
 
                 TextBox team2 = new TextBox();
@@ -170,18 +172,47 @@ namespace OstraKlepka
                 c.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                 c.Converter = new String_Int_Converter();
                 team2.SetBinding(TextBox.TextProperty, c);
-                sp.Children.Add(team2);
+
+                
 
                 if (idDruzyny1 > idDruzyny2)
                 {
                     Grid.SetColumn(sp, idDruzyny2 + 1);
                     Grid.SetRow(sp, idDruzyny1 - 1);
+
+                    if (mecz.GetDruzyny()[0].nazwa == kolumnaNazwDruzyn[idDruzyny1 - 1])
+                    {
+                        sp.Children.Add(team1);
+                        sp.Children.Add(a);
+                        sp.Children.Add(team2);
+                    }
+                    else
+                    {
+                        sp.Children.Add(team2);
+                        sp.Children.Add(a);
+                        sp.Children.Add(team1);
+                    }
                 }
                 else
                 {
                     Grid.SetColumn(sp, idDruzyny1 + 1);
                     Grid.SetRow(sp, idDruzyny2 - 1);
+
+                    if (mecz.GetDruzyny()[0].nazwa == kolumnaNazwDruzyn[idDruzyny2 - 1])
+                    {
+                        sp.Children.Add(team1);
+                        sp.Children.Add(a);
+                        sp.Children.Add(team2);
+                    }
+                    else
+                    {
+                        sp.Children.Add(team2);
+                        sp.Children.Add(a);
+                        sp.Children.Add(team1);
+                    }
                 }
+
+
 
                 tableGrid.Children.Add(sp);
             }
@@ -239,11 +270,76 @@ namespace OstraKlepka
 
         private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Turniej siatkowka (*.sia)|*.sia";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                if(System.IO.Path.GetExtension(openFileDialog.FileName) == ".sia")
+                {
+                    tmpTurniej = new Turniej_Siatkowka();
+                    Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                    turniej.OdczytajZPliku(openFileDialog.FileName);
+                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
+                }
 
+                MainGrid.Children.RemoveAt(1);
+                Btn_Generuj.Visibility = Visibility.Visible;
+                Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
+            }
         }
 
         private void Btn_Generuj_Click(object sender, RoutedEventArgs e)
         {
+            
+            
+
+            
+
+
+
+            
+        }
+
+        private void Btn_Wyswietl_Wyniki_Click(object sender, RoutedEventArgs e)
+        {
+            TabelaWynikow tabelaWynikow;
+
+            if (tmpTurniej is Turniej_Siatkowka)
+            {
+                Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                tabelaWynikow = new TabelaWynikow(turniej.GenerujTabliceWynikow(turniej.listaMeczowSiatkowki));
+                tabelaWynikow.Owner = this;
+                tabelaWynikow.ShowDialog();
+            }
+        }
+
+        private void Menu_zapisz_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (tmpTurniej is Turniej_Siatkowka)
+                {
+                    saveFileDialog.Filter = "Turniej siatkowka (*.sia)|*.sia";
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                        turniej.ZapiszDoPliku(saveFileDialog.FileName, turniej);
+                    }
+
+                }
+                if (tmpTurniej is Turniej_Lina)
+                    saveFileDialog.Filter = "Turniej lina (*.lin)|*.lin";
+                else
+                    saveFileDialog.Filter = "Turniej 2 ognie (*.ogn)|*.ogn";
+
+            }
+                catch
+            {
+                MessageBox.Show("Bład zapisu", "Bład", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }
