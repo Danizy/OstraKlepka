@@ -64,19 +64,6 @@ namespace OstraKlepka
             listaMeczyTMP[1].wynik2 = 3;
             listaMeczyTMP[2].wynik1 = 3;
 
-
-            Turniej_DwaOgnie turniejTest = new Turniej_DwaOgnie();
-            
-            //_listad = turniejTest.GenerujTabliceWynikow(listaMeczyTMP);
-
-            //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
-            // Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
-            
-           
-            //string sciezkaa = "turniej.lin";
-           
-            
-            //turniejWczytany.OdczytajZPliku(sciezkaa);
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)
@@ -113,8 +100,8 @@ namespace OstraKlepka
             }
 
             //Dopasowanie rozmiarow okna
-            this.Height = 36 * listaDruzyn.Count;
-            this.Width = 74 * listaDruzyn.Count;
+            this.Height = 46 * listaDruzyn.Count;
+            this.Width = 84 * listaDruzyn.Count;
 
             //Wypelnienie nazw druzyn
             for (int i = 0; i < listaDruzyn.Count; i++)
@@ -278,6 +265,11 @@ namespace OstraKlepka
 
         private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)
         {
+            if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                MainGrid.Children.Remove(ImgLogo);
+            else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                MainGrid.Children.Remove(tableGrid);
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Turniej siatkowka (*.sia)|*.sia";
             if (openFileDialog.ShowDialog() == true)
@@ -290,10 +282,7 @@ namespace OstraKlepka
                     UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
                 }
 
-                if (MainGrid.Children.IndexOf(ImgLogo) != -1)
-                    MainGrid.Children.Remove(ImgLogo);
-                else if (MainGrid.Children.IndexOf(tableGrid) != -1)
-                    MainGrid.Children.Remove(tableGrid);
+               
 
 
                 Btn_Generuj.Visibility = Visibility.Visible;

@@ -9,7 +9,7 @@
 
     <FlowDocumentReader ViewingMode="Scroll">
         <FlowDocument>
-            <Table x:Name="mTable" CellSpacing="5">
+            <Table x:Name="mTable" CellSpacing="5" BorderBrush="#FF040404" BorderThickness="1">
                 <Table.Columns>
                     <TableColumn/>
                     <TableColumn/>
@@ -19,6 +19,14 @@
                     <TableRow Background="SkyBlue">
                         <TableCell ColumnSpan="2" TextAlignment="Center">
                             <Paragraph FontSize="24pt" FontWeight="Bold">Wyniki turnieju</Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell TextAlignment="Center">
+                            <Paragraph FontSize="20" FontWeight="Bold">Druzyna</Paragraph>
+                        </TableCell>
+                        <TableCell TextAlignment="Center">
+                            <Paragraph FontSize="20" FontWeight="Bold">Punkty</Paragraph>
                         </TableCell>
                     </TableRow>
                 </TableRowGroup>

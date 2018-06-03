@@ -30,6 +30,7 @@ namespace OstraKlepka
         {
             listaSedziowPom = new List<Sedzia_Pomocniczy>(_listaSedziowPom);
         }
+
         public List<Sedzia_Pomocniczy> GetSedziowiePom()
         {
             return listaSedziowPom;
@@ -71,6 +72,7 @@ namespace OstraKlepka
                 }
             }
         }
+
         override public void GenerujMeczeFinal()
         {
             losowaniePomocniczych();
@@ -144,6 +146,7 @@ namespace OstraKlepka
         {
             return listaMeczowSiatkowki;
         }
+
         public void ZapiszDoPliku<Turniej_Siatkowka>(string sciezka, Turniej_Siatkowka ObiektDoZapisania)
         {
 
@@ -153,6 +156,7 @@ namespace OstraKlepka
                 binaryFormatter.Serialize(stream, ObiektDoZapisania);
             }
         }
+
         public void OdczytajZPliku(string sciezka)
 
         {
