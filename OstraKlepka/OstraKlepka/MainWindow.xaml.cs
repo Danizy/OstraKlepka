@@ -67,7 +67,7 @@ namespace OstraKlepka
 
             Turniej_DwaOgnie turniejTest = new Turniej_DwaOgnie();
             
-            _listad = turniejTest.GenerujTabliceWynikow(listaMeczyTMP);
+            //_listad = turniejTest.GenerujTabliceWynikow(listaMeczyTMP);
 
             //UtworzTabele(listaDruzyn, listaMeczyTMP.Cast<Mecz>().ToList());
             // Turniej_Lina turniej= new Turniej_Lina(listaDruzyn, listaSedziow);
