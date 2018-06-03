@@ -19,9 +19,10 @@ namespace OstraKlepka
         }
 
         public List<Dwa_Ognie> GetlistaDwaOgnie()
-        {
+         {
             return listaDwaOgnie;
-        }
+         }
+        
 
         public override void GenerujMeczeGrupowe()
         {
