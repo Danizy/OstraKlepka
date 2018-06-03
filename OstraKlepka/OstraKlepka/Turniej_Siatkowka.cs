@@ -89,11 +89,16 @@ namespace OstraKlepka
             for (int i = 0; i < _listaMeczowSiatkowki.Count; i++)
             {
                 _druzyna = (_listaMeczowSiatkowki[i].GetDruzyny());
-                _listaDruzyn.Add(new Druzyna(_druzyna[0]));
-                _listaDruzyn.Add(new Druzyna(_druzyna[1]));
+                _listaDruzyn.Add(_druzyna[0]);
+                _listaDruzyn.Add(_druzyna[1]);
             }
 
             _listaDruzyn = _listaDruzyn.Distinct().ToList();
+
+            for (int i = 0; i < _listaDruzyn.Count; i++)
+            {
+                _listaDruzyn[i] = new Druzyna(_listaDruzyn[i]);
+            }
 
             for (int i = 0; i < _listaMeczowSiatkowki.Count; i++)
             {
