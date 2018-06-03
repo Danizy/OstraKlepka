@@ -86,9 +86,9 @@ namespace OstraKlepka
 
             for (int i = 0; i < _listaMeczowSiatkowki.Count; i++)
             {
-                _druzyna = _listaMeczowSiatkowki[i].GetDruzyny();
-                _listaDruzyn.Add(_druzyna[0]);
-                _listaDruzyn.Add(_druzyna[1]);
+                _druzyna = (_listaMeczowSiatkowki[i].GetDruzyny());
+                _listaDruzyn.Add(new Druzyna(_druzyna[0]));
+                _listaDruzyn.Add(new Druzyna(_druzyna[1]));
             }
 
             _listaDruzyn = _listaDruzyn.Distinct().ToList();
@@ -135,6 +135,7 @@ namespace OstraKlepka
                 }
             }
             _listaDruzyn = _listaDruzyn.OrderBy(x => x.punkty).ToList();
+            _listaDruzyn.Reverse();
 
             return _listaDruzyn;
         }
