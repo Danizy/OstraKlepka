@@ -309,16 +309,18 @@ namespace OstraKlepka
 
                 if(opa[1] != null)
                 {
-                    Dogrywka dogrywka = new Dogrywka(opa[1], turniej.GenerujMeczeDogrywki(opa[1]).Cast<Mecz>().ToList(), tmpTurniej, opa[0].Count);
+                    Dogrywka dogrywka = new Dogrywka(opa[1], turniej.GenerujMeczeDogrywki(opa[1]).Cast<Mecz>().ToList(), tmpTurniej, 4 - opa[0].Count);
                     dogrywka.Owner = this;
                     dogrywka.ShowDialog();
+
+                    if (dogrywka.DialogResult.HasValue && dogrywka.DialogResult.Value)
+                    {
+                        opa[0].AddRange(dogrywka.zwyciezcy);
+                       // turniej.
+                        //turniej.GenerujMeczePolFinal();
+                    }
                 }
             }
-
-
-            
-
-
 
 
 
@@ -368,7 +370,7 @@ namespace OstraKlepka
                     }
 
                 }
-                if (tmpTurniej is Turniej_Lina)
+                else if (tmpTurniej is Turniej_Lina)
                 {
                     saveFileDialog.Filter = "Turniej lina (*.lin)|*.lin";
 

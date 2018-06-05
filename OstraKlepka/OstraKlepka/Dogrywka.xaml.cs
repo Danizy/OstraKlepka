@@ -22,12 +22,15 @@ namespace OstraKlepka
         Grid tableGrid;
         Turniej turniej;
         List<Mecz> mecze;
+        int miejscaWolne;
+        public List<Druzyna> zwyciezcy = new List<Druzyna>();
 
-        public Dogrywka(List<Druzyna> druzyny, List<Mecz> listaMeczy, Turniej _turniej, int miejscaWolne)
+        public Dogrywka(List<Druzyna> druzyny, List<Mecz> listaMeczy, Turniej _turniej, int _miejscaWolne)
         {
             InitializeComponent();
             turniej = _turniej;
             mecze = listaMeczy;
+            miejscaWolne = _miejscaWolne;
 
             UtworzTabele(druzyny, mecze);
 
@@ -174,9 +177,25 @@ namespace OstraKlepka
                 Turniej_DwaOgnie DwaTurniej = turniej as Turniej_DwaOgnie;
                 List<Druzyna> wyniki = DwaTurniej.GenerujTabliceWynikow(mecze.Cast<Dwa_Ognie>().ToList());
 
-                if(wyniki.Count > 1)
+                for(int i = 0; i < wyniki.Count - 1; i++)
                 {
+                    if(wyniki[i].punkty >= wyniki[i + 1].punkty && zwyciezcy.Count < miejscaWolne)
+                    {
+                        if (i < miejscaWolne)
+                            zwyciezcy.Add(wyniki[i]);
+                        else
+                        {
+                            MessageBox.Show("Nadal jest remis", "Remis", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                            return;
+                        }
 
+                        if(zwyciezcy.Count == miejscaWolne)
+                        {
+                            this.DialogResult = true;
+                            this.Close();
+                        }
+
+                    }
                 }
             }
         }
