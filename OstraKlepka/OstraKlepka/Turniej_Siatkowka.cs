@@ -59,9 +59,8 @@ namespace OstraKlepka
                 }
             }          
         }
-
-        
-        public List<Druzyna>[] GenerujMeczePolFinal()
+  
+        override public List<Druzyna>[] GenerujMeczePolFinal()
         {
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
@@ -70,7 +69,7 @@ namespace OstraKlepka
             wynikiGrup = new List<Druzyna>(_wszyscy);
             int i = 0;
 
-            while (_wszyscy[i].punkty >= _wszyscy[3].punkty)
+            while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[3].punkty)
             {
                 _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
                 i++;
@@ -92,6 +91,8 @@ namespace OstraKlepka
 
             else
             {
+                wynikiGrup = new List<Druzyna>(_wszyscy);
+                listaMeczowSiatkowki.Clear();
                 for (i = 0; i < _zwyciezcy.Count - 1; i++)
                 {
                     for (int j = i + 1; j < _zwyciezcy.Count; j++)
@@ -102,10 +103,10 @@ namespace OstraKlepka
                     }
                 }
             }
-
+            _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;
         }
-        /*
+        
         override public List<Druzyna>[] GenerujMeczeFinal()
         {
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
@@ -115,7 +116,7 @@ namespace OstraKlepka
             wynikiGrup = new List<Druzyna>(_wszyscy);
             int i = 0;
 
-            while (_wszyscy[i].punkty >= _wszyscy[1].punkty)
+            while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[1].punkty)
             {
                 _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
                 i++;
@@ -137,13 +138,16 @@ namespace OstraKlepka
 
             else
             {
+                wynikiGrup = new List<Druzyna>(_wszyscy);
+                listaMeczowSiatkowki.Clear();
                 losowaniePomocniczych();
                 listaMeczowSiatkowki.Add(new Siatkowka(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)],
                                                        listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "finałowy"));
             }
+            _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;
         }
-        */
+        
         
 
         public List<Druzyna> GenerujTabliceWynikow(List<Siatkowka> _listaMeczowSiatkowki)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        

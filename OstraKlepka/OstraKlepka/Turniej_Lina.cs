@@ -15,7 +15,7 @@ namespace OstraKlepka
         {
 
         }
-        
+
         public Turniej_Lina() : base()
         {
 
@@ -34,26 +34,91 @@ namespace OstraKlepka
             }
         }
 
-       /* 
-        override public void GenerujMeczePolFinal()
+
+        override public List<Druzyna>[] GenerujMeczePolFinal()
         {
-            for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
+            List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaPrzeciaganieLiny));
+            List<Druzyna>[] _tabList = new List<Druzyna>[2];
+            List<Druzyna> _zwyciezcy = new List<Druzyna>();
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            int i = 0;
+
+            while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[3].punkty)
             {
-                for (int j = i + 1; j < zwyciezcyGrup.Count; j++)
+                _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
+                i++;
+            }
+            if (_zwyciezcy.Count > 4)
+            {
+                i = _zwyciezcy.Count - 1;
+                int pkt = _zwyciezcy[3].punkty;
+
+                while (_zwyciezcy[i].punkty == pkt)
                 {
-                    listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(zwyciezcyGrup[i], zwyciezcyGrup[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
+                    _dogrywka.Add(new Druzyna(_zwyciezcy[i]));
+                    _zwyciezcy.RemoveAt(i);
+                    i--;
+                }
+                _tabList[0] = new List<Druzyna>(_zwyciezcy);
+                _tabList[1] = new List<Druzyna>(_dogrywka);
+            }
+
+            else
+            {
+                wynikiGrup = new List<Druzyna>(_wszyscy);
+                listaPrzeciaganieLiny.Clear();
+                for (i = 0; i < _zwyciezcy.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < _zwyciezcy.Count; j++)
+                    {
+                        listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(_zwyciezcy[i], _zwyciezcy[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
+                    }
                 }
             }
+            _tabList[0] = new List<Druzyna>(_zwyciezcy);
+            return _tabList;
         }
-        
-        override public void GenerujMeczeFinal()
-        
-            listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
-        }
-        */
 
-        public List<Druzyna> GenerujTabliceWynikow(List<Przeciaganie_Liny> _listaPrzeciaganieLiny)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
-                                                                                                    // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
+        override public List<Druzyna>[] GenerujMeczeFinal()
+        {
+            List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaPrzeciaganieLiny));
+            List<Druzyna>[] _tabList = new List<Druzyna>[2];
+            List<Druzyna> _zwyciezcy = new List<Druzyna>();
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            wynikiGrup = new List<Druzyna>(_wszyscy); // pod else
+            int i = 0;
+
+            while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[1].punkty)
+            {
+                _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
+                i++;
+            }
+            if (_zwyciezcy.Count > 4)
+            {
+                i = _zwyciezcy.Count - 1;
+                int pkt = _zwyciezcy[1].punkty;
+
+                while (_zwyciezcy[i].punkty == pkt)
+                {
+                    _dogrywka.Add(new Druzyna(_zwyciezcy[i]));
+                    _zwyciezcy.RemoveAt(i);
+                    i--;
+                }
+                _tabList[0] = new List<Druzyna>(_zwyciezcy);
+                _tabList[1] = new List<Druzyna>(_dogrywka);
+            }
+
+            else
+            {
+                wynikiGrup = new List<Druzyna>(_wszyscy);
+                listaPrzeciaganieLiny.Clear();
+                listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
+            }
+            _tabList[0] = new List<Druzyna>(_zwyciezcy);
+            return _tabList;
+        }
+
+        public List<Druzyna> GenerujTabliceWynikow(List<Przeciaganie_Liny> _listaPrzeciaganieLiny)// OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
         {
             List<Druzyna> _listaDruzyn = new List<Druzyna>();   // Zwracana lista
             Druzyna[] _druzyna = new Druzyna[2];    // Pomocnicza tablica do wyciągania drużyn z meczów
@@ -120,56 +185,57 @@ namespace OstraKlepka
         }
 
         public void ZapiszDoPliku(string sciezka)
-            {
+        {
 
-                using (Stream stream = File.Open(sciezka, FileMode.Create))
-                {
-                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    binaryFormatter.Serialize(stream, this);
-                }
+            using (Stream stream = File.Open(sciezka, FileMode.Create))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binaryFormatter.Serialize(stream, this);
             }
+        }
 
         public void OdczytajZPliku(string sciezka)
 
+        {
+
+            using (Stream stream = File.Open(sciezka, FileMode.Open))
             {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                Turniej_Lina turniej = (Turniej_Lina)binaryFormatter.Deserialize(stream);
 
-                using (Stream stream = File.Open(sciezka, FileMode.Open))
-                {
-                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    Turniej_Lina turniej = (Turniej_Lina)binaryFormatter.Deserialize(stream);
-
-                    if (turniej.listaDruzyn != null)
+                if (turniej.listaDruzyn != null)
                 {
                     this.listaDruzyn = new List<Druzyna>(turniej.listaDruzyn);
                 }
-                    
-                    if (turniej.listaSedziow != null)
+
+                if (turniej.listaSedziow != null)
                 {
                     this.listaSedziow = new List<Sedzia>(turniej.listaSedziow);
                 }
-                       
-                    if (turniej.listaPrzeciaganieLiny != null)
+
+                if (turniej.listaPrzeciaganieLiny != null)
                 {
                     this.listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(turniej.listaPrzeciaganieLiny);
                 }
-                       /*
-                    if (turniej.zwyciezcyFinal != null)
+
+                /*
+                if (turniej.zwyciezcyFinal != null)
                 {
                     this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
                 }
-                       
-                    if (turniej.zwyciezcyGrup != null)
+
+                if (turniej.zwyciezcyGrup != null)
                 {
                     this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
                 }
-                     
-                    if (turniej.zwyciezcyPolFinal != null)
+
+                if (turniej.zwyciezcyPolFinal != null)
                 {
                     this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
                 }
-                      */
-                }
+                */
 
             }
+        }
     }
 }

@@ -27,10 +27,8 @@ namespace OstraKlepka
         public List<Sedzia_Pomocniczy> listaPomocniczych = new List<Sedzia_Pomocniczy>();
         public List<Zawodnik> listaZawodnikow = new List<Zawodnik>();
         public List<Dwa_Ognie> listaMeczyTMP = new List<Dwa_Ognie>();
-        public Turniej_DwaOgnie turniejTest = new Turniej_DwaOgnie();
         public Turniej tmpTurniej;
         public Grid tableGrid; // Uchwyt do tabeli wynikow NIE RUSZAC
-        public List<Druzyna>[] listaTest = new List<Druzyna>[2];
 
         public MainWindow()
         {
@@ -66,10 +64,6 @@ namespace OstraKlepka
             listaMeczyTMP[0].wynik1 = 3;
             listaMeczyTMP[1].wynik2 = 3;
             listaMeczyTMP[2].wynik1 = 3;
-
-            turniejTest = new Turniej_DwaOgnie(listaDruzyn, listaSedziow);
-            turniejTest.GenerujMeczeGrupowe();
-            listaTest = turniejTest.GenerujMeczePolFinal();
         }
 
         private void Menu_sedziowie_Click(object sender, RoutedEventArgs e)
