@@ -60,27 +60,90 @@ namespace OstraKlepka
             }          
         }
 
-        /*
-        override public void GenerujMeczePolFinal()
+        
+        override public List<Druzyna>[] GenerujMeczePolFinal()
         {
-            for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
+            List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
+            List<Druzyna>[] _tabList = new List<Druzyna>[2];
+            List<Druzyna> _zwyciezcy = new List<Druzyna>();
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            wynikiGrup = new List<Druzyna>(_wszyscy);
+            int i = 0;
+
+            while (_wszyscy[i].punkty >= _wszyscy[3].punkty)
             {
-                for (int j = i + 1; j < zwyciezcyGrup.Count; j++)
+                _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
+                i++;
+            }
+            if (_zwyciezcy.Count > 4)
+            {
+                i = _zwyciezcy.Count - 1;
+                int pkt = _zwyciezcy[3].punkty;
+
+                while (_zwyciezcy[i].punkty == pkt)
                 {
-                    losowaniePomocniczych();
-                    listaMeczowSiatkowki.Add(new Siatkowka(zwyciezcyGrup[i], zwyciezcyGrup[j], listaSedziow[random.Next(listaSedziow.Count)],
-                                                           listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "półfinałowy"));
+                    _dogrywka.Add(new Druzyna(_zwyciezcy[i]));
+                    _zwyciezcy.RemoveAt(i);
+                    i--;
+                }
+                _tabList[0] = new List<Druzyna>(_zwyciezcy);
+                _tabList[1] = new List<Druzyna>(_dogrywka);
+            }
+
+            else
+            {
+                for (i = 0; i < _zwyciezcy.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < _zwyciezcy.Count; j++)
+                    {
+                        losowaniePomocniczych();
+                        listaMeczowSiatkowki.Add(new Siatkowka(_zwyciezcy[i], _zwyciezcy[j], listaSedziow[random.Next(listaSedziow.Count)],
+                                                               listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "półfinałowy"));
+                    }
                 }
             }
+
+            return _tabList;
         }
 
-        override public void GenerujMeczeFinal()
+        override public List<Druzyna>[] GenerujMeczeFinal()
         {
-            losowaniePomocniczych();
-            listaMeczowSiatkowki.Add(new Siatkowka(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)],
-                                                   listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "finałowy"));
+            List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
+            List<Druzyna>[] _tabList = new List<Druzyna>[2];
+            List<Druzyna> _zwyciezcy = new List<Druzyna>();
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            wynikiGrup = new List<Druzyna>(_wszyscy);
+            int i = 0;
+
+            while (_wszyscy[i].punkty >= _wszyscy[1].punkty)
+            {
+                _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
+                i++;
+            }
+            if (_zwyciezcy.Count > 4)
+            {
+                i = _zwyciezcy.Count - 1;
+                int pkt = _zwyciezcy[1].punkty;
+
+                while (_zwyciezcy[i].punkty == pkt)
+                {
+                    _dogrywka.Add(new Druzyna(_zwyciezcy[i]));
+                    _zwyciezcy.RemoveAt(i);
+                    i--;
+                }
+                _tabList[0] = new List<Druzyna>(_zwyciezcy);
+                _tabList[1] = new List<Druzyna>(_dogrywka);
+            }
+
+            else
+            {
+                losowaniePomocniczych();
+                listaMeczowSiatkowki.Add(new Siatkowka(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)],
+                                                       listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "finałowy"));
+            }
+            return _tabList;
         }
-        */
+        
 
         public List<Druzyna> GenerujTabliceWynikow(List<Siatkowka> _listaMeczowSiatkowki)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
