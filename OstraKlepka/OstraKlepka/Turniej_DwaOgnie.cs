@@ -36,7 +36,7 @@ namespace OstraKlepka
             }
         }
 
-        override public List<Druzyna>[] GenerujMeczePolFinal()
+        public List<Druzyna>[] GenerujMeczePolFinal()
         {
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
@@ -78,11 +78,12 @@ namespace OstraKlepka
             }
             return _tabList;
         }
-
+        /*
         override public void GenerujMeczeFinal()
         {
             listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
+        */
 
         public List<Druzyna> GenerujTabliceWynikow(List<Dwa_Ognie> _listaDwaOgnie)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!

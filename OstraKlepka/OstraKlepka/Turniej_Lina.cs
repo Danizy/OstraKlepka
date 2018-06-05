@@ -34,6 +34,7 @@ namespace OstraKlepka
             }
         }
 
+       /* 
         override public void GenerujMeczePolFinal()
         {
             for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
@@ -44,10 +45,12 @@ namespace OstraKlepka
                 }
             }
         }
+        
         override public void GenerujMeczeFinal()
-        {
+        
             listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
+        */
 
         public List<Druzyna> GenerujTabliceWynikow(List<Przeciaganie_Liny> _listaPrzeciaganieLiny)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!

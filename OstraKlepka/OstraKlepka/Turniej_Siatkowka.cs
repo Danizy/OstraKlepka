@@ -61,7 +61,7 @@ namespace OstraKlepka
         }
 
         
-        override public List<Druzyna>[] GenerujMeczePolFinal()
+        public List<Druzyna>[] GenerujMeczePolFinal()
         {
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
@@ -105,7 +105,7 @@ namespace OstraKlepka
 
             return _tabList;
         }
-
+        /*
         override public List<Druzyna>[] GenerujMeczeFinal()
         {
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
@@ -143,6 +143,7 @@ namespace OstraKlepka
             }
             return _tabList;
         }
+        */
         
 
         public List<Druzyna> GenerujTabliceWynikow(List<Siatkowka> _listaMeczowSiatkowki)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
