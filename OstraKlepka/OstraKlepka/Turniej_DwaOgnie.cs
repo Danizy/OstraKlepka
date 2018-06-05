@@ -9,10 +9,12 @@ namespace OstraKlepka
     public class Turniej_DwaOgnie : Turniej
     {
         private List<Dwa_Ognie> listaDwaOgnie = new List<Dwa_Ognie>();
+
         public Turniej_DwaOgnie(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow) : base(_listaDruzyn, _listaSedziow)
         {
 
         }
+
         public Turniej_DwaOgnie() : base()
         {
 
@@ -24,6 +26,20 @@ namespace OstraKlepka
          }
 
         public List<Dwa_Ognie> GetListaMeczowDwaOgnie() { return listaDwaOgnie; }
+
+        public List<Dwa_Ognie> GenerujMeczeDogrywki(List<Druzyna> listaDruzyn)
+        {
+            List<Dwa_Ognie> mecze = new List<Dwa_Ognie>();
+            for (int i = 0; i < listaDruzyn.Count - 1; i++)
+            {
+
+                for (int j = i + 1; j < listaDruzyn.Count; j++)
+                {
+                    mecze.Add(new Dwa_Ognie(listaDruzyn[i], listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "grupowy"));
+                }
+            }
+           return mecze;
+        }
 
         public override void GenerujMeczeGrupowe()
         {

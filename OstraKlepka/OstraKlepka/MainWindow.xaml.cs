@@ -308,6 +308,13 @@ namespace OstraKlepka
                 Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
                 List<Druzyna>[] opa = new List<Druzyna>[2];
                 opa = turniej.GenerujMeczePolFinal();
+
+                if(opa[1] != null)
+                {
+                    Dogrywka dogrywka = new Dogrywka(opa[1], turniej.GenerujMeczeDogrywki(opa[1]).Cast<Mecz>().ToList(), tmpTurniej, opa[0].Count);
+                    dogrywka.Owner = this;
+                    dogrywka.ShowDialog();
+                }
             }
 
 
