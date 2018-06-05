@@ -7,6 +7,6 @@ Minimalny zakres funkcjonalności
 
 - [x] 1. zarządzanie sędziami (dodawanie, usuwanie, przegląd)
 - [x] 2. zarządzanie drużynami (zgłaszanie, wycofywanie, przegląd)
-- [ ] 3. organizacja rozgrywek w każdej dyscyplinie: tworzenie meczów (spotkań), wpisywanie wyników, automatyczne generowanie półfinałów i finałów
-- [ ] 4. wyświetlanie tabeli wyników
-- [ ] 5. zapis i odczyt stanu systemu na dysk
+- [x] 3. organizacja rozgrywek w każdej dyscyplinie: tworzenie meczów (spotkań), wpisywanie wyników, automatyczne generowanie półfinałów i finałów
+- [x] 4. wyświetlanie tabeli wyników
+- [x] 5. zapis i odczyt stanu systemu na dysk
