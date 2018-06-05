@@ -36,7 +36,7 @@ namespace OstraKlepka
             }
         }
 
-        public List<Druzyna>[] GenerujMeczePolFinal()
+        override public List<Druzyna>[] GenerujMeczePolFinal()
         {
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
@@ -45,7 +45,7 @@ namespace OstraKlepka
             wynikiGrup = new List<Druzyna>(_wszyscy); // pod else
             int i = 0;
 
-            while(_wszyscy[i].punkty >= _wszyscy[3].punkty && i < _wszyscy.Count - 1)
+            while(i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[3].punkty)
             {                          
                 _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
                 i++;
@@ -78,12 +78,43 @@ namespace OstraKlepka
             }
             return _tabList;
         }
-        /*
-        override public void GenerujMeczeFinal()
+        
+        override public List<Druzyna>[] GenerujMeczeFinal()
         {
-            listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
+            List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
+            List<Druzyna>[] _tabList = new List<Druzyna>[2];
+            List<Druzyna> _zwyciezcy = new List<Druzyna>();
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            wynikiGrup = new List<Druzyna>(_wszyscy); // pod else
+            int i = 0;
+
+            while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[3].punkty)
+            {
+                _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
+                i++;
+            }
+            if (_zwyciezcy.Count > 4)
+            {
+                i = _zwyciezcy.Count - 1;
+                int pkt = _zwyciezcy[3].punkty;
+
+                while (_zwyciezcy[i].punkty == pkt)
+                {
+                    _dogrywka.Add(new Druzyna(_zwyciezcy[i]));
+                    _zwyciezcy.RemoveAt(i);
+                    i--;
+                }
+                _tabList[0] = new List<Druzyna>(_zwyciezcy);
+                _tabList[1] = new List<Druzyna>(_dogrywka);
+            }
+
+            else
+            {
+                listaDwaOgnie.Add(new Dwa_Ognie(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
+            }
+            return _tabList;
         }
-        */
+        
 
         public List<Druzyna> GenerujTabliceWynikow(List<Dwa_Ognie> _listaDwaOgnie)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
