@@ -328,6 +328,16 @@ namespace OstraKlepka
 
                     }
                 }
+                else
+                {
+
+                    if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                        MainGrid.Children.Remove(ImgLogo);
+                    else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                        MainGrid.Children.Remove(tableGrid);
+
+                    UtworzTabele(opa[0], turniej.GetListaMeczowDwaOgnie().Cast<Mecz>().ToList());
+                }
             }
             else if(tmpTurniej is Turniej_Siatkowka)
             {
@@ -356,6 +366,15 @@ namespace OstraKlepka
 
                     }
                 }
+                else
+                {
+                    if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                        MainGrid.Children.Remove(ImgLogo);
+                    else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                        MainGrid.Children.Remove(tableGrid);
+
+                    UtworzTabele(opa[0], turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
+                }
             }
             else
             {
@@ -383,6 +402,15 @@ namespace OstraKlepka
 
 
                     }
+                }
+                else
+                {
+                    if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                        MainGrid.Children.Remove(ImgLogo);
+                    else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                        MainGrid.Children.Remove(tableGrid);
+
+                    UtworzTabele(opa[0], turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
                 }
             }
 

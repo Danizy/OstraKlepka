@@ -74,6 +74,8 @@ namespace OstraKlepka
                 return null;
             }
 
+
+
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
             List<Druzyna> _zwyciezcy = new List<Druzyna>();
@@ -112,6 +114,13 @@ namespace OstraKlepka
                     }
                 }
             }
+
+            listaDruzyn.Clear();
+            listaDruzyn = new List<Druzyna>(_zwyciezcy);
+
+            foreach (Druzyna druzyna in listaDruzyn)
+                druzyna.punkty = 0;
+
             _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;
         }
@@ -271,33 +280,16 @@ namespace OstraKlepka
                 }
                 if (turniej.wynikiGrup != null)
                 {
-                    this.wynikiGrup = new List<Druzyna>(wynikiGrup);
+                    this.wynikiGrup = new List<Druzyna>(turniej.wynikiGrup);
                 }
                 if (turniej.wynikiPolfinal != null)
                 {
-                    this.wynikiPolfinal = new List<Druzyna>(wynikiPolfinal);
+                    this.wynikiPolfinal = new List<Druzyna>(turniej.wynikiPolfinal);
                 }
                 if (turniej.wynikiFinal != null)
                 {
-                    this.wynikiFinal = new List<Druzyna>(wynikiFinal);
-                }
-
-                /*
-                if (turniej.zwyciezcyFinal != null)
-                {
-                    this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
-                }
-                   
-                if (turniej.zwyciezcyGrup != null)
-                {
-                    this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
-                }
-                    
-                if (turniej.zwyciezcyPolFinal != null)
-                {
-                    this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
-                }
-                */
+                    this.wynikiFinal = new List<Druzyna>(turniej.wynikiFinal);
+                }                                    
 
             }
         }

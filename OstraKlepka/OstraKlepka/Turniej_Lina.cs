@@ -53,6 +53,12 @@ namespace OstraKlepka
             int i = 0;
             if (_listaDruzyn != null)
             {
+                listaDruzyn.Clear();
+                listaDruzyn = new List<Druzyna>(_listaDruzyn);
+
+                foreach (Druzyna druzyna in listaDruzyn)
+                    druzyna.punkty = 0;
+
                 listaPrzeciaganieLiny.Clear();
                 for (i = 0; i < _listaDruzyn.Count - 1; i++)
                 {
@@ -61,6 +67,7 @@ namespace OstraKlepka
                         listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(_listaDruzyn[i], _listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
                     }
                 }
+                return null;
             }
 
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaPrzeciaganieLiny));
@@ -101,6 +108,12 @@ namespace OstraKlepka
                     }
                 }
             }
+            listaDruzyn.Clear();
+            listaDruzyn = new List<Druzyna>(_zwyciezcy);
+
+            foreach (Druzyna druzyna in listaDruzyn)
+                druzyna.punkty = 0;
+
             _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;
         }
@@ -110,6 +123,13 @@ namespace OstraKlepka
             int i = 0;
             if (_listaDruzyn != null)
             {
+
+                listaDruzyn.Clear();
+                listaDruzyn = new List<Druzyna>(_listaDruzyn);
+
+                foreach (Druzyna druzyna in listaDruzyn)
+                    druzyna.punkty = 0;
+
                 listaPrzeciaganieLiny.Clear();
                 for (i = 0; i < _listaDruzyn.Count - 1; i++)
                 {
@@ -118,6 +138,7 @@ namespace OstraKlepka
                         listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(_listaDruzyn[i], _listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
                     }
                 }
+                return null;
             }
 
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaPrzeciaganieLiny));
@@ -152,6 +173,11 @@ namespace OstraKlepka
                 listaPrzeciaganieLiny.Clear();
                 listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
             }
+            listaDruzyn.Clear();
+            listaDruzyn = new List<Druzyna>(_zwyciezcy);
+
+            foreach (Druzyna druzyna in listaDruzyn)
+                druzyna.punkty = 0;
             _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;
         }
@@ -257,33 +283,16 @@ namespace OstraKlepka
                 }
                 if(turniej.wynikiGrup!=null)
                 {
-                    this.wynikiGrup = new List<Druzyna>(wynikiGrup);
+                    this.wynikiGrup = new List<Druzyna>(turniej.wynikiGrup);
                 }
                 if(turniej.wynikiPolfinal!=null)
                 {
-                    this.wynikiPolfinal = new List<Druzyna>(wynikiPolfinal);
+                    this.wynikiPolfinal = new List<Druzyna>(turniej.wynikiPolfinal);
                 }
                 if(turniej.wynikiFinal!=null)
                 {
-                    this.wynikiFinal = new List<Druzyna>(wynikiFinal);
+                    this.wynikiFinal = new List<Druzyna>(turniej.wynikiFinal);
                 }
-
-                /*
-                if (turniej.zwyciezcyFinal != null)
-                {
-                    this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
-                }
-
-                if (turniej.zwyciezcyGrup != null)
-                {
-                    this.zwyciezcyGrup = new List<Druzyna>(turniej.zwyciezcyGrup);
-                }
-
-                if (turniej.zwyciezcyPolFinal != null)
-                {
-                    this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
-                }
-                */
 
             }
         }
