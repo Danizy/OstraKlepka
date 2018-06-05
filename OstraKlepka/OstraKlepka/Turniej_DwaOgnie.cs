@@ -57,6 +57,12 @@ namespace OstraKlepka
             int i = 0;
             if (_listaDruzyn != null)
             {
+                listaDruzyn.Clear();
+                listaDruzyn = new List<Druzyna>(_listaDruzyn);
+
+                foreach (Druzyna druzyna in listaDruzyn)
+                    druzyna.punkty = 0;
+
                 listaDwaOgnie.Clear();
                 for (i = 0; i < _listaDruzyn.Count - 1; i++)
                 {
@@ -65,6 +71,7 @@ namespace OstraKlepka
                         listaDwaOgnie.Add(new Dwa_Ognie(_listaDruzyn[i], _listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
                     }
                 }
+                return null;
             }
 
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));

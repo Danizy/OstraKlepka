@@ -316,8 +316,16 @@ namespace OstraKlepka
                     if (dogrywka.DialogResult.HasValue && dogrywka.DialogResult.Value)
                     {
                         opa[0].AddRange(dogrywka.zwyciezcy);
-                       // turniej.
-                        //turniej.GenerujMeczePolFinal();
+                        turniej.GenerujMeczePolFinal(opa[0]);
+
+                        if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                            MainGrid.Children.Remove(ImgLogo);
+                        else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                            MainGrid.Children.Remove(tableGrid);
+
+                        UtworzTabele(opa[0], turniej.GetListaMeczowDwaOgnie().Cast<Mecz>().ToList());
+
+
                     }
                 }
             }
