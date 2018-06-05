@@ -23,7 +23,7 @@ namespace OstraKlepka
         Turniej turniej;
         List<Mecz> mecze;
         int miejscaWolne;
-        List<Druzyna> zwyciezcy = new List<Druzyna>();
+        public List<Druzyna> zwyciezcy = new List<Druzyna>();
 
         public Dogrywka(List<Druzyna> druzyny, List<Mecz> listaMeczy, Turniej _turniej, int _miejscaWolne)
         {
@@ -179,7 +179,7 @@ namespace OstraKlepka
 
                 for(int i = 0; i < wyniki.Count - 1; i++)
                 {
-                    if(wyniki[i].punkty >= wyniki[i + 1].punkty)
+                    if(wyniki[i].punkty >= wyniki[i + 1].punkty && zwyciezcy.Count < miejscaWolne)
                     {
                         if (i < miejscaWolne)
                             zwyciezcy.Add(wyniki[i]);
@@ -187,6 +187,12 @@ namespace OstraKlepka
                         {
                             MessageBox.Show("Nadal jest remis", "Remis", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                             return;
+                        }
+
+                        if(zwyciezcy.Count == miejscaWolne)
+                        {
+                            this.DialogResult = true;
+                            this.Close();
                         }
 
                     }

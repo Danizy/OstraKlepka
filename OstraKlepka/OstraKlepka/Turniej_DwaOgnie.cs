@@ -52,13 +52,27 @@ namespace OstraKlepka
             }
         }
 
-        override public List<Druzyna>[] GenerujMeczePolFinal()
+        override public List<Druzyna>[] GenerujMeczePolFinal(List<Druzyna> _listaDruzyn = null)
         {
+            int i = 0;
+            if (_listaDruzyn != null)
+            {
+                listaDwaOgnie.Clear();
+                for (i = 0; i < _listaDruzyn.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < _listaDruzyn.Count; j++)
+                    {
+                        listaDwaOgnie.Add(new Dwa_Ognie(_listaDruzyn[i], _listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
+                    }
+                }
+            }
+
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
             List<Druzyna> _zwyciezcy = new List<Druzyna>();
-            List<Druzyna> _dogrywka = new List<Druzyna>();           
-            int i = 0;
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            wynikiGrup = new List<Druzyna>(_wszyscy);
+            i = 0;
 
             while(i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[3].punkty)
             {                          
@@ -82,7 +96,6 @@ namespace OstraKlepka
 
             else
             {
-                wynikiGrup = new List<Druzyna>(_wszyscy);
                 listaDwaOgnie.Clear();
                 for (i = 0; i < _zwyciezcy.Count - 1; i++)
                 {
@@ -96,14 +109,27 @@ namespace OstraKlepka
             return _tabList;
         }
         
-        override public List<Druzyna>[] GenerujMeczeFinal()
+        override public List<Druzyna>[] GenerujMeczeFinal(List<Druzyna> _listaDruzyn = null)
         {
+            int i = 0;
+            if (_listaDruzyn != null)
+            {
+                listaDwaOgnie.Clear();
+                for (i = 0; i < _listaDruzyn.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < _listaDruzyn.Count; j++)
+                    {
+                        listaDwaOgnie.Add(new Dwa_Ognie(_listaDruzyn[i], _listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
+                    }
+                }
+            }
+
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
             List<Druzyna> _zwyciezcy = new List<Druzyna>();
             List<Druzyna> _dogrywka = new List<Druzyna>();
-            wynikiGrup = new List<Druzyna>(_wszyscy); // pod else
-            int i = 0;
+            wynikiGrup = new List<Druzyna>(_wszyscy);
+            i = 0;
 
             while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[1].punkty)
             {
@@ -127,7 +153,6 @@ namespace OstraKlepka
 
             else
             {
-                wynikiGrup = new List<Druzyna>(_wszyscy);
                 listaDwaOgnie.Clear();
                 listaDwaOgnie.Add(new Dwa_Ognie(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
             }
