@@ -22,7 +22,8 @@ namespace OstraKlepka
          {
             return listaDwaOgnie;
          }
-        
+
+        public List<Dwa_Ognie> GetListaMeczowDwaOgnie() { return listaDwaOgnie; }
 
         public override void GenerujMeczeGrupowe()
         {
@@ -77,11 +78,11 @@ namespace OstraKlepka
             }
             return _tabList;
         }
-       /* override public void GenerujMeczeFinal()
+
+        override public void GenerujMeczeFinal()
         {
             listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
-        */
 
         public List<Druzyna> GenerujTabliceWynikow(List<Dwa_Ognie> _listaDwaOgnie)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
@@ -150,17 +151,18 @@ namespace OstraKlepka
             return _listaDruzyn;
         }
 
-        public void ZapiszDoPliku<Turniej_DwaOgnie>(string sciezka, Turniej_DwaOgnie ObiektDoZapisania)
+        public void ZapiszDoPliku(string sciezka)
         {
             string nazwaTurnieju;
             nazwaTurnieju = Console.ReadLine();
 
-            using (Stream stream = File.Open(sciezka + nazwaTurnieju + ".ogn", FileMode.Create))
+            using (Stream stream = File.Open(sciezka, FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                binaryFormatter.Serialize(stream, ObiektDoZapisania);
+                binaryFormatter.Serialize(stream, this);
             }
         }
+
         public void OdczytajZPliku(string sciezka)
 
         {

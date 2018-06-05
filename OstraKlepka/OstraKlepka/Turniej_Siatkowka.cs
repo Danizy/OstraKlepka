@@ -154,13 +154,13 @@ namespace OstraKlepka
             return listaMeczowSiatkowki;
         }
 
-        public void ZapiszDoPliku<Turniej_Siatkowka>(string sciezka, Turniej_Siatkowka ObiektDoZapisania)
+        public void ZapiszDoPliku(string sciezka)
         {
 
             using (Stream stream = File.Open(sciezka, FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                binaryFormatter.Serialize(stream, ObiektDoZapisania);
+                binaryFormatter.Serialize(stream, this);
             }
         }
 
