@@ -42,7 +42,7 @@ namespace OstraKlepka
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
             List<Druzyna> _zwyciezcy = new List<Druzyna>();
             List<Druzyna> _dogrywka = new List<Druzyna>();
-            wynikiGrup = new List<Druzyna>(_wszyscy);
+            wynikiGrup = new List<Druzyna>(_wszyscy); // pod else
             int i = 0;
 
             while(_wszyscy[i].punkty >= _wszyscy[3].punkty)
