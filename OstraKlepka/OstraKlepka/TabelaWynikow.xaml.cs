@@ -25,42 +25,67 @@ namespace OstraKlepka
 
             if(turniej.wynikiGrup == null)
             {
-                TableRow header = new TableRow();
-                TableCell headerCell = new TableCell(new Paragraph(new Run("Faza grupowa")));
-                headerCell.ColumnSpan = 2;
-                headerCell.Background = Brushes.LightSlateGray;
-                headerCell.FontSize = 20;
-                headerCell.TextAlignment = TextAlignment.Center;
-                header.Cells.Add(headerCell);
-                mTable.RowGroups[0].Rows.Add(header);
-
-                foreach (Druzyna druzyna in listaDruzyn)
-                {
-
-                    TableRow row = new TableRow();
-                    TableCell cell = new TableCell(new Paragraph(new Run(druzyna.nazwa)));
-                    cell.BorderBrush = Brushes.Black;
-                    cell.BorderThickness = new Thickness(0, 1, 1, 0);
-                    cell.TextAlignment = TextAlignment.Center;
-                    row.Cells.Add(cell);
-
-                    cell = new TableCell(new Paragraph(new Run(druzyna.punkty.ToString())));
-                    cell.BorderBrush = Brushes.Black;
-                    cell.BorderThickness = new Thickness(0, 1, 1, 0);
-                    cell.TextAlignment = TextAlignment.Center;
-                    row.Cells.Add(cell);
-
-                    mTable.RowGroups[0].Rows.Add(row);
-
-                }
+                utworzFaze(listaDruzyn, "Faza Grupowa");
             }
 
             else if(turniej.wynikiPolfinal == null)
             {
+                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
+                utworzFaze(listaDruzyn, "Faza polfinalowa");
+            }
 
+            else if(turniej.wynikiFinal == null)
+            {
+                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
+                utworzFaze(turniej.wynikiPolfinal, "Faza polfinalowa");
+                utworzFaze(listaDruzyn, "Faza finałowa");
+            }
+
+            else if(turniej.wynikiFinal != null)
+            {
+                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
+                utworzFaze(turniej.wynikiPolfinal, "Faza polfinalowa");
+                utworzFaze(turniej.wynikiFinal, "Faza finałowa");
             }
 
             
+        }
+
+        private void wypiszDruzyny(List<Druzyna> druzyny)
+        {
+            foreach (Druzyna druzyna in druzyny)
+            {
+
+                TableRow row = new TableRow();
+                TableCell cell = new TableCell(new Paragraph(new Run(druzyna.nazwa)));
+                cell.BorderBrush = Brushes.Black;
+                cell.BorderThickness = new Thickness(0, 1, 1, 0);
+                cell.TextAlignment = TextAlignment.Center;
+                row.Cells.Add(cell);
+
+                cell = new TableCell(new Paragraph(new Run(druzyna.punkty.ToString())));
+                cell.BorderBrush = Brushes.Black;
+                cell.BorderThickness = new Thickness(0, 1, 1, 0);
+                cell.TextAlignment = TextAlignment.Center;
+                row.Cells.Add(cell);
+
+                mTable.RowGroups[0].Rows.Add(row);
+
+            }
+        }
+
+        private void utworzFaze(List<Druzyna> druzyny, string faza)
+        {
+            TableRow header = new TableRow();
+            TableCell headerCell = new TableCell(new Paragraph(new Run(faza)));
+            headerCell.ColumnSpan = 2;
+            headerCell.Background = Brushes.LightSlateGray;
+            headerCell.FontSize = 20;
+            headerCell.TextAlignment = TextAlignment.Center;
+            header.Cells.Add(headerCell);
+            mTable.RowGroups[0].Rows.Add(header);
+
+            wypiszDruzyny(druzyny);
         }
     }
 }
