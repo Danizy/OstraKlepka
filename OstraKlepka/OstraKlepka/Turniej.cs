@@ -14,7 +14,7 @@ namespace OstraKlepka
         // protected List<Druzyna> zwyciezcyGrup;
         // protected List<Druzyna> zwyciezcyPolFinal;
         // protected List<Druzyna> zwyciezcyFinal;
-        protected Random random = new Random();
+        protected Random random = new Random(); // do wylosowania losowego sedziego pomocniczego
         public List<Druzyna> wynikiGrup;
         public List<Druzyna> wynikiPolfinal;
         public List<Druzyna> wynikiFinal;

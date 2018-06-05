@@ -9,7 +9,7 @@ namespace OstraKlepka
     [Serializable]
     public class Turniej_Lina : Turniej
     {
-        public List<Przeciaganie_Liny> listaPrzeciaganieLiny = new List<Przeciaganie_Liny>();
+        public List<Przeciaganie_Liny> listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(); //lista list meczy w przeciaganie liny
 
         public Turniej_Lina(List<Druzyna> _listaDruzyn, List<Sedzia> _listaSedziow) : base(_listaDruzyn, _listaSedziow)
         {
