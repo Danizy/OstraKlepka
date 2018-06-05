@@ -306,11 +306,16 @@ namespace OstraKlepka
 
         private void Btn_Generuj_Click(object sender, RoutedEventArgs e)
         {
+            
+            if(tmpTurniej is Turniej_DwaOgnie)
+            {
+                Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                List<Druzyna>[] opa = new List<Druzyna>[2];
+                opa = turniej.GenerujMeczePolFinal();
+            }
 
 
-            Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
-            List<Druzyna>[] opa = new List<Druzyna>[2];
-            opa = turniej.GenerujMeczePolFinal();
+            
 
 
 
