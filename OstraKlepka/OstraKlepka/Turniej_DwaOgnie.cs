@@ -262,7 +262,19 @@ namespace OstraKlepka
                 {
                     this.listaDwaOgnie = new List<Dwa_Ognie>(turniej.listaDwaOgnie);
                 }
-                  
+                if (turniej.wynikiGrup != null)
+                {
+                    this.wynikiGrup = new List<Druzyna>(wynikiGrup);
+                }
+                if (turniej.wynikiPolfinal != null)
+                {
+                    this.wynikiPolfinal = new List<Druzyna>(wynikiPolfinal);
+                }
+                if (turniej.wynikiFinal != null)
+                {
+                    this.wynikiFinal = new List<Druzyna>(wynikiFinal);
+                }
+
                 /*
                 if (turniej.zwyciezcyFinal != null)
                 {
@@ -279,7 +291,7 @@ namespace OstraKlepka
                     this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
                 }
                 */
-                  
+
             }
         }
     }

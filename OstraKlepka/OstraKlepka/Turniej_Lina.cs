@@ -242,6 +242,18 @@ namespace OstraKlepka
                 {
                     this.listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(turniej.listaPrzeciaganieLiny);
                 }
+                if(turniej.wynikiGrup!=null)
+                {
+                    this.wynikiGrup = new List<Druzyna>(wynikiGrup);
+                }
+                if(turniej.wynikiPolfinal!=null)
+                {
+                    this.wynikiPolfinal = new List<Druzyna>(wynikiPolfinal);
+                }
+                if(turniej.wynikiFinal!=null)
+                {
+                    this.wynikiFinal = new List<Druzyna>(wynikiFinal);
+                }
 
                 /*
                 if (turniej.zwyciezcyFinal != null)

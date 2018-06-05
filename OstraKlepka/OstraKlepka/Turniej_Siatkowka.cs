@@ -285,7 +285,19 @@ namespace OstraKlepka
                 {
                     this.listaMeczowSiatkowki = new List<Siatkowka>(turniej.listaMeczowSiatkowki);
                 }
-                    
+                if (turniej.wynikiGrup != null)
+                {
+                    this.wynikiGrup = new List<Druzyna>(wynikiGrup);
+                }
+                if (turniej.wynikiPolfinal != null)
+                {
+                    this.wynikiPolfinal = new List<Druzyna>(wynikiPolfinal);
+                }
+                if (turniej.wynikiFinal != null)
+                {
+                    this.wynikiFinal = new List<Druzyna>(wynikiFinal);
+                }
+
                 /*
                 if (turniej.zwyciezcyFinal != null)
                 {
