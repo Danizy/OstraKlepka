@@ -368,7 +368,7 @@ namespace OstraKlepka
                     }
 
                 }
-                if (tmpTurniej is Turniej_Lina)
+                else if (tmpTurniej is Turniej_Lina)
                 {
                     saveFileDialog.Filter = "Turniej lina (*.lin)|*.lin";
 
