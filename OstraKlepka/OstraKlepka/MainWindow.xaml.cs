@@ -311,7 +311,7 @@ namespace OstraKlepka
             if (tmpTurniej is Turniej_Siatkowka)
             {
                 Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
-                tabelaWynikow = new TabelaWynikow(turniej.GenerujTabliceWynikow(turniej.listaMeczowSiatkowki));
+                tabelaWynikow = new TabelaWynikow(turniej.GenerujTabliceWynikow(turniej.listaMeczowSiatkowki), tmpTurniej);
                 tabelaWynikow.Owner = this;
                 tabelaWynikow.ShowDialog();
             }

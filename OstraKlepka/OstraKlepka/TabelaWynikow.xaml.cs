@@ -19,20 +19,48 @@ namespace OstraKlepka
     /// </summary>
     public partial class TabelaWynikow : Window
     {
-        public TabelaWynikow(List<Druzyna> listaDruzyn)
+        public TabelaWynikow(List<Druzyna> listaDruzyn, Turniej turniej)
         {
             InitializeComponent();
 
-            foreach(Druzyna druzyna in listaDruzyn)
+            if(turniej.wynikiGrup == null)
+            {
+                TableRow header = new TableRow();
+                TableCell headerCell = new TableCell(new Paragraph(new Run("Faza grupowa")));
+                headerCell.ColumnSpan = 2;
+                headerCell.Background = Brushes.LightSlateGray;
+                headerCell.FontSize = 20;
+                headerCell.TextAlignment = TextAlignment.Center;
+                header.Cells.Add(headerCell);
+                mTable.RowGroups[0].Rows.Add(header);
+
+                foreach (Druzyna druzyna in listaDruzyn)
+                {
+
+                    TableRow row = new TableRow();
+                    TableCell cell = new TableCell(new Paragraph(new Run(druzyna.nazwa)));
+                    cell.BorderBrush = Brushes.Black;
+                    cell.BorderThickness = new Thickness(0, 1, 1, 0);
+                    cell.TextAlignment = TextAlignment.Center;
+                    row.Cells.Add(cell);
+
+                    cell = new TableCell(new Paragraph(new Run(druzyna.punkty.ToString())));
+                    cell.BorderBrush = Brushes.Black;
+                    cell.BorderThickness = new Thickness(0, 1, 1, 0);
+                    cell.TextAlignment = TextAlignment.Center;
+                    row.Cells.Add(cell);
+
+                    mTable.RowGroups[0].Rows.Add(row);
+
+                }
+            }
+
+            else if(turniej.wynikiPolfinal == null)
             {
 
-                TableRow row = new TableRow();
-                row.Cells.Add(new TableCell(new Paragraph(new Run(druzyna.nazwa))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(druzyna.punkty.ToString()))));
-
-                mTable.RowGroups[0].Rows.Add(row);
-                
             }
+
+            
         }
     }
 }

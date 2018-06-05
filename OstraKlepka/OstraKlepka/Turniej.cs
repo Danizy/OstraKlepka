@@ -15,6 +15,9 @@ namespace OstraKlepka
         protected List<Druzyna> zwyciezcyPolFinal;
         protected List<Druzyna> zwyciezcyFinal;
         protected Random random = new Random();
+        public List<Druzyna> wynikiGrup;
+        public List<Druzyna> wynikiPolfinal;
+        public List<Druzyna> wynikiFinal;
       
         public Turniej()
         {

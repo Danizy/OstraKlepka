@@ -9,15 +9,15 @@
 
     <FlowDocumentReader ViewingMode="Scroll">
         <FlowDocument>
-            <Table x:Name="mTable" CellSpacing="5" BorderBrush="#FF040404" BorderThickness="1">
+            <Table x:Name="mTable" CellSpacing="0" BorderBrush="#FF040404" BorderThickness="1">
                 <Table.Columns>
                     <TableColumn/>
                     <TableColumn/>
                 </Table.Columns>
-
+                
                 <TableRowGroup>
                     <TableRow Background="SkyBlue">
-                        <TableCell ColumnSpan="2" TextAlignment="Center">
+                        <TableCell ColumnSpan="2" TextAlignment="Center" BorderThickness="0,0,0,1" BorderBrush="Black">
                             <Paragraph FontSize="24pt" FontWeight="Bold">Wyniki turnieju</Paragraph>
                         </TableCell>
                     </TableRow>
