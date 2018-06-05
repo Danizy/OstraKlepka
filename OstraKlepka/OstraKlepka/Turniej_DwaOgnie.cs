@@ -45,7 +45,7 @@ namespace OstraKlepka
             wynikiGrup = new List<Druzyna>(_wszyscy);
             int i = 0;
 
-            while(_wszyscy[i].punkty >= _wszyscy[3].punkty)
+            while(_wszyscy[i].punkty >= _wszyscy[3].punkty && i < _wszyscy.Count - 1)
             {                          
                 _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
                 i++;
