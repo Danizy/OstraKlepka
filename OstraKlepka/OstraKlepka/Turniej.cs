@@ -11,9 +11,9 @@ namespace OstraKlepka
     {
         protected List<Druzyna> listaDruzyn;
         protected List<Sedzia> listaSedziow;
-        protected List<Druzyna> zwyciezcyGrup;
-        protected List<Druzyna> zwyciezcyPolFinal;
-        protected List<Druzyna> zwyciezcyFinal;
+        // protected List<Druzyna> zwyciezcyGrup;
+        // protected List<Druzyna> zwyciezcyPolFinal;
+        // protected List<Druzyna> zwyciezcyFinal;
         protected Random random = new Random();
         public List<Druzyna> wynikiGrup;
         public List<Druzyna> wynikiPolfinal;
@@ -48,6 +48,7 @@ namespace OstraKlepka
             return listaSedziow;
         }
 
+        /*
         public void AddZwyciezceGrup(Druzyna _druzyna)
         {
             zwyciezcyGrup.Add(new Druzyna(_druzyna));
@@ -62,6 +63,7 @@ namespace OstraKlepka
         {
             zwyciezcyFinal.Add(new Druzyna(_druzyna));
         }
+        
 
         public List<Druzyna> GetZwyciezcyGrup()
         {
@@ -77,10 +79,11 @@ namespace OstraKlepka
         {
             return zwyciezcyFinal;
         }
+        */
         
         public abstract void GenerujMeczeGrupowe();
 
-        public abstract void GenerujMeczePolFinal();
+        public abstract List<Druzyna>[] GenerujMeczePolFinal();
 
         public abstract void GenerujMeczeFinal();
         

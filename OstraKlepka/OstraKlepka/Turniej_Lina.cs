@@ -30,6 +30,7 @@ namespace OstraKlepka
                 }
             }
         }
+        /*
         override public void GenerujMeczePolFinal()
         {
             for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
@@ -44,6 +45,7 @@ namespace OstraKlepka
         {
             listaPrzeciaganieLiny.Add(new Przeciaganie_Liny(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
+        */
 
         public List<Druzyna> GenerujTabliceWynikow(List<Przeciaganie_Liny> _listaPrzeciaganieLiny)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
@@ -143,7 +145,7 @@ namespace OstraKlepka
                 {
                     this.listaPrzeciaganieLiny = new List<Przeciaganie_Liny>(turniej.listaPrzeciaganieLiny);
                 }
-                       
+                       /*
                     if (turniej.zwyciezcyFinal != null)
                 {
                     this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
@@ -158,7 +160,7 @@ namespace OstraKlepka
                 {
                     this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
                 }
-                      
+                      */
                 }
 
             }

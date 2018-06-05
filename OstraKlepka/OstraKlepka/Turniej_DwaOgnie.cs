@@ -35,20 +35,53 @@ namespace OstraKlepka
             }
         }
 
-        override public void GenerujMeczePolFinal()
+        override public List<Druzyna>[] GenerujMeczePolFinal()
         {
-            for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
+            List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaDwaOgnie));
+            List<Druzyna>[] _tabList = new List<Druzyna>[2];
+            List<Druzyna> _zwyciezcy = new List<Druzyna>();
+            List<Druzyna> _dogrywka = new List<Druzyna>();
+            wynikiGrup = new List<Druzyna>(_wszyscy);
+            int i = 0;
+
+            while(_wszyscy[i].punkty >= _wszyscy[3].punkty)
+            {                          
+                _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
+                i++;
+            }
+            if (_zwyciezcy.Count > 4)
             {
-                for (int j = i + 1; j < zwyciezcyGrup.Count; j++)
+                i = _zwyciezcy.Count - 1;
+                int pkt = _zwyciezcy[3].punkty;
+
+                while (_zwyciezcy[i].punkty == pkt)
                 {
-                    listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyGrup[i], zwyciezcyGrup[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
+                    _dogrywka.Add(new Druzyna(_zwyciezcy[i]));
+                    _zwyciezcy.RemoveAt(i);
+                    i--;
+                }
+                _tabList[0] = new List<Druzyna>(_zwyciezcy);
+                _tabList[1] = new List<Druzyna>(_dogrywka);
+            }
+
+            else
+            {
+
+                for (i = 0; i < _zwyciezcy.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < _zwyciezcy.Count; j++)
+                    {
+                        listaDwaOgnie.Add(new Dwa_Ognie(_zwyciezcy[i], _zwyciezcy[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));                       
+                    }
                 }
             }
+            return _tabList;
         }
-        override public void GenerujMeczeFinal()
+       /* override public void GenerujMeczeFinal()
         {
             listaDwaOgnie.Add(new Dwa_Ognie(zwyciezcyPolFinal[0], zwyciezcyPolFinal[1], listaSedziow[random.Next(listaSedziow.Count)], "finałowy"));
         }
+        */
 
         public List<Druzyna> GenerujTabliceWynikow(List<Dwa_Ognie> _listaDwaOgnie)  // ZWRACA LISTĘ POSORTOWANĄ ODWROTNIE!!!        
                                                                                     // OD NAJMNIEJSZEJ ILOŚCI PKT DO NAJWIĘKSZEJ!!!
@@ -152,6 +185,7 @@ namespace OstraKlepka
                     this.listaDwaOgnie = new List<Dwa_Ognie>(turniej.listaDwaOgnie);
                 }
                   
+                /*
                 if (turniej.zwyciezcyFinal != null)
                 {
                     this.zwyciezcyFinal = new List<Druzyna>(turniej.zwyciezcyFinal);
@@ -166,6 +200,7 @@ namespace OstraKlepka
                 {
                     this.zwyciezcyPolFinal = new List<Druzyna>(turniej.zwyciezcyPolFinal);
                 }
+                */
                   
             }
         }
