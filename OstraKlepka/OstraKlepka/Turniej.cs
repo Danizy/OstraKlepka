@@ -83,9 +83,9 @@ namespace OstraKlepka
         
         public abstract void GenerujMeczeGrupowe();
 
-        public abstract List<Druzyna>[] GenerujMeczePolFinal();
+        public abstract List<Druzyna>[] GenerujMeczePolFinal(List<Druzyna> _listaDruzyn);
         
-        public abstract List<Druzyna>[] GenerujMeczeFinal();
+        public abstract List<Druzyna>[] GenerujMeczeFinal(List<Druzyna> _listaDruzyn);
         
         
     }
