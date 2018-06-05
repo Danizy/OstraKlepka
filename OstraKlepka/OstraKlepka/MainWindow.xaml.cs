@@ -230,9 +230,6 @@ namespace OstraKlepka
                     tmpTurniej = new Turniej_DwaOgnie(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
                 else
                     tmpTurniej = new Turniej_Lina(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
-
-
-
             }
             utworzTurniej = null;
 
@@ -244,7 +241,7 @@ namespace OstraKlepka
                 turniej.GenerujMeczeGrupowe();
                 UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
             }
-            /*                                                                  Czekaja na implementacje
+
             else if (tmpTurniej is Turniej_DwaOgnie)
             {
                 Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
@@ -257,7 +254,7 @@ namespace OstraKlepka
                 turniej.GenerujMeczeGrupowe();
                 UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
             }
-            */
+            
 
             Btn_Generuj.Visibility = Visibility.Visible;
             Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
@@ -273,7 +270,7 @@ namespace OstraKlepka
                 MainGrid.Children.Remove(tableGrid);
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Turniej siatkowka (*.sia)|*.sia";
+            openFileDialog.Filter = "Turniej (*.sia, *.ogn, *.lin)|*.sia; *.ogn; *.lin";
             if (openFileDialog.ShowDialog() == true)
             {
                 if(System.IO.Path.GetExtension(openFileDialog.FileName) == ".sia")
@@ -283,9 +280,20 @@ namespace OstraKlepka
                     turniej.OdczytajZPliku(openFileDialog.FileName);
                     UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
                 }
-
-               
-
+                else if(System.IO.Path.GetExtension(openFileDialog.FileName) == ".lin")
+                {
+                    tmpTurniej = new Turniej_Lina();
+                    Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                    turniej.OdczytajZPliku(openFileDialog.FileName);
+                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
+                }
+                else
+                {
+                    tmpTurniej = new Turniej_DwaOgnie();
+                    Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                    turniej.OdczytajZPliku(openFileDialog.FileName);
+                    UtworzTabele(turniej.GetDruzyny(), turniej.GetlistaDwaOgnie().Cast<Mecz>().ToList());
+                }
 
                 Btn_Generuj.Visibility = Visibility.Visible;
                 Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
@@ -315,6 +323,20 @@ namespace OstraKlepka
                 tabelaWynikow.Owner = this;
                 tabelaWynikow.ShowDialog();
             }
+            else if(tmpTurniej is Turniej_Lina)
+            {
+                Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                tabelaWynikow = new TabelaWynikow(turniej.GenerujTabliceWynikow(turniej.listaPrzeciaganieLiny), tmpTurniej);
+                tabelaWynikow.Owner = this;
+                tabelaWynikow.ShowDialog();
+            }
+            else
+            {
+                Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                tabelaWynikow = new TabelaWynikow(turniej.GenerujTabliceWynikow(turniej.GetListaMeczowDwaOgnie()), tmpTurniej);
+                tabelaWynikow.Owner = this;
+                tabelaWynikow.ShowDialog();
+            }
         }
 
         private void Menu_zapisz_Click(object sender, RoutedEventArgs e)
@@ -330,14 +352,32 @@ namespace OstraKlepka
                     if (saveFileDialog.ShowDialog() == true)
                     {
                         Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
-                        turniej.ZapiszDoPliku(saveFileDialog.FileName, turniej);
+                        turniej.ZapiszDoPliku(saveFileDialog.FileName);
                     }
 
                 }
                 if (tmpTurniej is Turniej_Lina)
+                {
                     saveFileDialog.Filter = "Turniej lina (*.lin)|*.lin";
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                        turniej.ZapiszDoPliku(saveFileDialog.FileName);
+                    }
+                }
+
                 else
+                {
                     saveFileDialog.Filter = "Turniej 2 ognie (*.ogn)|*.ogn";
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                        turniej.ZapiszDoPliku(saveFileDialog.FileName);
+                    }
+                }
+                    
 
             }
                 catch

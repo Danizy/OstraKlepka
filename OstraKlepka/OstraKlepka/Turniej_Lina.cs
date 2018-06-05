@@ -20,6 +20,9 @@ namespace OstraKlepka
         {
 
         }
+
+        public List<Przeciaganie_Liny> GetListaMeczowLina() { return listaPrzeciaganieLiny; }
+
         public override void GenerujMeczeGrupowe()
         {
             for (int i = 0; i < listaDruzyn.Count - 1; i++)
@@ -30,6 +33,7 @@ namespace OstraKlepka
                 }
             }
         }
+
         override public void GenerujMeczePolFinal()
         {
             for (int i = 0; i < zwyciezcyGrup.Count - 1; i++)
@@ -111,16 +115,18 @@ namespace OstraKlepka
 
             return _listaDruzyn;
         }
-            public void ZapiszDoPliku(string sciezka)
+
+        public void ZapiszDoPliku(string sciezka)
             {
 
-                using (Stream stream = File.Open(sciezka + ".lin", FileMode.Create))
+                using (Stream stream = File.Open(sciezka, FileMode.Create))
                 {
                     var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                     binaryFormatter.Serialize(stream, this);
                 }
             }
-            public void OdczytajZPliku(string sciezka)
+
+        public void OdczytajZPliku(string sciezka)
 
             {
 
