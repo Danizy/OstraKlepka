@@ -329,6 +329,62 @@ namespace OstraKlepka
                     }
                 }
             }
+            else if(tmpTurniej is Turniej_Siatkowka)
+            {
+                Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                List<Druzyna>[] opa = new List<Druzyna>[2];
+                opa = turniej.GenerujMeczePolFinal();
+
+                if (opa[1] != null)
+                {
+                    Dogrywka dogrywka = new Dogrywka(opa[1], turniej.GenerujMeczeDogrywki(opa[1]).Cast<Mecz>().ToList(), tmpTurniej, 4 - opa[0].Count);
+                    dogrywka.Owner = this;
+                    dogrywka.ShowDialog();
+
+                    if (dogrywka.DialogResult.HasValue && dogrywka.DialogResult.Value)
+                    {
+                        opa[0].AddRange(dogrywka.zwyciezcy);
+                        turniej.GenerujMeczePolFinal(opa[0]);
+
+                        if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                            MainGrid.Children.Remove(ImgLogo);
+                        else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                            MainGrid.Children.Remove(tableGrid);
+
+                        UtworzTabele(opa[0], turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
+
+
+                    }
+                }
+            }
+            else
+            {
+                Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                List<Druzyna>[] opa = new List<Druzyna>[2];
+                opa = turniej.GenerujMeczePolFinal();
+
+                if (opa[1] != null)
+                {
+                    Dogrywka dogrywka = new Dogrywka(opa[1], turniej.GenerujMeczeDogrywki(opa[1]).Cast<Mecz>().ToList(), tmpTurniej, 4 - opa[0].Count);
+                    dogrywka.Owner = this;
+                    dogrywka.ShowDialog();
+
+                    if (dogrywka.DialogResult.HasValue && dogrywka.DialogResult.Value)
+                    {
+                        opa[0].AddRange(dogrywka.zwyciezcy);
+                        turniej.GenerujMeczePolFinal(opa[0]);
+
+                        if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                            MainGrid.Children.Remove(ImgLogo);
+                        else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                            MainGrid.Children.Remove(tableGrid);
+
+                        UtworzTabele(opa[0], turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
+
+
+                    }
+                }
+            }
 
 
 

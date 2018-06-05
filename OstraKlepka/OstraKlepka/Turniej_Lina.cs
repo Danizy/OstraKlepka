@@ -34,6 +34,19 @@ namespace OstraKlepka
             }
         }
 
+        public List<Przeciaganie_Liny> GenerujMeczeDogrywki(List<Druzyna> listaDruzyn)
+        {
+            List<Przeciaganie_Liny> mecze = new List<Przeciaganie_Liny>();
+            for (int i = 0; i < listaDruzyn.Count - 1; i++)
+            {
+
+                for (int j = i + 1; j < listaDruzyn.Count; j++)
+                {
+                    mecze.Add(new Przeciaganie_Liny(listaDruzyn[i], listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)], "półfinałowy"));
+                }
+            }
+            return mecze;
+        }
 
         override public List<Druzyna>[] GenerujMeczePolFinal(List<Druzyna> _listaDruzyn = null)
         {

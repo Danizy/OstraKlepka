@@ -36,6 +36,21 @@ namespace OstraKlepka
             return listaSedziowPom;
         }
 
+        public List<Siatkowka> GenerujMeczeDogrywki(List<Druzyna> listaDruzyn)
+        {
+            List<Siatkowka> mecze = new List<Siatkowka>();
+            for (int i = 0; i < listaDruzyn.Count - 1; i++)
+            {
+
+                for (int j = i + 1; j < listaDruzyn.Count; j++)
+                {
+                    mecze.Add(new Siatkowka(listaDruzyn[i], listaDruzyn[j], listaSedziow[random.Next(listaSedziow.Count)],
+                                                               listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "półfinałowy"));
+                }
+            }
+            return mecze;
+        }
+
         private void losowaniePomocniczych()
         {
             randomTab[0] = random.Next(listaSedziowPom.Count);
@@ -65,6 +80,12 @@ namespace OstraKlepka
             int i = 0;
             if (_listaDruzyn != null)
             {
+                listaDruzyn.Clear();
+                listaDruzyn = new List<Druzyna>(_listaDruzyn);
+
+                foreach (Druzyna druzyna in listaDruzyn)
+                    druzyna.punkty = 0;
+
                 listaMeczowSiatkowki.Clear();
                 for (i = 0; i < _listaDruzyn.Count - 1; i++)
                 {
@@ -74,6 +95,8 @@ namespace OstraKlepka
                                                                listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "półfinałowy"));
                     }
                 }
+
+                return null;
             }
 
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));

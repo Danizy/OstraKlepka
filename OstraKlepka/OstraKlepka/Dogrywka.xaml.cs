@@ -198,6 +198,59 @@ namespace OstraKlepka
                     }
                 }
             }
+            else if (turniej is Turniej_Siatkowka)
+            {
+                Turniej_Siatkowka DwaTurniej = turniej as Turniej_Siatkowka;
+                List<Druzyna> wyniki = DwaTurniej.GenerujTabliceWynikow(mecze.Cast<Siatkowka>().ToList());
+
+                for (int i = 0; i < wyniki.Count - 1; i++)
+                {
+                    if (wyniki[i].punkty >= wyniki[i + 1].punkty && zwyciezcy.Count < miejscaWolne)
+                    {
+                        if (i < miejscaWolne)
+                            zwyciezcy.Add(wyniki[i]);
+                        else
+                        {
+                            MessageBox.Show("Nadal jest remis", "Remis", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                            return;
+                        }
+
+                        if (zwyciezcy.Count == miejscaWolne)
+                        {
+                            this.DialogResult = true;
+                            this.Close();
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                Turniej_Lina DwaTurniej = turniej as Turniej_Lina;
+                List<Druzyna> wyniki = DwaTurniej.GenerujTabliceWynikow(mecze.Cast<Przeciaganie_Liny>().ToList());
+
+                for (int i = 0; i < wyniki.Count - 1; i++)
+                {
+                    if (wyniki[i].punkty >= wyniki[i + 1].punkty && zwyciezcy.Count < miejscaWolne)
+                    {
+                        if (i < miejscaWolne)
+                            zwyciezcy.Add(wyniki[i]);
+                        else
+                        {
+                            MessageBox.Show("Nadal jest remis", "Remis", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                            return;
+                        }
+
+                        if (zwyciezcy.Count == miejscaWolne)
+                        {
+                            this.DialogResult = true;
+                            this.Close();
+                        }
+
+                    }
+                }
+            }
+
         }
     }
 }
