@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OstraKlepka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="424" Width="695.5" WindowStartupLocation="CenterScreen" Icon="ikona.png">
+        Title="MainWindow" Height="424" Width="695.5" WindowStartupLocation="CenterScreen" Icon="ikona.png" MinWidth="320" MinHeight="180">
 
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20"/> 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -40,7 +40,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button x:Name="Btn_Wyswietl_Wyniki" Content="Wyświetl tablice wyników" Margin="0,0,5,0" Visibility="Collapsed" Click="Btn_Wyswietl_Wyniki_Click"/>
-            <Button x:Name="Btn_Generuj"  Content="Generuj Półfinały" Visibility="Collapsed" Click="Btn_Generuj_Click"/>
+            <Button x:Name="Btn_Generuj"  Content="Generuj następny etap" Visibility="Collapsed" Click="Btn_Generuj_Click"/>
         </StackPanel>
         
 

@@ -30,22 +30,22 @@ namespace OstraKlepka
 
             else if(turniej.wynikiPolfinal == null)
             {
-                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
                 utworzFaze(listaDruzyn, "Faza polfinalowa");
+                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
             }
 
             else if(turniej.wynikiFinal == null)
             {
-                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
-                utworzFaze(turniej.wynikiPolfinal, "Faza polfinalowa");
                 utworzFaze(listaDruzyn, "Faza finałowa");
+                utworzFaze(turniej.wynikiPolfinal, "Faza polfinalowa");
+                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
             }
 
             else if(turniej.wynikiFinal != null)
             {
-                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
-                utworzFaze(turniej.wynikiPolfinal, "Faza polfinalowa");
                 utworzFaze(turniej.wynikiFinal, "Faza finałowa");
+                utworzFaze(turniej.wynikiPolfinal, "Faza polfinalowa");
+                utworzFaze(turniej.wynikiGrup, "Faza Grupowa");
             }
 
             

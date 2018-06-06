@@ -34,8 +34,8 @@ namespace OstraKlepka
 
             UtworzTabele(druzyny, mecze);
 
-            dogrywkaWIndow.Width = druzyny.Count * 30;
-            dogrywkaWIndow.Height = druzyny.Count * 30;
+            dogrywkaWIndow.Width = 100 + druzyny.Count * 30;
+            dogrywkaWIndow.Height = 150 + druzyny.Count * 30;
         }
 
         private void UtworzTabele(List<Druzyna> listaDruzyn, List<Mecz> listaMeczy)

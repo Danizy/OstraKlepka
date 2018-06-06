@@ -100,8 +100,17 @@ namespace OstraKlepka
             }
 
             //Dopasowanie rozmiarow okna
-            this.Height = 46 * listaDruzyn.Count;
-            this.Width = 84 * listaDruzyn.Count;
+            if(listaDruzyn.Count < 3)
+            {
+                this.Height = 150;
+                this.Width = 200;
+            }
+            else
+            {
+                this.Height = 56 * listaDruzyn.Count;
+                this.Width =  84 * listaDruzyn.Count;
+            }
+            
 
             //Wypelnienie nazw druzyn
             for (int i = 0; i < listaDruzyn.Count; i++)
