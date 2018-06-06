@@ -145,7 +145,7 @@ namespace OstraKlepka
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
             List<Druzyna> _zwyciezcy = new List<Druzyna>();
             List<Druzyna> _dogrywka = new List<Druzyna>();
-            wynikiGrup = new List<Druzyna>(_wszyscy); // pod else
+            wynikiPolfinal = new List<Druzyna>(_wszyscy); // pod else
             i = 0;
 
             while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[1].punkty)
@@ -153,7 +153,7 @@ namespace OstraKlepka
                 _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
                 i++;
             }
-            if (_zwyciezcy.Count > 4)
+            if (_zwyciezcy.Count > 2)
             {
                 i = _zwyciezcy.Count - 1;
                 int pkt = _zwyciezcy[1].punkty;

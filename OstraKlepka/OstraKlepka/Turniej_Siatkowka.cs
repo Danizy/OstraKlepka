@@ -157,6 +157,12 @@ namespace OstraKlepka
             int i = 0;
             if (_listaDruzyn != null)
             {
+                listaDruzyn.Clear();
+                listaDruzyn = new List<Druzyna>(_listaDruzyn);
+
+                foreach (Druzyna druzyna in listaDruzyn)
+                    druzyna.punkty = 0;
+
                 listaMeczowSiatkowki.Clear();
                 for (i = 0; i < _listaDruzyn.Count - 1; i++)
                 {
@@ -172,7 +178,7 @@ namespace OstraKlepka
             List<Druzyna>[] _tabList = new List<Druzyna>[2];
             List<Druzyna> _zwyciezcy = new List<Druzyna>();
             List<Druzyna> _dogrywka = new List<Druzyna>();
-            wynikiGrup = new List<Druzyna>(_wszyscy);
+            wynikiPolfinal = new List<Druzyna>(_wszyscy);
             i = 0;
 
             while (i < _wszyscy.Count && _wszyscy[i].punkty >= _wszyscy[1].punkty)
@@ -180,7 +186,7 @@ namespace OstraKlepka
                 _zwyciezcy.Add(new Druzyna(_wszyscy[i]));
                 i++;
             }
-            if (_zwyciezcy.Count > 4)
+            if (_zwyciezcy.Count > 2)
             {
                 i = _zwyciezcy.Count - 1;
                 int pkt = _zwyciezcy[1].punkty;
@@ -202,6 +208,12 @@ namespace OstraKlepka
                 listaMeczowSiatkowki.Add(new Siatkowka(_zwyciezcy[0], _zwyciezcy[1], listaSedziow[random.Next(listaSedziow.Count)],
                                                        listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "finałowy"));
             }
+            listaDruzyn.Clear();
+            listaDruzyn = new List<Druzyna>(listaDruzyn);
+
+            foreach (Druzyna druzyna in listaDruzyn)
+                druzyna.punkty = 0;
+
             _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;
         }
