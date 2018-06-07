@@ -237,36 +237,36 @@ namespace OstraKlepka
                     tmpTurniej = new Turniej_DwaOgnie(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
                 else
                     tmpTurniej = new Turniej_Lina(utworzTurniej.listaDruzyn, utworzTurniej.listaSedziow);
+
+                utworzTurniej = null;
+
+                MainGrid.Children.RemoveAt(1);
+
+                if (tmpTurniej is Turniej_Siatkowka)
+                {
+                    Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                    turniej.GenerujMeczeGrupowe();
+                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
+                }
+
+                else if (tmpTurniej is Turniej_DwaOgnie)
+                {
+                    Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                    turniej.GenerujMeczeGrupowe();
+                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowDwaOgnie().Cast<Mecz>().ToList());
+                }
+                else
+                {
+                    Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                    turniej.GenerujMeczeGrupowe();
+                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
+                }
+
+
+                Btn_Generuj.Visibility = Visibility.Visible;
+                Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
+
             }
-            utworzTurniej = null;
-
-            MainGrid.Children.RemoveAt(1);
-
-            if (tmpTurniej is Turniej_Siatkowka)
-            {
-                Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
-                turniej.GenerujMeczeGrupowe();
-                UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
-            }
-
-            else if (tmpTurniej is Turniej_DwaOgnie)
-            {
-                Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
-                turniej.GenerujMeczeGrupowe();
-                UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowDwaOgnie().Cast<Mecz>().ToList());
-            }
-            else
-            {
-                Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
-                turniej.GenerujMeczeGrupowe();
-                UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
-            }
-            
-
-            Btn_Generuj.Visibility = Visibility.Visible;
-            Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
-
-
         }
 
         private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)

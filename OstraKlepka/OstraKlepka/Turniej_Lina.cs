@@ -175,8 +175,9 @@ namespace OstraKlepka
             }
             listaDruzyn.Clear();
             listaDruzyn = new List<Druzyna>(_zwyciezcy);
+            _zwyciezcy = new List<Druzyna>(_zwyciezcy);
 
-            foreach (Druzyna druzyna in listaDruzyn)
+            foreach (Druzyna druzyna in _zwyciezcy)
                 druzyna.punkty = 0;
             _tabList[0] = new List<Druzyna>(_zwyciezcy);
             return _tabList;

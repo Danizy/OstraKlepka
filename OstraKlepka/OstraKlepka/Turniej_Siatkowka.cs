@@ -157,6 +157,7 @@ namespace OstraKlepka
             int i = 0;
             if (_listaDruzyn != null)
             {
+
                 listaDruzyn.Clear();
                 listaDruzyn = new List<Druzyna>(_listaDruzyn);
 
@@ -172,6 +173,7 @@ namespace OstraKlepka
                                                                listaSedziowPom[randomTab[0]], listaSedziowPom[randomTab[1]], "finałowy"));
                     }
                 }
+                return null;
             }
 
             List<Druzyna> _wszyscy = new List<Druzyna>(GenerujTabliceWynikow(listaMeczowSiatkowki));
@@ -210,8 +212,9 @@ namespace OstraKlepka
             }
             listaDruzyn.Clear();
             listaDruzyn = new List<Druzyna>(listaDruzyn);
+            _zwyciezcy = new List<Druzyna>(_zwyciezcy);
 
-            foreach (Druzyna druzyna in listaDruzyn)
+            foreach (Druzyna druzyna in _zwyciezcy)
                 druzyna.punkty = 0;
 
             _tabList[0] = new List<Druzyna>(_zwyciezcy);
