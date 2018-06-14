@@ -554,7 +554,8 @@ namespace OstraKlepka
                 }
             }
 
-
+            if (tmpTurniej.wynikiPolfinal != null)
+                Btn_Generuj.Visibility = Visibility.Collapsed;
 
 
 
