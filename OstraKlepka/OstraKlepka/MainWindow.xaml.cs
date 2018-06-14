@@ -271,39 +271,51 @@ namespace OstraKlepka
 
         private void Menu_wczytaj_Click(object sender, RoutedEventArgs e)
         {
-            if (MainGrid.Children.IndexOf(ImgLogo) != -1)
-                MainGrid.Children.Remove(ImgLogo);
-            else if (MainGrid.Children.IndexOf(tableGrid) != -1)
-                MainGrid.Children.Remove(tableGrid);
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Turniej (*.sia, *.ogn, *.lin)|*.sia; *.ogn; *.lin";
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                if(System.IO.Path.GetExtension(openFileDialog.FileName) == ".sia")
-                {
-                    tmpTurniej = new Turniej_Siatkowka();
-                    Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
-                    turniej.OdczytajZPliku(openFileDialog.FileName);
-                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
-                }
-                else if(System.IO.Path.GetExtension(openFileDialog.FileName) == ".lin")
-                {
-                    tmpTurniej = new Turniej_Lina();
-                    Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
-                    turniej.OdczytajZPliku(openFileDialog.FileName);
-                    UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
-                }
-                else
-                {
-                    tmpTurniej = new Turniej_DwaOgnie();
-                    Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
-                    turniej.OdczytajZPliku(openFileDialog.FileName);
-                    UtworzTabele(turniej.GetDruzyny(), turniej.GetlistaDwaOgnie().Cast<Mecz>().ToList());
-                }
 
-                Btn_Generuj.Visibility = Visibility.Visible;
-                Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
+                if (MainGrid.Children.IndexOf(ImgLogo) != -1)
+                    MainGrid.Children.Remove(ImgLogo);
+                else if (MainGrid.Children.IndexOf(tableGrid) != -1)
+                    MainGrid.Children.Remove(tableGrid);
+
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Turniej (*.sia, *.ogn, *.lin)|*.sia; *.ogn; *.lin";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    if (System.IO.Path.GetExtension(openFileDialog.FileName) == ".sia")
+                    {
+                        tmpTurniej = new Turniej_Siatkowka();
+                        Turniej_Siatkowka turniej = tmpTurniej as Turniej_Siatkowka;
+                        turniej.OdczytajZPliku(openFileDialog.FileName);
+                        UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowSiatkowki().Cast<Mecz>().ToList());
+                    }
+                    else if (System.IO.Path.GetExtension(openFileDialog.FileName) == ".lin")
+                    {
+                        tmpTurniej = new Turniej_Lina();
+                        Turniej_Lina turniej = tmpTurniej as Turniej_Lina;
+                        turniej.OdczytajZPliku(openFileDialog.FileName);
+                        UtworzTabele(turniej.GetDruzyny(), turniej.GetListaMeczowLina().Cast<Mecz>().ToList());
+                    }
+                    else if (System.IO.Path.GetExtension(openFileDialog.FileName) == ".ogn")
+                    {
+                        tmpTurniej = new Turniej_DwaOgnie();
+                        Turniej_DwaOgnie turniej = tmpTurniej as Turniej_DwaOgnie;
+                        turniej.OdczytajZPliku(openFileDialog.FileName);
+                        UtworzTabele(turniej.GetDruzyny(), turniej.GetlistaDwaOgnie().Cast<Mecz>().ToList());
+                    }
+                    else
+                    {
+                        throw new NiewlasciwyFormat_Exception("Format pliku jest niewlasciwy");
+                    }
+
+                    Btn_Generuj.Visibility = Visibility.Visible;
+                    Btn_Wyswietl_Wyniki.Visibility = Visibility.Visible;
+                }
+            }
+            catch(NiewlasciwyFormat_Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Bład wczytywania", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

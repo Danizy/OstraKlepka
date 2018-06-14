@@ -86,6 +86,7 @@
     <Compile Include="Druzyna.cs" />
     <Compile Include="Dwa_Ognie.cs" />
     <Compile Include="Mecz.cs" />
+    <Compile Include="NiewlasciwyFormat_Exception.cs" />
     <Compile Include="Przeciaganie_Liny.cs" />
     <Compile Include="Sedzia.cs" />
     <Compile Include="Sedzia_Pomocniczy.cs" />
